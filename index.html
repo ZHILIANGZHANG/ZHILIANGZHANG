@@ -4,25 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cheng Zhang | Jilin University</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --jlu-blue: #002D62;
+            --jlu-red: #E31837;
+            --accent: #2A6DB5;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #f8fafc;
+        }
+
+        .jlu-banner {
+            background: linear-gradient(135deg, var(--jlu-blue), var(--jlu-red));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .jlu-banner h2 {
+            border-left: 4px solid white;
+            padding-left: 1rem;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 0.5rem;
+        }
+
+        .research-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .contact-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
         <h1>Cheng Zhang</h1>
-        <p>Assistant Professor @ Jilin University CCST</p>
-        <div class="jlu-badge">
-            <img src="https://www.jlu.edu.cn/images/logo.png" alt="JLU Logo">
-            <span>College of Computer Science and Technology</span>
-        </div>
+        <p>Undergraduate Researcher | AVC Lab, Jilin University</p>
     </header>
 
-    <section class="content">
-        <h2>Contact</h2>
+    <!-- 吉林大学学术优势展示 -->
+    <section class="jlu-banner">
+        <div class="badge">985 Program University | QS Ranking: 493 Worldwide</div>
+        <h2>Jilin University Profile</h2>
         <ul>
-            <li>📧 zhangcheng@jlu.edu.cn</li>
-            <li>🏠 Room 302, Computer Science Building</li>
-            <li>📱 +86 431 8516-xxxx</li>
+            <li>🏛️ Double First-Class University (MoE China)</li>
+            <li>📊 Computer Science ESI Ranking: Top 1% Globally</li>
+            <li>🔬 Key Disciplines: AI, Computer Architecture, Software Engineering</li>
+            <li>🤝 Partner Universities: MIT, Stanford, ETH Zurich</li>
         </ul>
     </section>
+
+    <!-- 科研经历 -->
+    <section class="research-section">
+        <h2><i class="fas fa-flask"></i> Research Experience</h2>
+        <div class="research-grid">
+            <div class="research-item">
+                <h3>AVC Laboratory</h3>
+                <p>Advanced Vision Computing Lab (National Key Lab)</p>
+                <ul>
+                    <li>3 journal papers (1 first-author in review)</li>
+                    <li>National R&D Program on AI Ethics (2023-2025)</li>
+                    <li>Jilin Provincial IoT Project (2022-2024)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学术成就 -->
+    <section class="achievements">
+        <h2><i class="fas fa-award"></i> Honors</h2>
+        <ul>
+            <li>University Scholarship (Second Class 2023)</li>
+            <li>University Scholarship (Third Class 2022)</li>
+            <li>Outstanding Research Assistant Award 2023</li>
+        </ul>
+    </section>
+
+    <!-- 联系方式 -->
+    <div class="contact-columns">
+        <div>
+            <h3><i class="fas fa-envelope"></i> Academic Contact</h3>
+            <ul>
+                <li>📧 zhangcheng2122@jlu.edu.cn</li>
+                <li>📧 zc2410867311@gmail.com</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3><i class="fas fa-comments"></i> Quick Connect</h3>
+            <ul>
+                <li>📱 +86 188-XXXX-XXXX</li>
+                <li>📧 2410867311@qq.com</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
