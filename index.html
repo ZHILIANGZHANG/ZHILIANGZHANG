@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cheng Zhang - Jilin University</title>
+    <title>Cheng Zhang | Jilin University</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -11,178 +11,293 @@
             --jlu-red: #E31837;
             --accent: #2A6DB5;
             --text: #2D3748;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, sans-serif;
         }
 
         body {
-            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(150deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--text);
             line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
-            color: var(--text);
-            background: #f8fafc;
         }
 
-        .university-header {
-            background: linear-gradient(135deg, var(--jlu-blue) 60%, var(--jlu-red));
-            color: white;
-            padding: 2rem;
-            border-radius: 16px;
-            margin-bottom: 2rem;
+        /* 头部样式 */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 3rem;
             position: relative;
-            overflow: hidden;
         }
 
-        .ranking-badges {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+        .jlu-logo {
+            width: 120px;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
-        .rank-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .name-title {
+            background: linear-gradient(135deg, var(--jlu-blue), var(--jlu-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 1rem 0;
         }
 
-        .international-grid {
+        /* 学校优势卡片 */
+        .university-strengths {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
         }
 
-        .partner-card {
+        .strength-card {
             background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        .partner-card:hover {
+        .strength-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
 
-        .research-timeline {
+        /* 科研时间轴 */
+        .timeline-container {
+            position: relative;
+            padding: 3rem 0;
+        }
+
+        .timeline {
             border-left: 3px solid var(--jlu-blue);
             padding-left: 2rem;
-            margin: 2rem 0;
+            margin-left: 1rem;
         }
 
         .timeline-item {
             position: relative;
             margin-bottom: 2rem;
-            padding-left: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
         }
 
         .timeline-item::before {
-            content: "";
+            content: '';
             position: absolute;
-            left: -8px;
-            top: 6px;
-            width: 14px;
-            height: 14px;
+            left: -2.3rem;
+            top: 24px;
+            width: 16px;
+            height: 16px;
             background: var(--jlu-red);
             border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--jlu-blue);
+        }
+
+        /* 获奖展示 */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .award-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .award-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .award-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--jlu-blue), var(--jlu-red));
+        }
+
+        /* 联系方式 */
+        .contact-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            margin-top: 3rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: #f8fafc;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            background: var(--jlu-blue);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .timeline {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 大学品牌展示 -->
-    <header class="university-header">
-        <img src="https://www.jlu.edu.cn/images/logo.png" alt="JLU Logo" style="height: 60px; margin-bottom: 1rem;">
-        <h1>Jilin University</h1>
-        <p>Double First-Class University | Ministry of Education China</p>
-        
-        <div class="ranking-badges">
-            <div class="rank-card">
-                <h3><i class="fas fa-trophy"></i> MOE Discipline Rating</h3>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="profile-header">
+            <img src="https://www.jlu.edu.cn/images/logo.png" alt="JLU Logo" class="jlu-logo">
+            <h1 class="name-title">Cheng Zhang</h1>
+            <p>Undergraduate Researcher at AVC Lab</p>
+            <div class="badge">985 & Double First-Class University</div>
+        </header>
+
+        <!-- 学校优势 -->
+        <section class="university-strengths">
+            <div class="strength-card">
+                <h3><i class="fas fa-trophy"></i> Discipline Rating</h3>
                 <p>Computer Science & Technology</p>
                 <div class="progress-bar">
                     <div style="width: 90%; background: var(--jlu-red); height: 8px; border-radius: 4px;"></div>
                 </div>
-                <p>A- Category (Top 10% Nationwide)</p>
+                <p>MOE China A- (Top 10%)</p>
             </div>
 
-            <div class="rank-card">
-                <h3><i class="fas fa-globe"></i> Global Rankings</h3>
-                <p>ShanghaiRanking: #101-150</p>
-                <p>QS Asia: #56</p>
-                <p>U.S. News: #377</p>
-            </div>
-
-            <div class="rank-card">
-                <h3><i class="fas fa-microscope"></i> Research Strength</h3>
-                <p>46,000+ CS Publications</p>
-                <p>23% AI/ML Papers (Top Cited)</p>
-                <p>H-index: 78</p>
-            </div>
-        </div>
-    </header>
-
-    <!-- 国际合作 -->
-    <section class="international-collab">
-        <h2>Global Partnerships <i class="fas fa-handshake"></i></h2>
-        <div class="international-grid">
-            <div class="partner-card">
-                <h3>National University of Singapore</h3>
-                <p>Joint Research Areas:</p>
+            <div class="strength-card">
+                <h3><i class="fas fa-globe-asia"></i> Global Recognition</h3>
                 <ul>
-                    <li>Computer Vision</li>
-                    <li>Edge Computing</li>
-                    <li>3+1+1 Dual Degree Program</li>
+                    <li>QS Asia: #56</li>
+                    <li>ARWU: #101-150</li>
+                    <li>ESI Top 1% in CS</li>
                 </ul>
             </div>
 
-            <div class="partner-card">
-                <h3>University of Michigan</h3>
-                <p>Collaboration Highlights:</p>
+            <div class="strength-card">
+                <h3><i class="fas fa-handshake"></i> Partnerships</h3>
                 <ul>
-                    <li>Faculty Exchange Program</li>
-                    <li>Autonomous Systems Lab</li>
-                    <li>12 Joint Papers (2022-2024)</li>
+                    <li>National University of Singapore</li>
+                    <li>University of Michigan</li>
+                    <li>University of Sydney</li>
                 </ul>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 个人科研时间轴 -->
-    <section class="research-section">
-        <h2>Research Timeline <i class="fas fa-flask"></i></h2>
-        <div class="research-timeline">
-            <div class="timeline-item">
-                <h3>2023-Present</h3>
-                <p>National R&D Program on AI Ethics</p>
-                <p>Role: Algorithm Developer</p>
-            </div>
-            
-            <div class="timeline-item">
-                <h3>2022-2024</h3>
-                <p>Jilin Provincial IoT Project</p>
-                <p>Developed 3 patent-pending solutions</p>
-            </div>
-        </div>
-    </section>
+        <!-- 科研经历 -->
+        <section class="timeline-container">
+            <h2>Research Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>National AI Ethics Project</h3>
+                    <p>2023-Present | Lead Developer</p>
+                    <ul>
+                        <li>Developed ethical assessment framework</li>
+                        <li>3 patent-pending algorithms</li>
+                    </ul>
+                </div>
 
-    <!-- 联系方式 -->
-    <section class="contact-section">
-        <h2>Academic Contact <i class="fas fa-envelope"></i></h2>
-        <div class="contact-grid">
-            <div class="contact-card">
-                <h3>Primary Contact</h3>
-                <p>📧 zhangcheng2122@jlu.edu.cn</p>
-                <p>📱 +86 188-XXXX-XXXX</p>
+                <div class="timeline-item">
+                    <h3>Jilin IoT Optimization</h3>
+                    <p>2022-2024 | Core Developer</p>
+                    <ul>
+                        <li>40% energy efficiency improvement</li>
+                        <li>5 technical implementations</li>
+                    </ul>
+                </div>
             </div>
-            
-            <div class="contact-card">
-                <h3>International</h3>
-                <p>📧 zc2410867311@gmail.com</p>
-                <p>📧 2410867311@qq.com</p>
+        </section>
+
+        <!-- 获奖情况 -->
+        <section>
+            <h2>Honors & Awards</h2>
+            <div class="awards-grid">
+                <div class="award-card">
+                    <h3><i class="fas fa-medal"></i> First Class Scholarship</h3>
+                    <p>2023 | Top 5%</p>
+                    <p>GPA: 3.92/4.0</p>
+                </div>
+
+                <div class="award-card">
+                    <h3><i class="fas fa-star"></i> Outstanding RA</h3>
+                    <p>2023 | AVC Lab</p>
+                    <p>2 patent applications</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- 联系方式 -->
+        <section class="contact-section">
+            <h2>Contact Information</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-envelope fa-2x"></i>
+                    <div>
+                        <h3>Academic</h3>
+                        <p>zhangcheng2122@jlu.edu.cn</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fab fa-google fa-2x"></i>
+                    <div>
+                        <h3>Gmail</h3>
+                        <p>zc2410867311@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fab fa-qq fa-2x"></i>
+                    <div>
+                        <h3>QQ</h3>
+                        <p>2410867311@qq.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
