@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cheng Zhang | Jilin University</title>
+    <title>Cheng Zhang | Multilingual Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -34,6 +34,27 @@
             padding: 2rem;
         }
 
+        /* 语言切换器 */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #languageSelect {
+            padding: 8px 20px;
+            border-radius: 8px;
+            border: 2px solid var(--jlu-blue);
+            background: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        #languageSelect:hover {
+            background: #f0f4ff;
+        }
+
         /* 头部样式 */
         .profile-header {
             text-align: center;
@@ -52,6 +73,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 1rem 0;
+            font-size: 2.5rem;
         }
 
         /* 学校优势卡片 */
@@ -188,64 +210,73 @@
     </style>
 </head>
 <body>
+    <!-- 语言切换器 -->
+    <div class="language-switcher">
+        <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+            <option value="ja">日本語</option>
+        </select>
+    </div>
+
     <div class="container">
         <!-- 头部 -->
         <header class="profile-header">
             <img src="https://www.jlu.edu.cn/images/logo.png" alt="JLU Logo" class="jlu-logo">
-            <h1 class="name-title">Cheng Zhang</h1>
-            <p>Undergraduate Researcher at AVC Lab</p>
-            <div class="badge">985 & Double First-Class University</div>
+            <h1 class="name-title" data-i18n="name">Cheng Zhang</h1>
+            <p data-i18n="position">Undergraduate Researcher at AVC Lab</p>
+            <div class="badge" data-i18n="badge">985 & Double First-Class University</div>
         </header>
 
         <!-- 学校优势 -->
         <section class="university-strengths">
             <div class="strength-card">
-                <h3><i class="fas fa-trophy"></i> Discipline Rating</h3>
-                <p>Computer Science & Technology</p>
+                <h3><i class="fas fa-trophy"></i> <span data-i18n="strength1_title">Discipline Rating</span></h3>
+                <p data-i18n="strength1_content1">Computer Science & Technology</p>
                 <div class="progress-bar">
                     <div style="width: 90%; background: var(--jlu-red); height: 8px; border-radius: 4px;"></div>
                 </div>
-                <p>MOE China A- (Top 10%)</p>
+                <p data-i18n="strength1_content2">MOE China A- (Top 10%)</p>
             </div>
 
             <div class="strength-card">
-                <h3><i class="fas fa-globe-asia"></i> Global Recognition</h3>
+                <h3><i class="fas fa-globe-asia"></i> <span data-i18n="strength2_title">Global Recognition</span></h3>
                 <ul>
-                    <li>QS Asia: #56</li>
-                    <li>ARWU: #101-150</li>
-                    <li>ESI Top 1% in CS</li>
+                    <li data-i18n="strength2_item1">QS Asia: #56</li>
+                    <li data-i18n="strength2_item2">ARWU: #101-150</li>
+                    <li data-i18n="strength2_item3">ESI Top 1% in CS</li>
                 </ul>
             </div>
 
             <div class="strength-card">
-                <h3><i class="fas fa-handshake"></i> Partnerships</h3>
+                <h3><i class="fas fa-handshake"></i> <span data-i18n="strength3_title">Partnerships</span></h3>
                 <ul>
-                    <li>National University of Singapore</li>
-                    <li>University of Michigan</li>
-                    <li>University of Sydney</li>
+                    <li data-i18n="strength3_item1">National University of Singapore</li>
+                    <li data-i18n="strength3_item2">University of Michigan</li>
+                    <li data-i18n="strength3_item3">University of Sydney</li>
                 </ul>
             </div>
         </section>
 
         <!-- 科研经历 -->
         <section class="timeline-container">
-            <h2>Research Experience</h2>
+            <h2 data-i18n="research_title">Research Experience</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <h3>National AI Ethics Project</h3>
-                    <p>2023-Present | Lead Developer</p>
+                    <h3 data-i18n="project1_title">National AI Ethics Project</h3>
+                    <p data-i18n="project1_time">2023-Present | Lead Developer</p>
                     <ul>
-                        <li>Developed ethical assessment framework</li>
-                        <li>3 patent-pending algorithms</li>
+                        <li data-i18n="project1_item1">Developed ethical assessment framework</li>
+                        <li data-i18n="project1_item2">3 patent-pending algorithms</li>
                     </ul>
                 </div>
 
                 <div class="timeline-item">
-                    <h3>Jilin IoT Optimization</h3>
-                    <p>2022-2024 | Core Developer</p>
+                    <h3 data-i18n="project2_title">Jilin IoT Optimization</h3>
+                    <p data-i18n="project2_time">2022-2024 | Core Developer</p>
                     <ul>
-                        <li>40% energy efficiency improvement</li>
-                        <li>5 technical implementations</li>
+                        <li data-i18n="project2_item1">40% energy efficiency improvement</li>
+                        <li data-i18n="project2_item2">5 technical implementations</li>
                     </ul>
                 </div>
             </div>
@@ -253,30 +284,30 @@
 
         <!-- 获奖情况 -->
         <section>
-            <h2>Honors & Awards</h2>
+            <h2 data-i18n="awards_title">Honors & Awards</h2>
             <div class="awards-grid">
                 <div class="award-card">
-                    <h3><i class="fas fa-medal"></i> First Class Scholarship</h3>
-                    <p>2023 | Top 5%</p>
-                    <p>GPA: 3.92/4.0</p>
+                    <h3><i class="fas fa-medal"></i> <span data-i18n="award1_title">First Class Scholarship</span></h3>
+                    <p data-i18n="award1_time">2023 | Top 5%</p>
+                    <p data-i18n="award1_detail">GPA: 3.92/4.0</p>
                 </div>
 
                 <div class="award-card">
-                    <h3><i class="fas fa-star"></i> Outstanding RA</h3>
-                    <p>2023 | AVC Lab</p>
-                    <p>2 patent applications</p>
+                    <h3><i class="fas fa-star"></i> <span data-i18n="award2_title">Outstanding RA</span></h3>
+                    <p data-i18n="award2_time">2023 | AVC Lab</p>
+                    <p data-i18n="award2_detail">2 patent applications</p>
                 </div>
             </div>
         </section>
 
         <!-- 联系方式 -->
         <section class="contact-section">
-            <h2>Contact Information</h2>
+            <h2 data-i18n="contact_title">Contact Information</h2>
             <div class="contact-grid">
                 <div class="contact-card">
                     <i class="fas fa-envelope fa-2x"></i>
                     <div>
-                        <h3>Academic</h3>
+                        <h3 data-i18n="contact1_title">Academic</h3>
                         <p>zhangcheng2122@jlu.edu.cn</p>
                     </div>
                 </div>
@@ -284,7 +315,7 @@
                 <div class="contact-card">
                     <i class="fab fa-google fa-2x"></i>
                     <div>
-                        <h3>Gmail</h3>
+                        <h3 data-i18n="contact2_title">Gmail</h3>
                         <p>zc2410867311@gmail.com</p>
                     </div>
                 </div>
@@ -292,12 +323,163 @@
                 <div class="contact-card">
                     <i class="fab fa-qq fa-2x"></i>
                     <div>
-                        <h3>QQ</h3>
+                        <h3 data-i18n="contact3_title">QQ</h3>
                         <p>2410867311@qq.com</p>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+
+    <script>
+        // 多语言配置
+        const i18n = {
+            en: {
+                // 头部
+                name: "Cheng Zhang",
+                position: "Undergraduate Researcher at AVC Lab",
+                badge: "985 & Double First-Class University",
+                
+                // 学校优势
+                strength1_title: "Discipline Rating",
+                strength1_content1: "Computer Science & Technology",
+                strength1_content2: "MOE China A- (Top 10%)",
+                strength2_title: "Global Recognition",
+                strength2_item1: "QS Asia: #56",
+                strength2_item2: "ARWU: #101-150",
+                strength2_item3: "ESI Top 1% in CS",
+                strength3_title: "Partnerships",
+                strength3_item1: "National University of Singapore",
+                strength3_item2: "University of Michigan",
+                strength3_item3: "University of Sydney",
+
+                // 科研经历
+                research_title: "Research Experience",
+                project1_title: "National AI Ethics Project",
+                project1_time: "2023-Present | Lead Developer",
+                project1_item1: "Developed ethical assessment framework",
+                project1_item2: "3 patent-pending algorithms",
+                project2_title: "Jilin IoT Optimization",
+                project2_time: "2022-2024 | Core Developer",
+                project2_item1: "40% energy efficiency improvement",
+                project2_item2: "5 technical implementations",
+
+                // 获奖情况
+                awards_title: "Honors & Awards",
+                award1_title: "First Class Scholarship",
+                award1_time: "2023 | Top 5%",
+                award1_detail: "GPA: 3.92/4.0",
+                award2_title: "Outstanding RA",
+                award2_time: "2023 | AVC Lab",
+                award2_detail: "2 patent applications",
+
+                // 联系方式
+                contact_title: "Contact Information",
+                contact1_title: "Academic",
+                contact2_title: "Gmail",
+                contact3_title: "QQ"
+            },
+            zh: {
+                name: "张成",
+                position: "AVC实验室本科生研究员",
+                badge: "985工程 & 双一流大学",
+                strength1_title: "学科评级",
+                strength1_content1: "计算机科学与技术",
+                strength1_content2: "教育部评估A-（全国前10%）",
+                strength2_title: "全球认可",
+                strength2_item1: "QS亚洲排名：第56位",
+                strength2_item2: "软科世界排名：101-150",
+                strength2_item3: "ESI计算机科学全球前1%",
+                strength3_title: "国际合作",
+                strength3_item1: "新加坡国立大学",
+                strength3_item2: "密歇根大学",
+                strength3_item3: "悉尼大学",
+                research_title: "科研经历",
+                project1_title: "国家人工智能伦理项目",
+                project1_time: "2023-至今 | 主开发者",
+                project1_item1: "开发伦理评估框架",
+                project1_item2: "3项专利申请中的算法",
+                project2_title: "吉林物联网优化项目",
+                project2_time: "2022-2024 | 核心开发者",
+                project2_item1: "能效提升40%",
+                project2_item2: "5项技术实施",
+                awards_title: "荣誉奖项",
+                award1_title: "一等奖学金",
+                award1_time: "2023 | 前5%",
+                award1_detail: "GPA：3.92/4.0",
+                award2_title: "优秀科研助理",
+                award2_time: "2023 | AVC实验室",
+                award2_detail: "2项专利申请",
+                contact_title: "联系方式",
+                contact1_title: "学术邮箱",
+                contact2_title: "Gmail",
+                contact3_title: "QQ"
+            },
+            ja: {
+                name: "張 成",
+                position: "AVC研究所 学部研究員",
+                badge: "985工程 & ダブルトップクラス大学",
+                strength1_title: "学科評価",
+                strength1_content1: "コンピュータ科学技術",
+                strength1_content2: "教育省評価A-（全国トップ10%）",
+                strength2_title: "グローバル評価",
+                strength2_item1: "QSアジアランキング：56位",
+                strength2_item2: "ARWU世界ランキング：101-150位",
+                strength2_item3: "ESIコンピュータ科学世界トップ1%",
+                strength3_title: "国際連携",
+                strength3_item1: "シンガポール国立大学",
+                strength3_item2: "ミシガン大学",
+                strength3_item3: "シドニー大学",
+                research_title: "研究経歴",
+                project1_title: "国家AI倫理プロジェクト",
+                project1_time: "2023-現在 | リード開発者",
+                project1_item1: "倫理評価フレームワーク開発",
+                project1_item2: "特許出願中アルゴリズム3件",
+                project2_title: "吉林IoT最適化プロジェクト",
+                project2_time: "2022-2024 | コア開発者",
+                project2_item1: "エネルギー効率40%向上",
+                project2_item2: "技術実装5件",
+                awards_title: "受賞歴",
+                award1_title: "一等奨学金",
+                award1_time: "2023 | 上位5%",
+                award1_detail: "GPA：3.92/4.0",
+                award2_title: "優秀研究助手",
+                award2_time: "2023 | AVC研究所",
+                award2_detail: "特許出願2件",
+                contact_title: "連絡先",
+                contact1_title: "学術用メール",
+                contact2_title: "Gmail",
+                contact3_title: "QQ"
+            }
+        };
+
+        // 语言切换功能
+        function updateLanguage(lang) {
+            document.documentElement.lang = lang;
+            const elements = document.querySelectorAll('[data-i18n]');
+            
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                element.textContent = i18n[lang][key] || i18n.en[key];
+            });
+        }
+
+        // 初始化语言
+        function initLanguage() {
+            const savedLang = localStorage.getItem('lang') || 'en';
+            document.getElementById('languageSelect').value = savedLang;
+            updateLanguage(savedLang);
+        }
+
+        // 事件监听
+        document.getElementById('languageSelect').addEventListener('change', (e) => {
+            const lang = e.target.value;
+            localStorage.setItem('lang', lang);
+            updateLanguage(lang);
+        });
+
+        // 页面加载初始化
+        window.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
 </body>
 </html>
