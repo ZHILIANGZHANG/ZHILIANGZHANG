@@ -4,482 +4,713 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cheng Zhang | Multilingual Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
         :root {
-            --jlu-blue: #002D62;
-            --jlu-red: #E31837;
-            --accent: #2A6DB5;
-            --text: #2D3748;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --dark-color: #34495e;
+            --light-color: #ecf0f1;
+            --text-color: #2c3e50;
+            --light-text: #7f8c8d;
+            --box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', system-ui, sans-serif;
         }
-
+        
         body {
-            background: linear-gradient(150deg, #f8fafc 0%, #e2e8f0 100%);
-            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-color);
             line-height: 1.6;
             min-height: 100vh;
+            padding-bottom: 60px;
         }
-
+        
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 30px 20px;
+            animation: fadeIn 1s ease-in;
         }
-
-        /* 语言切换器 */
-        .language-switcher {
+        
+        .language-selector {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1000;
-        }
-
-        #languageSelect {
-            padding: 8px 20px;
-            border-radius: 8px;
-            border: 2px solid var(--jlu-blue);
+            z-index: 100;
             background: white;
+            padding: 10px;
+            border-radius: 50px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .language-selector select {
+            border: none;
+            padding: 5px 10px;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: var(--dark-color);
             cursor: pointer;
-            transition: var(--transition);
+            background: transparent;
         }
-
-        #languageSelect:hover {
-            background: #f0f4ff;
-        }
-
-        /* 头部样式 */
-        .profile-header {
+        
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            margin-bottom: 3rem;
+            padding: 40px 30px;
+            background: white;
+            box-shadow: var(--box-shadow);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            background-image: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.9) 100%), 
+                            url('https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/fonts/Simple-Line-Icons.woff');
+            background-size: cover;
             position: relative;
+            overflow: hidden;
         }
-
-        .jlu-logo {
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+        }
+        
+        .header img {
             width: 120px;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-        }
-
-        .name-title {
-            background: linear-gradient(135deg, var(--jlu-blue), var(--jlu-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 1rem 0;
-            font-size: 2.5rem;
-        }
-
-        /* 学校优势卡片 */
-        .university-strengths {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .strength-card {
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            padding: 3px;
             background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.05);
         }
-
-        .strength-card:hover {
+        
+        .header img:hover {
+            transform: scale(1.05);
+        }
+        
+        .header h1 {
+            margin: 10px 0;
+            color: var(--primary-color);
+            font-size: 2.4rem;
+            font-weight: 600;
+        }
+        
+        .header p {
+            margin: 5px 0;
+            color: var(--light-text);
+            font-size: 1.1rem;
+        }
+        
+        .tags {
+            margin-top: 10px;
+            padding: 5px 15px;
+            background: rgba(46, 204, 113, 0.15);
+            color: var(--secondary-color);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            transform: translateY(0);
+        }
+        
+        .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
-
-        /* 科研时间轴 */
-        .timeline-container {
+        
+        .card h2 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+            font-size: 1.5rem;
             position: relative;
-            padding: 3rem 0;
         }
-
+        
+        .card h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 60px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        .card h3 {
+            color: var(--primary-color);
+            margin: 15px 0 10px;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
         .timeline {
-            border-left: 3px solid var(--jlu-blue);
-            padding-left: 2rem;
-            margin-left: 1rem;
-        }
-
-        .timeline-item {
             position: relative;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-            transition: var(--transition);
+            padding: 10px 0;
         }
-
-        .timeline-item:hover {
-            transform: translateX(10px);
+        
+        .timeline-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid var(--primary-color);
+            position: relative;
         }
-
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -2.3rem;
-            top: 24px;
-            width: 16px;
-            height: 16px;
-            background: var(--jlu-red);
+            left: -8px;
+            top: 0;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px var(--jlu-blue);
-        }
-
-        /* 获奖展示 */
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .award-card {
             background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            position: relative;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-item h3 {
+            margin: 0 0 5px;
+            color: var(--dark-color);
+        }
+        
+        .timeline-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .time-period, .role-badge {
+            font-size: 0.85rem;
+            color: var(--light-text);
+        }
+        
+        .role-badge {
+            background: rgba(52, 152, 219, 0.15);
+            color: var(--primary-color);
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+        
+        .timeline-item p {
+            margin: 8px 0;
+            color: var(--text-color);
+        }
+        
+        .achievement {
+            padding: 10px 15px;
+            background: rgba(236, 240, 241, 0.5);
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            border-left: 3px solid var(--secondary-color);
+        }
+        
+        .progress-container {
+            margin: 15px 0;
+        }
+        
+        .progress-bar {
+            background: var(--light-color);
+            height: 10px;
+            border-radius: 10px;
             overflow: hidden;
+            margin-top: 5px;
+        }
+        
+        .progress {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            height: 100%;
+            width: 90%;
+            border-radius: 10px;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .stat-item {
+            background: rgba(236, 240, 241, 0.5);
+            padding: 15px 10px;
+            border-radius: 8px;
+            text-align: center;
             transition: var(--transition);
         }
-
-        .award-card:hover {
-            transform: translateY(-5px);
+        
+        .stat-item:hover {
+            background: rgba(236, 240, 241, 0.8);
+            transform: translateY(-3px);
         }
-
-        .award-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--jlu-blue), var(--jlu-red));
+        
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
         }
-
-        /* 联系方式 */
-        .contact-section {
-            background: white;
-            padding: 3rem;
-            border-radius: 16px;
-            margin-top: 3rem;
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--light-text);
         }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-card {
+        
+        .award-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            border-radius: 12px;
-            background: #f8fafc;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(236, 240, 241, 0.5);
+            border-radius: 10px;
             transition: var(--transition);
         }
-
-        .contact-card:hover {
-            background: var(--jlu-blue);
-            color: white;
+        
+        .award-item:hover {
+            background: rgba(236, 240, 241, 0.8);
         }
-
+        
+        .award-icon {
+            margin-right: 15px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+        
+        .award-info h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        .award-meta {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+            font-size: 0.85rem;
+            color: var(--light-text);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            margin-right: 15px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(52, 152, 219, 0.15);
+            color: var(--primary-color);
+            border-radius: 50%;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--light-text);
+            font-size: 0.9rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 -5px 10px rgba(0,0,0,0.05);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
         @media (max-width: 768px) {
             .container {
-                padding: 1rem;
+                padding: 15px;
             }
             
-            .timeline {
-                margin-left: 0;
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .card {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .timeline-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .award-meta {
+                flex-wrap: wrap;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 语言切换器 -->
-    <div class="language-switcher">
-        <select id="languageSelect">
+    <div class="language-selector">
+        <select id="language">
             <option value="en">English</option>
             <option value="zh">中文</option>
             <option value="ja">日本語</option>
         </select>
     </div>
-
+    
     <div class="container">
-        <!-- 头部 -->
-        <header class="profile-header">
-            <img src="jlu_logo.jpg" alt="JLU Logo" class="jlu-logo">
-            <h1 class="name-title" data-i18n="name">Cheng Zhang</h1>
-            <p data-i18n="position">Undergraduate Researcher at AVC Lab</p>
-            <div class="badge" data-i18n="badge">985 & Double First-Class University</div>
-        </header>
-
-        <!-- 学校优势 -->
-        <section class="university-strengths">
-            <div class="strength-card">
-                <h3><i class="fas fa-trophy"></i> <span data-i18n="strength1_title">Discipline Rating</span></h3>
-                <p data-i18n="strength1_content1">Computer Science & Technology</p>
-                <div class="progress-bar">
-                    <div style="width: 90%; background: var(--jlu-red); height: 8px; border-radius: 4px;"></div>
+        <div class="header">
+            <img src="/api/placeholder/200/200" alt="Profile Picture">
+            <h1 id="name">Cheng Zhang</h1>
+            <p id="position">Undergraduate Researcher at AVC Lab</p>
+            <div class="tags" id="tags">985 & Double First-Class University</div>
+        </div>
+        
+        <div class="content-section">
+            <div class="card fade-in" style="animation-delay: 0.1s;">
+                <h2 id="university-strengths">University Strengths</h2>
+                
+                <h3 id="discipline-rating">Discipline Rating</h3>
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span id="major">Computer Science & Technology</span>
+                        <span id="rating">MOE China A- (Top 10%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
                 </div>
-                <p data-i18n="strength1_content2">MOE China A- (Top 10%)</p>
-            </div>
-
-            <div class="strength-card">
-                <h3><i class="fas fa-globe-asia"></i> <span data-i18n="strength2_title">Global Recognition</span></h3>
-                <ul>
-                    <li data-i18n="strength2_item1">QS Asia: #56</li>
-                    <li data-i18n="strength2_item2">ARWU: #101-150</li>
-                    <li data-i18n="strength2_item3">ESI Top 1% in CS</li>
+                
+                <h3 id="global-recognition">Global Recognition</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">56</div>
+                        <div class="stat-label">QS Asia</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">101-150</div>
+                        <div class="stat-label">ARWU</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Top 1%</div>
+                        <div class="stat-label">ESI in CS</div>
+                    </div>
+                </div>
+                
+                <h3 id="partnerships">Partnerships</h3>
+                <ul class="partnerships-list">
+                    <li>National University of Singapore</li>
+                    <li>University of Michigan</li>
+                    <li>University of Sydney</li>
                 </ul>
             </div>
-
-            <div class="strength-card">
-                <h3><i class="fas fa-handshake"></i> <span data-i18n="strength3_title">Partnerships</span></h3>
-                <ul>
-                    <li data-i18n="strength3_item1">National University of Singapore</li>
-                    <li data-i18n="strength3_item2">University of Michigan</li>
-                    <li data-i18n="strength3_item3">University of Sydney</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- 科研经历 -->
-        <section class="timeline-container">
-            <h2 data-i18n="research_title">Research Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h3 data-i18n="project1_title">National AI Ethics Project</h3>
-                    <p data-i18n="project1_time">2023-Present | Lead Developer</p>
-                    <ul>
-                        <li data-i18n="project1_item1">Developed ethical assessment framework</li>
-                        <li data-i18n="project1_item2">3 patent-pending algorithms</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <h3 data-i18n="project2_title">Jilin IoT Optimization</h3>
-                    <p data-i18n="project2_time">2022-2024 | Core Developer</p>
-                    <ul>
-                        <li data-i18n="project2_item1">40% energy efficiency improvement</li>
-                        <li data-i18n="project2_item2">5 technical implementations</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- 获奖情况 -->
-        <section>
-            <h2 data-i18n="awards_title">Honors & Awards</h2>
-            <div class="awards-grid">
-                <div class="award-card">
-                    <h3><i class="fas fa-medal"></i> <span data-i18n="award1_title">First Class Scholarship</span></h3>
-                    <p data-i18n="award1_time">2023 | Top 5%</p>
-                    <p data-i18n="award1_detail">GPA: 3.92/4.0</p>
-                </div>
-
-                <div class="award-card">
-                    <h3><i class="fas fa-star"></i> <span data-i18n="award2_title">Outstanding RA</span></h3>
-                    <p data-i18n="award2_time">2023 | AVC Lab</p>
-                    <p data-i18n="award2_detail">2 patent applications</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 联系方式 -->
-        <section class="contact-section">
-            <h2 data-i18n="contact_title">Contact Information</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <i class="fas fa-envelope fa-2x"></i>
-                    <div>
-                        <h3 data-i18n="contact1_title">Academic</h3>
-                        <p>zhangcheng2122@jlu.edu.cn</p>
+            
+            <div class="card fade-in" style="animation-delay: 0.2s;">
+                <h2 id="research-experience">Research Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3 id="project1">National AI Ethics Project</h3>
+                        <div class="timeline-meta">
+                            <span class="time-period" id="time1">2023 - Present</span>
+                            <span class="role-badge" id="role1">Lead Developer</span>
+                        </div>
+                        <div class="achievement" id="achievements1">
+                            Developed ethical assessment framework; 3 patent-pending algorithms
+                        </div>
                     </div>
-                </div>
-
-                <div class="contact-card">
-                    <i class="fab fa-google fa-2x"></i>
-                    <div>
-                        <h3 data-i18n="contact2_title">Gmail</h3>
-                        <p>zc2410867311@gmail.com</p>
-                    </div>
-                </div>
-
-                <div class="contact-card">
-                    <i class="fab fa-qq fa-2x"></i>
-                    <div>
-                        <h3 data-i18n="contact3_title">QQ</h3>
-                        <p>2410867311@qq.com</p>
+                    <div class="timeline-item">
+                        <h3 id="project2">Jilin IoT Optimization</h3>
+                        <div class="timeline-meta">
+                            <span class="time-period" id="time2">2022 - 2024</span>
+                            <span class="role-badge" id="role2">Core Developer</span>
+                        </div>
+                        <div class="achievement" id="achievements2">
+                            40% energy efficiency improvement; 5 technical implementations
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+            
+            <div class="card fade-in" style="animation-delay: 0.3s;">
+                <h2 id="honors-awards">Honors & Awards</h2>
+                <div class="award-list">
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="award-info">
+                            <h3 id="award1">First Class Scholarship</h3>
+                            <div class="award-meta">
+                                <span id="award-time1">2023</span>
+                                <span id="ranking1">Top 5%</span>
+                                <span id="details1">GPA 3.92/4.0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="award-info">
+                            <h3 id="award2">Outstanding RA</h3>
+                            <div class="award-meta">
+                                <span id="award-time2">2023</span>
+                                <span id="unit2">AVC Lab</span>
+                                <span id="details2">2 patent applications</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card fade-in" style="animation-delay: 0.4s;">
+                <h2 id="contact-information">Contact Information</h2>
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <span id="academic-email">Academic Email: zhangcheng2122@jlu.edu.cn</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <span id="gmail">Gmail: zc2410867311@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <span id="qq">QQ: 2410867311@qq.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
+    
+    <footer>
+        © 2025 Cheng Zhang. All rights reserved.
+    </footer>
+    
     <script>
-        // 多语言配置
-        const i18n = {
+        const translations = {
             en: {
-                // 头部
                 name: "Cheng Zhang",
                 position: "Undergraduate Researcher at AVC Lab",
-                badge: "985 & Double First-Class University",
-                
-                // 学校优势
-                strength1_title: "Discipline Rating",
-                strength1_content1: "Computer Science & Technology",
-                strength1_content2: "MOE China A- (Top 10%)",
-                strength2_title: "Global Recognition",
-                strength2_item1: "QS Asia: #56",
-                strength2_item2: "ARWU: #101-150",
-                strength2_item3: "ESI Top 1% in CS",
-                strength3_title: "Partnerships",
-                strength3_item1: "National University of Singapore",
-                strength3_item2: "University of Michigan",
-                strength3_item3: "University of Sydney",
-
-                // 科研经历
-                research_title: "Research Experience",
-                project1_title: "National AI Ethics Project",
-                project1_time: "2023-Present | Lead Developer",
-                project1_item1: "Developed ethical assessment framework",
-                project1_item2: "3 patent-pending algorithms",
-                project2_title: "Jilin IoT Optimization",
-                project2_time: "2022-2024 | Core Developer",
-                project2_item1: "40% energy efficiency improvement",
-                project2_item2: "5 technical implementations",
-
-                // 获奖情况
-                awards_title: "Honors & Awards",
-                award1_title: "First Class Scholarship",
-                award1_time: "2023 | Top 5%",
-                award1_detail: "GPA: 3.92/4.0",
-                award2_title: "Outstanding RA",
-                award2_time: "2023 | AVC Lab",
-                award2_detail: "2 patent applications",
-
-                // 联系方式
-                contact_title: "Contact Information",
-                contact1_title: "Academic",
-                contact2_title: "Gmail",
-                contact3_title: "QQ"
+                tags: "985 & Double First-Class University",
+                "university-strengths": "University Strengths",
+                "discipline-rating": "Discipline Rating",
+                major: "Computer Science & Technology",
+                rating: "MOE China A- (Top 10%)",
+                "global-recognition": "Global Recognition",
+                partnerships: "Partnerships",
+                "research-experience": "Research Experience",
+                project1: "National AI Ethics Project",
+                time1: "2023 - Present",
+                role1: "Lead Developer",
+                achievements1: "Developed ethical assessment framework; 3 patent-pending algorithms",
+                project2: "Jilin IoT Optimization",
+                time2: "2022 - 2024",
+                role2: "Core Developer",
+                achievements2: "40% energy efficiency improvement; 5 technical implementations",
+                "honors-awards": "Honors & Awards",
+                award1: "First Class Scholarship",
+                "award-time1": "2023",
+                ranking1: "Top 5%",
+                details1: "GPA 3.92/4.0",
+                award2: "Outstanding RA",
+                "award-time2": "2023",
+                unit2: "AVC Lab",
+                details2: "2 patent applications",
+                "contact-information": "Contact Information",
+                "academic-email": "Academic Email: zhangcheng2122@jlu.edu.cn",
+                gmail: "Gmail: zc2410867311@gmail.com",
+                qq: "QQ: 2410867311@qq.com"
             },
             zh: {
                 name: "张成",
-                position: "AVC实验室本科生研究员",
-                badge: "985工程 & 双一流大学",
-                strength1_title: "学科评级",
-                strength1_content1: "计算机科学与技术",
-                strength1_content2: "教育部评估A-（全国前10%）",
-                strength2_title: "全球认可",
-                strength2_item1: "QS亚洲排名：第56位",
-                strength2_item2: "软科世界排名：101-150",
-                strength2_item3: "ESI计算机科学全球前1%",
-                strength3_title: "国际合作",
-                strength3_item1: "新加坡国立大学",
-                strength3_item2: "密歇根大学",
-                strength3_item3: "悉尼大学",
-                research_title: "科研经历",
-                project1_title: "国家人工智能伦理项目",
-                project1_time: "2023-至今 | 主开发者",
-                project1_item1: "开发伦理评估框架",
-                project1_item2: "3项专利申请中的算法",
-                project2_title: "吉林物联网优化项目",
-                project2_time: "2022-2024 | 核心开发者",
-                project2_item1: "能效提升40%",
-                project2_item2: "5项技术实施",
-                awards_title: "荣誉奖项",
-                award1_title: "一等奖学金",
-                award1_time: "2023 | 前5%",
-                award1_detail: "GPA：3.92/4.0",
-                award2_title: "优秀科研助理",
-                award2_time: "2023 | AVC实验室",
-                award2_detail: "2项专利申请",
-                contact_title: "联系方式",
-                contact1_title: "学术邮箱",
-                contact2_title: "Gmail",
-                contact3_title: "QQ"
+                position: "AVC 实验室本科生研究员",
+                tags: "985工程 & 双一流大学",
+                "university-strengths": "学校优势",
+                "discipline-rating": "学科评级",
+                major: "计算机科学与技术",
+                rating: "教育部 A- (前10%)",
+                "global-recognition": "全球认可",
+                partnerships: "国际合作",
+                "research-experience": "科研经历",
+                project1: "国家人工智能伦理项目",
+                time1: "2023年至今",
+                role1: "首席开发员",
+                achievements1: "开发了伦理评估框架；3项待批专利算法",
+                project2: "吉林物联网优化",
+                time2: "2022-2024年",
+                role2: "核心开发员",
+                achievements2: "能效提升40%；5项技术实施",
+                "honors-awards": "荣誉奖项",
+                award1: "一等奖学金",
+                "award-time1": "2023年",
+                ranking1: "前5%",
+                details1: "GPA 3.92/4.0",
+                award2: "优秀研究助理",
+                "award-time2": "2023年",
+                unit2: "AVC实验室",
+                details2: "2项专利申请",
+                "contact-information": "联系方式",
+                "academic-email": "学术邮箱: zhangcheng2122@jlu.edu.cn",
+                gmail: "Gmail: zc2410867311@gmail.com",
+                qq: "QQ: 2410867311@qq.com"
             },
             ja: {
                 name: "張 成",
                 position: "AVC研究所 学部研究員",
-                badge: "985工程 & ダブルトップクラス大学",
-                strength1_title: "学科評価",
-                strength1_content1: "コンピュータ科学技術",
-                strength1_content2: "教育省評価A-（全国トップ10%）",
-                strength2_title: "グローバル評価",
-                strength2_item1: "QSアジアランキング：56位",
-                strength2_item2: "ARWU世界ランキング：101-150位",
-                strength2_item3: "ESIコンピュータ科学世界トップ1%",
-                strength3_title: "国際連携",
-                strength3_item1: "シンガポール国立大学",
-                strength3_item2: "ミシガン大学",
-                strength3_item3: "シドニー大学",
-                research_title: "研究経歴",
-                project1_title: "国家AI倫理プロジェクト",
-                project1_time: "2023-現在 | リード開発者",
-                project1_item1: "倫理評価フレームワーク開発",
-                project1_item2: "特許出願中アルゴリズム3件",
-                project2_title: "吉林IoT最適化プロジェクト",
-                project2_time: "2022-2024 | コア開発者",
-                project2_item1: "エネルギー効率40%向上",
-                project2_item2: "技術実装5件",
-                awards_title: "受賞歴",
-                award1_title: "一等奨学金",
-                award1_time: "2023 | 上位5%",
-                award1_detail: "GPA：3.92/4.0",
-                award2_title: "優秀研究助手",
-                award2_time: "2023 | AVC研究所",
-                award2_detail: "特許出願2件",
-                contact_title: "連絡先",
-                contact1_title: "学術用メール",
-                contact2_title: "Gmail",
-                contact3_title: "QQ"
+                tags: "985工程 & ダブルトップクラス大学",
+                "university-strengths": "大学の強み",
+                "discipline-rating": "学科評価",
+                major: "コンピュータ科学技術",
+                rating: "中国教育部 A- (上位10%)",
+                "global-recognition": "世界的評価",
+                partnerships: "国際協力",
+                "research-experience": "研究経験",
+                project1: "国家AI倫理プロジェクト",
+                time1: "2023年〜現在",
+                role1: "リード開発者",
+                achievements1: "倫理評価フレームワークを開発；3つの特許出願中アルゴリズム",
+                project2: "吉林IoT最適化",
+                time2: "2022-2024年",
+                role2: "コア開発者",
+                achievements2: "エネルギー効率40%向上；5つの技術実装",
+                "honors-awards": "栄誉と賞",
+                award1: "一等奨学金",
+                "award-time1": "2023年",
+                ranking1: "上位5%",
+                details1: "GPA 3.92/4.0",
+                award2: "優秀研究助手",
+                "award-time2": "2023年",
+                unit2: "AVC研究所",
+                details2: "2つの特許出願",
+                "contact-information": "連絡先",
+                "academic-email": "学術メール: zhangcheng2122@jlu.edu.cn",
+                gmail: "Gmail: zc2410867311@gmail.com",
+                qq: "QQ: 2410867311@qq.com"
             }
         };
 
-        // 语言切换功能
-        function updateLanguage(lang) {
-            document.documentElement.lang = lang;
-            const elements = document.querySelectorAll('[data-i18n]');
-            
-            elements.forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                element.textContent = i18n[lang][key] || i18n.en[key];
+        // 为卡片添加渐入动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.fade-in');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.animationDelay = `${0.1 * index}s`;
+                    card.style.opacity = 1;
+                }, 100);
             });
-        }
-
-        // 初始化语言
-        function initLanguage() {
-            const savedLang = localStorage.getItem('lang') || 'en';
-            document.getElementById('languageSelect').value = savedLang;
-            updateLanguage(savedLang);
-        }
-
-        // 事件监听
-        document.getElementById('languageSelect').addEventListener('change', (e) => {
-            const lang = e.target.value;
-            localStorage.setItem('lang', lang);
-            updateLanguage(lang);
         });
 
-        // 页面加载初始化
-        window.addEventListener('DOMContentLoaded', initLanguage);
+        document.getElementById('language').addEventListener('change', function() {
+            const lang = this.value;
+            document.getElementById('name').textContent = translations[lang].name;
+            document.getElementById('position').textContent = translations[lang].position;
+            document.getElementById('tags').textContent = translations[lang].tags;
+            document.getElementById('university-strengths').textContent = translations[lang]['university-strengths'];
+            document.getElementById('discipline-rating').textContent = translations[lang]['discipline-rating'];
+            document.getElementById('major').textContent = translations[lang].major;
+            document.getElementById('rating').textContent = translations[lang].rating;
+            document.getElementById('global-recognition').textContent = translations[lang]['global-recognition'];
+            document.getElementById('partnerships').textContent = translations[lang].partnerships;
+            document.getElementById('research-experience').textContent = translations[lang]['research-experience'];
+            document.getElementById('project1').textContent = translations[lang].project1;
+            document.getElementById('time1').textContent = translations[lang].time1;
+            document.getElementById('role1').textContent = translations[lang].role1;
+            document.getElementById('achievements1').textContent = translations[lang].achievements1;
+            document.getElementById('project2').textContent = translations[lang].project2;
+            document.getElementById('time2').textContent = translations[lang].time2;
+            document.getElementById('role2').textContent = translations[lang].role2;
+            document.getElementById('achievements2').textContent = translations[lang].achievements2;
+            document.getElementById('honors-awards').textContent = translations[lang]['honors-awards'];
+            document.getElementById('award1').textContent = translations[lang].award1;
+            document.getElementById('award-time1').textContent = translations[lang]['award-time1'];
+            document.getElementById('ranking1').textContent = translations[lang].ranking1;
+            document.getElementById('details1').textContent = translations[lang].details1;
+            document.getElementById('award2').textContent = translations[lang].award2;
+            document.getElementById('award-time2').textContent = translations[lang]['award-time2'];
+            document.getElementById('unit2').textContent = translations[lang].unit2;
+            document.getElementById('details2').textContent = translations[lang].details2;
+            document.getElementById('contact-information').textContent = translations[lang]['contact-information'];
+            document.getElementById('academic-email').textContent = translations[lang]['academic-email'];
+            document.getElementById('gmail').textContent = translations[lang].gmail;
+            document.getElementById('qq').textContent = translations[lang].qq;
+        });
     </script>
 </body>
 </html>
