@@ -3,40 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cheng Zhang | Multilingual Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>Cheng Zhang (Rylan Zhang) - Academic Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-        
         :root {
-            --primary-color: #3a6ea5;
-            --primary-light: rgba(58, 110, 165, 0.1);
-            --primary-dark: #2c5282;
-            --secondary-color: #38b2ac;
-            --secondary-light: rgba(56, 178, 172, 0.15);
-            --text-color: #2d3748;
-            --text-light: #718096;
-            --bg-color: #f8fafc;
-            --bg-card: #ffffff;
-            --border-color: #e2e8f0;
-            --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
-            --box-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --border-radius: 12px;
-        }
-
-        [data-theme="dark"] {
-            --primary-color: #63b3ed;
-            --primary-light: rgba(99, 179, 237, 0.1);
-            --primary-dark: #4299e1;
-            --secondary-color: #4fd1c5;
-            --secondary-light: rgba(79, 209, 197, 0.15);
-            --text-color: #f7fafc;
-            --text-light: #cbd5e0;
-            --bg-color: #1a202c;
-            --bg-card: #2d3748;
-            --border-color: #4a5568;
+            --primary-color: #2c3e50;
+            --background-color: #f5f5f5;
+            --accent-color: #7f1734;
+            --text-color: #333333;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --container-width: 800px;
         }
         
         * {
@@ -46,1315 +25,226 @@
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-color);
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--background-color);
             color: var(--text-color);
-            line-height: 1.7;
-            min-height: 100vh;
-            padding-bottom: 80px;
-            transition: var(--transition);
+            line-height: 1.6;
+            padding: 2rem 1rem;
         }
         
         .container {
-            max-width: 1100px;
+            max-width: var(--container-width);
             margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: flex-end;
-            padding: 15px 30px;
-            background: var(--bg-card);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            z-index: 1000;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            background-color: rgba(255, 255, 255, 0.8);
-            transition: var(--transition);
-        }
-
-        [data-theme="dark"] .top-bar {
-            background-color: rgba(26, 32, 44, 0.8);
-        }
-        
-        .controls {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-        
-        .language-selector {
-            background: var(--bg-card);
-            padding: 8px 15px;
-            border-radius: 30px;
-            box-shadow: var(--box-shadow);
-            display: flex;
-            align-items: center;
-            transition: var(--transition);
-        }
-        
-        .language-selector:hover {
-            box-shadow: var(--box-shadow-hover);
-        }
-        
-        .language-selector select {
-            border: none;
-            padding: 5px;
-            outline: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: var(--text-color);
-            cursor: pointer;
-            background: transparent;
-            transition: var(--transition);
-        }
-
-        .theme-toggle {
-            background: var(--bg-card);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .theme-toggle:hover {
-            box-shadow: var(--box-shadow-hover);
-            transform: translateY(-2px);
-        }
-
-        .theme-toggle i {
-            font-size: 18px;
-            color: var(--text-color);
-            transition: var(--transition);
+            background-color: white;
+            padding: 3rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
         header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 80px 0 60px;
-            padding: 30px;
-            background: var(--bg-card);
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
         }
         
-        header:hover {
-            box-shadow: var(--box-shadow-hover);
-            transform: translateY(-5px);
-        }
-        
-        .profile-container {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .profile-image {
-            position: relative;
-        }
-        
-        .profile-image img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--bg-card);
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-        
-        .profile-image::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border-radius: 50%;
-            border: 2px dashed var(--primary-color);
-            opacity: 0.5;
-            animation: spin 30s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        
-        .header-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        header h1 {
-            font-family: 'Playfair Display', serif;
+        h1 {
+            font-family: 'Noto Serif', serif;
             color: var(--primary-color);
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        header p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-        }
-        
-        .tags {
-            display: inline-block;
-            padding: 6px 16px;
-            background: var(--secondary-light);
-            color: var(--secondary-color);
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            transition: var(--transition);
-        }
-        
-        .tags:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--box-shadow);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--primary-light);
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            transition: var(--transition);
-        }
-        
-        .social-link:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow);
-        }
-        
-        .card {
-            background: var(--bg-card);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card:hover {
-            box-shadow: var(--box-shadow-hover);
-            transform: translateY(-5px);
-        }
-        
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-        }
-        
-        .section-title {
-            color: var(--text-color);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-        }
-        
-        .subsection-title {
-            color: var(--primary-color);
-            font-size: 1.3rem;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
             font-weight: 600;
-            margin: 20px 0 15px;
-            display: flex;
-            align-items: center;
         }
         
-        .subsection-title i {
-            margin-right: 10px;
-            font-size: 1.1rem;
+        .contact {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
         }
         
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 20px 0;
+        section {
+            margin-bottom: 2.5rem;
         }
         
-        .stat-item {
-            background: var(--bg-color);
-            padding: 20px 15px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid var(--border-color);
-        }
-        
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow);
-        }
-        
-        .stat-value {
+        h2 {
+            font-family: 'Noto Serif', serif;
+            color: var(--accent-color);
             font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 8px;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
             font-weight: 500;
         }
         
-        .timeline {
-            margin: 30px 0;
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
         }
         
-        .timeline-item {
-            margin-bottom: 30px;
-            padding: 25px;
-            border-radius: var(--border-radius);
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            position: relative;
-            transition: var(--transition);
+        .education-details {
+            margin-bottom: 1rem;
         }
         
-        .timeline-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow);
+        .education-details p {
+            margin-bottom: 0.5rem;
         }
         
-        .timeline-item h3 {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
+        .research-interests p {
+            margin-bottom: 0.5rem;
         }
         
-        .timeline-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            align-items: center;
-        }
-        
-        .timeline-meta i {
-            margin-right: 5px;
-        }
-        
-        .role-badge {
-            background: var(--primary-light);
-            color: var(--primary-color);
-            padding: 5px 15px;
-            border-radius: 30px;
-            font-weight: 500;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .role-badge i {
-            margin-right: 5px;
-        }
-        
-        .achievement {
-            padding: 15px;
-            background: var(--bg-card);
-            border-radius: var(--border-radius);
-            font-size: 0.95rem;
-            border-left: 3px solid var(--secondary-color);
-        }
-        
-        .publications-list {
-            margin: 20px 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .publication-item {
-            background: var(--bg-color);
-            padding: 20px;
-            border-radius: var(--border-radius);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .publication-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow);
-        }
-        
-        .publication-venue {
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+        .publication {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--border-color);
         }
         
         .publication-status {
-            display: inline-block;
-            padding: 3px 10px;
-            background: var(--secondary-light);
-            color: var(--secondary-color);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
-        }
-        
-        .publication-author {
-            margin-top: auto;
-            font-size: 0.9rem;
-            color: var(--text-light);
             font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
         }
         
-        .awards-list {
-            margin: 20px 0;
-        }
-        
-        .award-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-            padding: 20px;
-            background: var(--bg-color);
-            border-radius: var(--border-radius);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-        
-        .award-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow);
-        }
-        
-        .award-icon {
-            margin-right: 20px;
-            width: 50px;
-            height: 50px;
-            min-width: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-        
-        .award-item:hover .award-icon {
-            transform: scale(1.1) rotate(10deg);
-        }
-        
-        .award-info {
-            flex: 1;
-        }
-        
-        .award-info h3 {
-            color: var(--text-color);
-            font-size: 1.2rem;
+        .publication-title {
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
         }
         
-        .award-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            align-items: center;
+        .publication-authors {
+            margin-bottom: 0.5rem;
         }
         
-        .award-meta i {
-            margin-right: 5px;
+        .publication-venue {
+            color: var(--text-secondary);
         }
         
-        .contact-list {
-            margin: 20px 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+        .research-experience {
+            margin-bottom: 1.5rem;
         }
         
-        .contact-item {
-            display: flex;
-            align-items: center;
-            padding: 20px;
-            background: var(--bg-color);
-            border-radius: var(--border-radius);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-        
-        .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow);
-        }
-        
-        .contact-icon {
-            margin-right: 15px;
-            width: 45px;
-            height: 45px;
-            min-width: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--primary-light);
-            color: var(--primary-color);
-            border-radius: 50%;
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-        
-        .contact-item:hover .contact-icon {
-            background: var(--primary-color);
-            color: white;
-            transform: scale(1.1);
-        }
-        
-        .contact-info {
-            font-size: 0.95rem;
-            color: var(--text-color);
-            word-break: break-word;
-        }
-        
-        .contact-label {
+        .research-experience-title {
             font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--primary-color);
+            margin-bottom: 0.5rem;
         }
         
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: var(--bg-card);
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-            transition: var(--transition);
+        .research-experience-details {
+            margin-bottom: 0.5rem;
         }
         
-        .back-to-top {
-            position: fixed;
-            bottom: 90px;
-            right: 30px;
-            width: 45px;
-            height: 45px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            box-shadow: var(--box-shadow);
-            z-index: 100;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background: var(--primary-dark);
-            transform: translateY(-5px);
-        }
-        
-        @media (max-width: 992px) {
-            .publications-list {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .award {
+            margin-bottom: 1rem;
         }
         
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px;
+            .container {
+                padding: 2rem 1.5rem;
             }
             
-            .profile-container {
-                flex-direction: column;
-                text-align: center;
+            h1 {
+                font-size: 1.8rem;
             }
             
-            .social-links {
-                justify-content: center;
+            h2 {
+                font-size: 1.3rem;
             }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .publications-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-list {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline-meta, .award-meta {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-            
-            .card {
-                padding: 20px;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-            }
-            
-            .subsection-title {
-                font-size: 1.2rem;
-            }
-        }
-        
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Skill Pills */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 15px 0;
-        }
-        
-        .skill-pill {
-            padding: 8px 16px;
-            background: var(--primary-light);
-            color: var(--primary-color);
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .skill-pill:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow);
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <div class="controls">
-            <div class="theme-toggle" id="theme-toggle">
-                <i class="fas fa-moon"></i>
-            </div>
-            <div class="language-selector">
-                <i class="fas fa-globe-asia"></i>
-                <select id="language">
-                    <option value="en">English</option>
-                    <option value="zh">中文</option>
-                    <option value="ja">日本語</option>
-                    <option value="ko">한국어</option>
-                    <option value="zh-TW">繁體中文</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    
     <div class="container">
-        <header data-aos="fade-up">
-            <div class="profile-container">
-                <div class="profile-image">
-                    <img src="bear-junior.png" alt="Profile Picture" id="profile-image">
-                </div>
-                <div class="header-text">
-                    <h1 id="name">Cheng Zhang</h1>
-                    <p id="position">Undergraduate Researcher at AVC Lab</p>
-                    <div class="tags" id="tags">985 & Double First-Class University</div>
-                    <p id="introduction">I am an undergraduate student at Jilin University and a research assistant at the Affective Vision Computing (AVC) Lab. Currently, I am seeking to pursue my master's degree.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
-                    </div>
-                </div>
-            </div>
+        <header>
+            <h1>Cheng Zhang (Rylan Zhang)</h1>
+            <div class="contact">zhangcheng2122@jlu.edu.cn</div>
         </header>
         
-        <div class="card" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="section-title" id="research-interest">Research Interest</h2>
-            <div class="skills-container">
-                <div class="skill-pill">Multi-Modal ML</div>
-                <div class="skill-pill">Computer Vision</div>
-                <div class="skill-pill">Signal Processing</div>
-                <div class="skill-pill">Embodied AI</div>
-                <div class="skill-pill">Natural Language Processing</div>
-            </div>
-        </div>
+        <section>
+            <h2>Objective</h2>
+            <p>To pursue a Master's degree in Electrical Engineering at KAIST (Fall 2026), with a strong focus on advancing research in Multi-Modal Machine Learning, Computer Vision, and related cutting-edge AI fields. I am driven by a passion for developing innovative solutions that effectively bridge diverse data modalities and am eager to contribute to groundbreaking research with tangible real-world applications.</p>
+        </section>
         
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
-            <h2 class="section-title" id="university-strengths">University Strengths</h2>
+        <section>
+            <h2>Education</h2>
+            <div class="education-details">
+                <p><strong>BSc, Computer Science & Technology</strong> | Jilin University | September 2022 – June 2026</p>
+                <p>Average Score: 87.5/100</p>
+                <p>GPA: 3.52/4.0</p>
+                <p>Rank: 11/102</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Research Interests</h2>
+            <div class="research-interests">
+                <p>My research focuses on advancing the field of artificial intelligence through several interconnected areas. I am particularly interested in Multi-Modal Large Language Models, exploring how these systems can effectively integrate and process information across different modalities to enhance understanding and generation capabilities. My work in Computer Vision examines how machines perceive and interpret visual information, developing algorithms that can accurately recognize patterns and objects in complex environments. I also investigate Image Generation techniques, working to create more realistic and controllable visual outputs from textual descriptions or other input modalities. Additionally, my research in Affective Computing explores how AI systems can recognize, interpret, and respond to human emotions, bridging the gap between computational and emotional intelligence.</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Publications</h2>
             
-            <h3 class="subsection-title" id="discipline-rating">
-                <i class="fas fa-award"></i> Discipline Rating
-            </h3>
-            <p><span id="major">Computer Science & Technology</span> - <span id="rating">MOE China A- (Top 10%)</span></p>
-            
-            <h3 class="subsection-title" id="global-recognition">
-                <i class="fas fa-globe"></i> Global Recognition
-            </h3>
-            <div class="stats-grid">
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="stat-value">56</div>
-                    <div class="stat-label">QS Asia</div>
-                </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="stat-value">101-150</div>
-                    <div class="stat-label">ARWU</div>
-                </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="stat-value">Top 1%</div>
-                    <div class="stat-label">ESI in CS</div>
-                </div>
+            <div class="publication">
+                <div class="publication-status">Preparing for Submission, 2025</div>
+                <div class="publication-title">EmoArt: A Large-Scale, Fine-Grained Dataset of 56 Art Painting Categories Across Global Cultures for Emotion-Aware Analysis</div>
+                <div class="publication-authors">Cheng Zhang, HongXia Xie, Bin Wen, Wen-Huang Cheng.</div>
+                <div class="publication-venue">ACM Multimedia (Dataset Track) 2025.</div>
             </div>
             
-            <h3 class="subsection-title" id="partnerships">
-                <i class="fas fa-handshake"></i> Partnerships
-            </h3>
-            <div class="skills-container">
-                <div class="skill-pill">National University of Singapore</div>
-                <div class="skill-pill">University of Michigan</div>
-                <div class="skill-pill">University of Sydney</div>
+            <div class="publication">
+                <div class="publication-status">Under Review, 2025</div>
+                <div class="publication-title">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal Large Language Model</div>
+                <div class="publication-authors">Hung-Jen Chen, Hongxia Xie, Cheng Zhang, Songhan Zuo, Chu-Jun Peng, Hong-Han Shuai, Yong Man Ro, Wen-Huang Cheng.</div>
+                <div class="publication-venue">International Conference on Computer Vision (ICCV) 2025.</div>
             </div>
-        </div>
+            
+            <div class="publication">
+                <div class="publication-status">Under Review, 2025</div>
+                <div class="publication-title">Single Document Image Highlight Removal via A Large-Scale Real-World Dataset and A Location-Aware Network</div>
+                <div class="publication-authors">Lu Pan, Yu-Hsuan Huang, Hongxia Xie, Cheng Zhang, Hongwei Zhao, Hong-Han Shuai, Wen-Huang Cheng.</div>
+                <div class="publication-venue">ACM Multimedia (ACM MM) 2025.</div>
+            </div>
+            
+            <div class="publication">
+                <div class="publication-status">Preparing for Submission, 2025</div>
+                <div class="publication-title">AmorisBench: A Comprehensive Multi-modal Dataset for Love-centric Question Answering</div>
+                <div class="publication-authors">Chu-Jun Peng, Hongxia Xie, Cheng Zhang, Wen-Huang Cheng.</div>
+                <div class="publication-venue">ACM Multimedia (Dataset Track) 2025.</div>
+            </div>
+        </section>
         
-        <div class="card" data-aos="fade-up" data-aos-delay="300">
-            <h2 class="section-title" id="research-experience">Research Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
-                    <h3 id="project1">National Natural Science Foundation of China, Youth Project: Research on Emotion Hallucination Elimination Technology for Visual-Language Pre-training Models</h3>
-                    <div class="timeline-meta">
-                        <span id="time1"><i class="far fa-calendar-alt"></i> 2025-01 to 2027-12</span>
-                        <span class="role-badge" id="role1"><i class="fas fa-user-check"></i> Key Participant</span>
-                    </div>
-                    <div class="achievement" id="achievements1">
-                        <i class="fas fa-check-circle"></i> Participated as a key member in the project.
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
-                    <h3 id="project2">Jilin Provincial Department of Education Scientific Research Project, Excellent Youth Project: Research on Emotion Understanding Stability Technology for Multimodal Large Models</h3>
-                    <div class="timeline-meta">
-                        <span id="time2"><i class="far fa-calendar-alt"></i> Start date to end date</span>
-                        <span class="role-badge" id="role2"><i class="fas fa-user-check"></i> Key Participant</span>
-                    </div>
-                    <div class="achievement" id="achievements2">
-                        <i class="fas fa-check-circle"></i> Participated as a key member in the project.
-                    </div>
-                </div>
+        <section>
+            <h2>Research Experience</h2>
+            
+            <div class="research-experience">
+                <div class="research-experience-title">Affective Vision Computing (AVC) Lab, Jilin University</div>
+                <div class="research-experience-details">Research Assistant | 2024 – Present</div>
+                <div class="research-experience-details">Supervisor: Associate Professor Hongxia Xie</div>
+                <p>As a core member of the Affective Vision Computing Lab, I contribute to cutting-edge projects in affective computing and multi-modal machine learning. My work involves developing innovative approaches to understand and model emotional responses in visual and textual data, collaborating with an interdisciplinary team of researchers to advance the field of emotion-aware artificial intelligence.</p>
             </div>
-        </div>
+            
+            <div class="research-experience">
+                <div class="research-experience-title">National Natural Science Foundation of China, Youth Project</div>
+                <div class="research-experience-details">Research on Emotion Hallucination Elimination Technology for Visual-Language Pre-training Models</div>
+                <div class="research-experience-details">Core Participant | January 2025 – Present</div>
+                <p>I am actively involved in this foundational research project focused on addressing emotion hallucination issues in visual-language pre-training models. My contributions include developing methodologies to identify and mitigate instances where models incorrectly attribute emotional content that is not present in the source material, thereby improving the reliability and accuracy of emotion recognition in multimodal systems.</p>
+            </div>
+            
+            <div class="research-experience">
+                <div class="research-experience-title">Jilin Provincial Department of Education, Excellent Youth Project</div>
+                <div class="research-experience-details">Research on Emotion Understanding Stability Technology for Multimodal Large Models</div>
+                <div class="research-experience-details">Core Participant | January 2025 – Present</div>
+                <p>In this provincial-level research initiative, I work on enhancing the stability and consistency of emotion understanding capabilities in multimodal large models. The project aims to develop robust techniques that ensure reliable emotional interpretation across diverse contexts and input variations, contributing to more dependable affective computing applications.</p>
+            </div>
+        </section>
         
-        <div class="card" data-aos="fade-up" data-aos-delay="400">
-            <h2 class="section-title" id="publications">Publications</h2>
-            <div class="publications-list">
-                <div class="publication-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="publication-venue" id="pub1-venue">ICCV 2025</div>
-                    <div class="publication-status">Under Review</div>
-                    <p id="pub1-title">Research on Emotion Hallucination Elimination Technology</p>
-                    <p class="publication-author" id="pub1-author">Third Author</p>
-                </div>
-                <div class="publication-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="publication-venue" id="pub2-venue">ACM MM 2025</div>
-                    <div class="publication-status">Under Review</div>
-                    <p id="pub2-title">Research on Emotion Understanding Stability Technology</p>
-                    <p class="publication-author" id="pub2-author">Third Author</p>
-                </div>
-                <div class="publication-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="publication-venue" id="pub3-venue">ACM MM 2025</div>
-                    <div class="publication-status">Under Review</div>
-                    <p id="pub3-title">Multimodal Large Models for Emotion Understanding</p>
-                    <p class="publication-author" id="pub3-author">Fourth Author</p>
-                </div>
-                <div class="publication-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="publication-venue" id="pub4-venue">NeurIPS 2025</div>
-                    <div class="publication-status">Under Review</div>
-                    <p id="pub4-title">Advanced Research on Multimodal ML</p>
-                    <p class="publication-author" id="pub4-author">First Author</p>
-                </div>
+        <section>
+            <h2>Honors & Awards</h2>
+            
+            <div class="award">
+                <p><strong>Undergraduate Scholarship</strong>, Jilin University, 2023-2024</p>
             </div>
-        </div>
-        
-        <div class="card" data-aos="fade-up" data-aos-delay="500">
-            <h2 class="section-title" id="honors-awards">Honors & Awards</h2>
-            <div class="awards-list">
-                <div class="award-item" data-aos="fade-right" data-aos-delay="100">
-                    <div class="award-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <div class="award-info">
-                        <h3 id="award1">Third Class Scholarship, Jilin University</h3>
-                        <div class="award-meta">
-                            <span id="award-time1"><i class="far fa-calendar-alt"></i> 2022-2023</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="award-item" data-aos="fade-right" data-aos-delay="200">
-                    <div class="award-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="award-info">
-                        <h3 id="award2">Second Class Scholarship, Jilin University</h3>
-                        <div class="award-meta">
-                            <span id="award-time2"><i class="far fa-calendar-alt"></i> 2023-2024</span>
-                            <span id="ranking2"><i class="fas fa-chart-line"></i> Top 20% in Grade</span>
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="award">
+                <p><strong>Undergraduate Scholarship</strong>, Jilin University, 2022-2023</p>
             </div>
-        </div>
-        
-        <div class="card" data-aos="fade-up" data-aos-delay="600">
-            <h2 class="section-title" id="contact-information">Contact Information</h2>
-            <div class="contact-list">
-                <div class="contact-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-info">
-                        <div class="contact-label">Academic Email</div>
-                        <div id="academic-email">zhangcheng2122@jlu.edu.cn</div>
-                    </div>
-                </div>
-                <div class="contact-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="contact-icon">
-                        <i class="fab fa-google"></i>
-                    </div>
-                    <div class="contact-info">
-                        <div class="contact-label">Gmail</div>
-                        <div id="gmail">zc2410867311@gmail.com</div>
-                    </div>
-                </div>
-                <div class="contact-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="contact-icon">
-                        <i class="fas fa-qrcode"></i>
-                    </div>
-                    <div class="contact-info">
-                        <div class="contact-label">QQ</div>
-                        <div id="qq">2410867311@qq.com</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
     </div>
-    
-    <div class="back-to-top" id="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-    
-    <footer>
-        © 2025 Cheng Zhang. All rights reserved.
-    </footer>
-    
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-        
-        // Theme toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        // Check for saved theme preference or use preferred color scheme
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            document.body.setAttribute('data-theme', 'dark');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            if (document.body.getAttribute('data-theme') === 'dark') {
-                document.body.removeAttribute('data-theme');
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.body.setAttribute('data-theme', 'dark');
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-        
-        // Back to top button
-        const backToTopButton = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Translations
-        const translations = {
-            en: {
-                name: "Cheng Zhang",
-                position: "Undergraduate Researcher at AVC Lab",
-                tags: "985 & Double First-Class University",
-                introduction: "I am an undergraduate student at Jilin University and a research assistant at the Affective Vision Computing (AVC) Lab. Currently, I am seeking to pursue my master's degree.",
-                "research-interest": "Research Interest",
-                "research-interest-details": "Multi-Modal ML, Computer Vision, Signal Processing, Embodied AI, Natural Language Processing",
-                "university-strengths": "University Strengths",
-                "discipline-rating": "Discipline Rating",
-                major: "Computer Science & Technology",
-                rating: "MOE China A- (Top 10%)",
-                "global-recognition": "Global Recognition",
-                partnerships: "Partnerships",
-                "research-experience": "Research Experience",
-                project1: "National Natural Science Foundation of China, Youth Project: Research on Emotion Hallucination Elimination Technology for Visual-Language Pre-training Models",
-                time1: "2025-01 to 2027-12",
-                role1: "Key Participant",
-                achievements1: "Participated as a key member in the project.",
-                project2: "Jilin Provincial Department of Education Scientific Research Project, Excellent Youth Project: Research on Emotion Understanding Stability Technology for Multimodal Large Models",
-                time2: "Start date to end date", // 请提供具体日期
-                role2: "Key Participant",
-                achievements2: "Participated as a key member in the project.",
-                publications: "Publications",
-                "pub1-venue": "ICCV 2025",
-                "pub1-title": "Research on Emotion Hallucination Elimination Technology",
-                "pub1-author": "Third Author",
-                "pub2-venue": "ACM MM 2025",
-                "pub2-title": "Research on Emotion Understanding Stability Technology",
-                "pub2-author": "Third Author",
-                "pub3-venue": "ACM MM 2025",
-                "pub3-title": "Multimodal Large Models for Emotion Understanding",
-                "pub3-author": "Fourth Author",
-                "pub4-venue": "NeurIPS 2025",
-                "pub4-title": "Advanced Research on Multimodal ML",
-                "pub4-author": "First Author",
-                "honors-awards": "Honors & Awards",
-                award1: "Third Class Scholarship, Jilin University",
-                "award-time1": "2022-2023",
-                award2: "Second Class Scholarship, Jilin University",
-                "award-time2": "2023-2024",
-                ranking2: "Top 20% in Grade",
-                "contact-information": "Contact Information",
-                "academic-email": "zhangcheng2122@jlu.edu.cn",
-                gmail: "zc2410867311@gmail.com",
-                qq: "2410867311@qq.com"
-            },
-            zh: {
-                name: "张成",
-                position: "AVC 实验室本科生研究员",
-                tags: "985工程 & 双一流大学",
-                introduction: "我是吉林大学的本科生，Affective Vision Computing (AVC) 实验室的科研助理，目前正在寻求攻读硕士学位。",
-                "research-interest": "研究兴趣",
-                "research-interest-details": "多模态机器学习，计算机视觉，信号处理，具身人工智能，自然语言处理",
-                "university-strengths": "学校优势",
-                "discipline-rating": "学科评级",
-                major: "计算机科学与技术",
-                rating: "教育部 A- (前10%)",
-                "global-recognition": "全球认可",
-                partnerships: "国际合作",
-                "research-experience": "科研经历",
-                project1: "国家自然科学基金委员会，青年项目：面向视觉-语言预训练模型中情绪幻觉消除的技术研究",
-                time1: "2025-01至2027-12",
-                role1: "骨干参与",
-                achievements1: "作为骨干成员参与项目。",
-                project2: "吉林省教育厅科学研究项目，优秀青年项目：面向多模态大模型的情绪理解稳定性技术研究",
-                time2: "开始日期至结束日期", // 请提供具体日期
-                role2: "骨干参与",
-                achievements2: "作为骨干成员参与项目。",
-                publications: "发表论文",
-                "pub1-venue": "ICCV 2025",
-                "pub1-title": "视觉-语言预训练模型中情绪幻觉消除的技术研究",
-                "pub1-author": "第三作者",
-                "pub2-venue": "ACM MM 2025",
-                "pub2-title": "多模态大模型的情绪理解稳定性技术研究",
-                "pub2-author": "第三作者",
-                "pub3-venue": "ACM MM 2025",
-                "pub3-title": "情绪理解的多模态大模型研究",
-                "pub3-author": "第四作者",
-                "pub4-venue": "NeurIPS 2025",
-                "pub4-title": "多模态机器学习的高级研究",
-                "pub4-author": "第一作者",
-                "honors-awards": "荣誉奖项",
-                award1: "吉林大学三等奖学金",
-                "award-time1": "2022-2023年度",
-                award2: "吉林大学二等奖学金",
-                "award-time2": "2023-2024年度",
-                ranking2: "年级排名前20%",
-                "contact-information": "联系方式",
-                "academic-email": "zhangcheng2122@jlu.edu.cn",
-                gmail: "zc2410867311@gmail.com",
-                qq: "2410867311@qq.com"
-            },
-            ja: {
-                name: "張 成",
-                position: "AVC研究所 学部研究員",
-                tags: "985工程 & ダブルトップクラス大学",
-                introduction: "私は吉林大学の学部生であり、Affective Vision Computing (AVC) 研究所の研究助手です。現在、修士号の取得を目指しています。",
-                "research-interest": "研究関心",
-                "research-interest-details": "マルチモーダルML、コンピュータビジョン、信号処理、具現化AI、自然言語処理",
-                "university-strengths": "大学の強み",
-                "discipline-rating": "学科評価",
-                major: "コンピュータ科学技術",
-                rating: "中国教育部 A- (上位10%)",
-                "global-recognition": "世界的評価",
-                partnerships: "国際協力",
-                "research-experience": "研究経験",
-                project1: "国家自然科学基金委員会、青年プロジェクト：視覚-言語事前学習モデルにおける感情幻覚除去技術の研究",
-                time1: "2025-01から2027-12",
-                role1: "主要参加者",
-                achievements1: "プロジェクトの主要メンバーとして参加。",
-                project2: "吉林省教育庁科学研究プロジェクト、優秀青年プロジェクト：マルチモーダル大規模モデルにおける感情理解の安定性技術の研究",
-                time2: "開始日〜終了日", // 请提供具体日期
-                role2: "主要参加者",
-                achievements2: "プロジェクトの主要メンバーとして参加。",
-                publications: "発表論文",
-                "pub1-venue": "ICCV 2025",
-                "pub1-title": "視覚-言語事前学習モデルにおける感情幻覚除去技術の研究",
-                "pub1-author": "3番目の著者",
-                "pub2-venue": "ACM MM 2025",
-                "pub2-title": "マルチモーダル大規模モデルにおける感情理解の安定性技術の研究",
-                "pub2-author": "3番目の著者",
-                "pub3-venue": "ACM MM 2025",
-                "pub3-title": "感情理解のためのマルチモーダル大規模モデル",
-                "pub3-author": "4番目の著者",
-                "pub4-venue": "NeurIPS 2025",
-                "pub4-title": "マルチモーダルMLの先進研究",
-                "pub4-author": "1番目の著者",
-                "honors-awards": "栄誉と賞",
-                award1: "吉林大学三等奨学金",
-                "award-time1": "2022-2023年度",
-                award2: "吉林大学二等奨学金",
-                "award-time2": "2023-2024年度",
-                ranking2: "学年上位20%",
-                "contact-information": "連絡先",
-                "academic-email": "zhangcheng2122@jlu.edu.cn",
-                gmail: "zc2410867311@gmail.com",
-                qq: "2410867311@qq.com"
-            },
-            ko: {
-                name: "장성",
-                position: "AVC 연구소 학부 연구원",
-                tags: "985 프로젝트 & 더블 퍼스트 클래스 대학",
-                introduction: "저는 길림대학교 학부생이며, Affective Vision Computing (AVC) 연구소의 연구 조교입니다. 현재 석사 학위를 추구하고 있습니다.",
-                "research-interest": "연구 관심",
-                "research-interest-details": "멀티모달 ML, 컴퓨터 비전, 신호 처리, 구현 AI, 자연어 처리",
-                "university-strengths": "대학의 강점",
-                "discipline-rating": "학문 평가",
-                major: "컴퓨터 과학 및 기술",
-                rating: "중국 교육부 A- (상위 10%)",
-                "global-recognition": "세계적 인정",
-                partnerships: "국제 협력",
-                "research-experience": "연구 경험",
-                project1: "국가자연과학기금위원회, 청년 프로젝트: 시각-언어 사전 훈련 모델에서 감정 환각 제거 기술 연구",
-                time1: "2025-01 ~ 2027-12",
-                role1: "주요 참여자",
-                achievements1: "프로젝트의 주요 구성원으로 참여했습니다.",
-                project2: "길림성 교육청 과학 연구 프로젝트, 우수 청년 프로젝트: 멀티모달 대형 모델을 위한 감정 이해 안정성 기술 연구",
-                time2: "시작 날짜 ~ 종료 날짜", // 请提供具体日期
-                role2: "주요 참여자",
-                achievements2: "프로젝트의 주요 구성원으로 참여했습니다.",
-                publications: "발표 논문",
-                "pub1-venue": "ICCV 2025",
-                "pub1-title": "시각-언어 사전 훈련 모델에서 감정 환각 제거 기술 연구",
-                "pub1-author": "세 번째 저자",
-                "pub2-venue": "ACM MM 2025",
-                "pub2-title": "멀티모달 대형 모델을 위한 감정 이해 안정성 기술 연구",
-                "pub2-author": "세 번째 저자",
-                "pub3-venue": "ACM MM 2025",
-                "pub3-title": "감정 이해를 위한 멀티모달 대형 모델",
-                "pub3-author": "네 번째 저자",
-                "pub4-venue": "NeurIPS 2025",
-                "pub4-title": "멀티모달 ML의 고급 연구",
-                "pub4-author": "첫 번째 저자",
-                "honors-awards": "영예 및 상",
-                award1: "길림대학교 3등 장학금",
-                "award-time1": "2022-2023학년도",
-                award2: "길림대학교 2등 장학금",
-                "award-time2": "2023-2024학년도",
-                ranking2: "학년 상위 20%",
-                "contact-information": "연락처",
-                "academic-email": "zhangcheng2122@jlu.edu.cn",
-                gmail: "zc2410867311@gmail.com",
-                qq: "2410867311@qq.com"
-            },
-            "zh-TW": {
-                name: "張成",
-                position: "AVC 實驗室本科生研究員",
-                tags: "985工程 & 雙一流大學",
-                introduction: "我是吉林大學的本科生，Affective Vision Computing (AVC) 實驗室的科研助理，目前正在尋求攻讀碩士學位。",
-                "research-interest": "研究興趣",
-                "research-interest-details": "多模態機器學習，計算機視覺，信號處理，具身人工智能，自然語言處理",
-                "university-strengths": "學校優勢",
-                "discipline-rating": "學科評級",
-                major: "計算機科學與技術",
-                rating: "教育部 A- (前10%)",
-                "global-recognition": "全球認可",
-                partnerships: "國際合作",
-                "research-experience": "科研經歷",
-                project1: "國家自然科學基金委員會，青年項目：面向視覺-語言預訓練模型中情緒幻覺消除的技術研究",
-                time1: "2025-01至2027-12",
-                role1: "骨幹參與",
-                achievements1: "作為骨幹成員參與項目。",
-                project2: "吉林省教育廳科學研究項目，優秀青年項目：面向多模態大模型的情緒理解穩定性技術研究",
-                time2: "開始日期至結束日期", // 请提供具体日期
-                role2: "骨幹參與",
-                achievements2: "作為骨幹成員參與項目。",
-                publications: "發表論文",
-                "pub1-venue": "ICCV 2025",
-                "pub1-title": "視覺-語言預訓練模型中情緒幻覺消除的技術研究",
-                "pub1-author": "第三作者",
-                "pub2-venue": "ACM MM 2025",
-                "pub2-title": "多模態大模型的情緒理解穩定性技術研究",
-                "pub2-author": "第三作者",
-                "pub3-venue": "ACM MM 2025",
-                "pub3-title": "情緒理解的多模態大模型研究",
-                "pub3-author": "第四作者",
-                "pub4-venue": "NeurIPS 2025",
-                "pub4-title": "多模態機器學習的高級研究",
-                "pub4-author": "第一作者",
-                "honors-awards": "榮譽獎項",
-                award1: "吉林大學三等獎學金",
-                "award-time1": "2022-2023年度",
-                award2: "吉林大學二等獎學金",
-                "award-time2": "2023-2024年度",
-                ranking2: "年級排名前20%",
-                "contact-information": "聯繫方式",
-                "academic-email": "zhangcheng2122@jlu.edu.cn",
-                gmail: "zc2410867311@gmail.com",
-                qq: "2410867311@qq.com"
-            }
-        };
-
-        document.getElementById('language').addEventListener('change', function() {
-            const lang = this.value;
-            
-            // Update header content
-            document.getElementById('name').textContent = translations[lang].name;
-            document.getElementById('position').textContent = translations[lang].position;
-            document.getElementById('tags').textContent = translations[lang].tags;
-            document.getElementById('introduction').textContent = translations[lang].introduction;
-            
-            // Update section titles
-            document.getElementById('research-interest').textContent = translations[lang]['research-interest'];
-            document.getElementById('university-strengths').textContent = translations[lang]['university-strengths'];
-            document.getElementById('discipline-rating').textContent = translations[lang]['discipline-rating'];
-            document.getElementById('global-recognition').textContent = translations[lang]['global-recognition'];
-            document.getElementById('partnerships').textContent = translations[lang]['partnerships'];
-            document.getElementById('research-experience').textContent = translations[lang]['research-experience'];
-            document.getElementById('publications').textContent = translations[lang].publications;
-            document.getElementById('honors-awards').textContent = translations[lang]['honors-awards'];
-            document.getElementById('contact-information').textContent = translations[lang]['contact-information'];
-            
-            // Update university strengths
-            document.getElementById('major').textContent = translations[lang].major;
-            document.getElementById('rating').textContent = translations[lang].rating;
-            
-            // Update research experience
-            document.getElementById('project1').textContent = translations[lang].project1;
-            document.getElementById('time1').textContent = translations[lang].time1;
-            document.getElementById('role1').textContent = translations[lang].role1;
-            document.getElementById('achievements1').textContent = translations[lang].achievements1;
-            document.getElementById('project2').textContent = translations[lang].project2;
-            document.getElementById('time2').textContent = translations[lang].time2;
-            document.getElementById('role2').textContent = translations[lang].role2;
-            document.getElementById('achievements2').textContent = translations[lang].achievements2;
-            
-            // Update publications
-            document.getElementById('pub1-venue').textContent = translations[lang]['pub1-venue'];
-            document.getElementById('pub1-title').textContent = translations[lang]['pub1-title'];
-            document.getElementById('pub1-author').textContent = translations[lang]['pub1-author'];
-            document.getElementById('pub2-venue').textContent = translations[lang]['pub2-venue'];
-            document.getElementById('pub2-title').textContent = translations[lang]['pub2-title'];
-            document.getElementById('pub2-author').textContent = translations[lang]['pub2-author'];
-            document.getElementById('pub3-venue').textContent = translations[lang]['pub3-venue'];
-            document.getElementById('pub3-title').textContent = translations[lang]['pub3-title'];
-            document.getElementById('pub3-author').textContent = translations[lang]['pub3-author'];
-            document.getElementById('pub4-venue').textContent = translations[lang]['pub4-venue'];
-            document.getElementById('pub4-title').textContent = translations[lang]['pub4-title'];
-            document.getElementById('pub4-author').textContent = translations[lang]['pub4-author'];
-            
-            // Update awards
-            document.getElementById('award1').textContent = translations[lang].award1;
-            document.getElementById('award-time1').textContent = translations[lang]['award-time1'];
-            document.getElementById('award2').textContent = translations[lang].award2;
-            document.getElementById('award-time2').textContent = translations[lang]['award-time2'];
-            document.getElementById('ranking2').textContent = translations[lang].ranking2;
-            
-            // Update contact information
-            document.getElementById('academic-email').textContent = translations[lang]['academic-email'];
-            document.getElementById('gmail').textContent = translations[lang].gmail;
-            document.getElementById('qq').textContent = translations[lang].qq;
-            
-            // Update skill pills
-            const skillPills = document.querySelectorAll('.skills-container .skill-pill');
-            if (lang === 'en') {
-                skillPills[0].textContent = 'Multi-Modal ML';
-                skillPills[1].textContent = 'Computer Vision';
-                skillPills[2].textContent = 'Signal Processing';
-                skillPills[3].textContent = 'Embodied AI';
-                skillPills[4].textContent = 'Natural Language Processing';
-            } else if (lang === 'zh') {
-                skillPills[0].textContent = '多模态机器学习';
-                skillPills[1].textContent = '计算机视觉';
-                skillPills[2].textContent = '信号处理';
-                skillPills[3].textContent = '具身人工智能';
-                skillPills[4].textContent = '自然语言处理';
-            } else if (lang === 'ja') {
-                skillPills[0].textContent = 'マルチモーダルML';
-                skillPills[1].textContent = 'コンピュータビジョン';
-                skillPills[2].textContent = '信号処理';
-                skillPills[3].textContent = '具現化AI';
-                skillPills[4].textContent = '自然言語処理';
-            } else if (lang === 'ko') {
-                skillPills[0].textContent = '멀티모달 ML';
-                skillPills[1].textContent = '컴퓨터 비전';
-                skillPills[2].textContent = '신호 처리';
-                skillPills[3].textContent = '구현 AI';
-                skillPills[4].textContent = '자연어 처리';
-            } else if (lang === 'zh-TW') {
-                skillPills[0].textContent = '多模態機器學習';
-                skillPills[1].textContent = '計算機視覺';
-                skillPills[2].textContent = '信號處理';
-                skillPills[3].textContent = '具身人工智能';
-                skillPills[4].textContent = '自然語言處理';
-            }
-            
-            // Update partnerships
-            const partnershipPills = document.querySelectorAll('.subsection-title#partnerships + .skills-container .skill-pill');
-            if (lang === 'en') {
-                partnershipPills[0].textContent = 'National University of Singapore';
-                partnershipPills[1].textContent = 'University of Michigan';
-                partnershipPills[2].textContent = 'University of Sydney';
-            } else if (lang === 'zh') {
-                partnershipPills[0].textContent = '新加坡国立大学';
-                partnershipPills[1].textContent = '密歇根大学';
-                partnershipPills[2].textContent = '悉尼大学';
-            } else if (lang === 'ja') {
-                partnershipPills[0].textContent = 'シンガポール国立大学';
-                partnershipPills[1].textContent = 'ミシガン大学';
-                partnershipPills[2].textContent = 'シドニー大学';
-            } else if (lang === 'ko') {
-                partnershipPills[0].textContent = '싱가포르 국립대학교';
-                partnershipPills[1].textContent = '미시간 대학교';
-                partnershipPills[2].textContent = '시드니 대학교';
-            } else if (lang === 'zh-TW') {
-                partnershipPills[0].textContent = '新加坡國立大學';
-                partnershipPills[1].textContent = '密歇根大學';
-                partnershipPills[2].textContent = '悉尼大學';
-            }
-        });
-    </script>
 </body>
 </html>
