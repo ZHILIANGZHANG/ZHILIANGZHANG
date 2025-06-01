@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cheng Zhang (Rylan Zhang) - Academic Profile</title>
+    <title>Cheng Zhang (Rylan Zhang) - Personal Homepage</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --background-color: #f5f5f5;
-            --accent-color: #7f1734;
+            --primary-color: #1e88e5;
+            --primary-light: #e3f2fd;
+            --background-color: #f8f9fa;
             --text-color: #333333;
             --text-secondary: #666666;
             --border-color: #e0e0e0;
-            --container-width: 800px;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --card-hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --container-width: 1000px;
         }
         
         * {
@@ -29,49 +32,101 @@
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
-            padding: 2rem 1rem;
+            padding: 0;
         }
         
         .container {
             max-width: var(--container-width);
             margin: 0 auto;
-            background-color: white;
-            padding: 3rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-bg {
+            background: linear-gradient(135deg, #1e88e5, #0d47a1);
+            color: white;
+            padding: 3rem 0;
         }
         
         header {
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+        
+        .profile-info {
+            flex: 1;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 4px solid white;
+            overflow: hidden;
+        }
+        
+        .profile-image i {
+            font-size: 80px;
+            color: var(--primary-color);
         }
         
         h1 {
             font-family: 'Noto Serif', serif;
-            color: var(--primary-color);
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
             font-weight: 600;
         }
         
         .contact {
-            color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
         }
         
-        section {
-            margin-bottom: 2.5rem;
+        .contact i {
+            margin-right: 0.5rem;
+        }
+        
+        .main-content {
+            padding: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            box-shadow: var(--card-hover-shadow);
+            transform: translateY(-5px);
         }
         
         h2 {
             font-family: 'Noto Serif', serif;
-            color: var(--accent-color);
+            color: var(--primary-color);
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px solid var(--primary-light);
             font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2 i {
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
         }
         
         p {
@@ -81,170 +136,344 @@
         
         .education-details {
             margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
         }
         
-        .education-details p {
+        .education-header {
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 0.5rem;
+        }
+        
+        .education-degree {
+            font-weight: 600;
+        }
+        
+        .education-date {
+            color: var(--text-secondary);
+        }
+        
+        .education-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .stat-item {
+            background-color: var(--primary-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
         }
         
         .research-interests p {
             margin-bottom: 0.5rem;
         }
         
-        .publication {
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
-            border-left: 3px solid var(--border-color);
+        .publication-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
         }
         
-        .publication-status {
+        .publication-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .publication-status-text {
             font-style: italic;
             color: var(--text-secondary);
+            font-size: 0.95rem;
             margin-bottom: 0.5rem;
         }
         
-        .publication-title {
+        .publication-title-text {
             font-weight: 600;
             margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-size: 1.05rem;
+            line-height: 1.4;
         }
         
-        .publication-authors {
+        .publication-authors-text {
             margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-color);
         }
         
-        .publication-venue {
+        .publication-venue-text {
             color: var(--text-secondary);
+            font-size: 0.9rem;
         }
         
         .research-experience {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        
+        .research-experience:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
         }
         
         .research-experience-title {
             font-weight: 600;
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
+            color: var(--primary-color);
         }
         
         .research-experience-details {
             margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .research-role {
+            font-weight: 500;
+        }
+        
+        .research-date {
+            color: var(--text-secondary);
+        }
+        
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
         
         .award {
-            margin-bottom: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .award:hover {
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .award-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        
+        .award-icon i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        .award-info {
+            flex: 1;
+        }
+        
+        .award-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .award-details {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background-color: white;
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
         }
         
         @media (max-width: 768px) {
-            .container {
-                padding: 2rem 1.5rem;
+            header {
+                flex-direction: column;
+                text-align: center;
             }
             
-            h1 {
-                font-size: 1.8rem;
+            .profile-image {
+                margin: 0 auto 1.5rem;
             }
             
-            h2 {
-                font-size: 1.3rem;
+            .awards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .education-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .research-experience-details {
+                flex-direction: column;
+                gap: 0.3rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Cheng Zhang (Rylan Zhang)</h1>
-            <div class="contact">zhangcheng2122@jlu.edu.cn</div>
-        </header>
+    <div class="header-bg">
+        <div class="container">
+            <header>
+                <div class="profile-image">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <div class="profile-info">
+                    <h1>Cheng Zhang (Rylan Zhang)</h1>
+                    <div class="contact">
+                        <i class="fas fa-envelope"></i>
+                        zhangcheng2122@jlu.edu.cn
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+    
+    <div class="container main-content">
+        <div class="card">
+            <h2><i class="fas fa-bullseye"></i>Objective</h2>
+            <p>To pursue a Master's degree in Electrical Engineering, with a strong focus on advancing research in Multi-Modal Machine Learning, Computer Vision, and related cutting-edge AI fields. I am driven by a passion for developing innovative solutions that effectively bridge diverse data modalities and am eager to contribute to groundbreaking research with tangible real-world applications.</p>
+        </div>
         
-        <section>
-            <h2>Objective</h2>
-            <p>To pursue a Master's degree in Electrical Engineering at KAIST (Fall 2026), with a strong focus on advancing research in Multi-Modal Machine Learning, Computer Vision, and related cutting-edge AI fields. I am driven by a passion for developing innovative solutions that effectively bridge diverse data modalities and am eager to contribute to groundbreaking research with tangible real-world applications.</p>
-        </section>
-        
-        <section>
-            <h2>Education</h2>
+        <div class="card">
+            <h2><i class="fas fa-graduation-cap"></i>Education</h2>
             <div class="education-details">
-                <p><strong>BSc, Computer Science & Technology</strong> | Jilin University | September 2022 – June 2026</p>
-                <p>Average Score: 87.5/100</p>
-                <p>GPA: 3.52/4.0</p>
-                <p>Rank: 11/102</p>
+                <div class="education-header">
+                    <div class="education-degree">BSc, Computer Science & Technology</div>
+                    <div class="education-date">September 2022 – June 2026</div>
+                </div>
+                <p>Jilin University</p>
+                <div class="education-stats">
+                    <div class="stat-item">Average Score: 87.5/100</div>
+                    <div class="stat-item">GPA: 3.52/4.0</div>
+                    <div class="stat-item">Rank: 11/102</div>
+                </div>
             </div>
-        </section>
+        </div>
         
-        <section>
-            <h2>Research Interests</h2>
+        <div class="card">
+            <h2><i class="fas fa-lightbulb"></i>Research Interests</h2>
             <div class="research-interests">
                 <p>My research focuses on advancing the field of artificial intelligence through several interconnected areas. I am particularly interested in Multi-Modal Large Language Models, exploring how these systems can effectively integrate and process information across different modalities to enhance understanding and generation capabilities. My work in Computer Vision examines how machines perceive and interpret visual information, developing algorithms that can accurately recognize patterns and objects in complex environments. I also investigate Image Generation techniques, working to create more realistic and controllable visual outputs from textual descriptions or other input modalities. Additionally, my research in Affective Computing explores how AI systems can recognize, interpret, and respond to human emotions, bridging the gap between computational and emotional intelligence.</p>
             </div>
-        </section>
+        </div>
         
-        <section>
-            <h2>Publications</h2>
+        <div class="card">
+            <h2><i class="fas fa-book"></i>Publications</h2>
             
-            <div class="publication">
-                <div class="publication-status">Preparing for Submission, 2025</div>
-                <div class="publication-title">EmoArt: A Large-Scale, Fine-Grained Dataset of 56 Art Painting Categories Across Global Cultures for Emotion-Aware Analysis</div>
-                <div class="publication-authors">Cheng Zhang, HongXia Xie, Bin Wen, Wen-Huang Cheng.</div>
-                <div class="publication-venue">ACM Multimedia (Dataset Track) 2025.</div>
+            <div class="publication-item">
+                <div class="publication-status-text">Under Review, 2025</div>
+                <div class="publication-title-text">EmoArt : A Multidimensional Dataset for Emotion-Aware
+Artistic Generation</div>
+                <div class="publication-authors-text"><strong>Cheng Zhang</strong>, HongXia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng.</div>
+                <div class="publication-venue-text">ACM Multimedia (Dataset Track) 2025.</div>
             </div>
             
-            <div class="publication">
-                <div class="publication-status">Under Review, 2025</div>
-                <div class="publication-title">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal Large Language Model</div>
-                <div class="publication-authors">Hung-Jen Chen, Hongxia Xie, Cheng Zhang, Songhan Zuo, Chu-Jun Peng, Hong-Han Shuai, Yong Man Ro, Wen-Huang Cheng.</div>
-                <div class="publication-venue">International Conference on Computer Vision (ICCV) 2025.</div>
+            <div class="publication-item">
+                <div class="publication-status-text">Under Review, 2025</div>
+                <div class="publication-title-text">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal Large Language Model</div>
+                <div class="publication-authors-text">Hung-Jen Chen, Hongxia Xie, <strong>Cheng Zhang</strong>, Songhan Zuo, Chu-Jun Peng, Hong-Han Shuai, Yong Man Ro, Wen-Huang Cheng.</div>
+                <div class="publication-venue-text">International Conference on Computer Vision (ICCV) 2025.</div>
             </div>
             
-            <div class="publication">
-                <div class="publication-status">Under Review, 2025</div>
-                <div class="publication-title">Single Document Image Highlight Removal via A Large-Scale Real-World Dataset and A Location-Aware Network</div>
-                <div class="publication-authors">Lu Pan, Yu-Hsuan Huang, Hongxia Xie, Cheng Zhang, Hongwei Zhao, Hong-Han Shuai, Wen-Huang Cheng.</div>
-                <div class="publication-venue">ACM Multimedia (ACM MM) 2025.</div>
+            <div class="publication-item">
+                <div class="publication-status-text">Under Review, 2025</div>
+                <div class="publication-title-text">Single Document Image Highlight Removal via A Large-Scale Real-World Dataset and A Location-Aware Network</div>
+                <div class="publication-authors-text">Lu Pan, Yu-Hsuan Huang, Hongxia Xie, <strong>Cheng Zhang</strong>, Hongwei Zhao, Hong-Han Shuai, Wen-Huang Cheng.</div>
+                <div class="publication-venue-text">ACM Multimedia (ACM MM) 2025.</div>
             </div>
             
-            <div class="publication">
-                <div class="publication-status">Preparing for Submission, 2025</div>
-                <div class="publication-title">AmorisBench: A Comprehensive Multi-modal Dataset for Love-centric Question Answering</div>
-                <div class="publication-authors">Chu-Jun Peng, Hongxia Xie, Cheng Zhang, Wen-Huang Cheng.</div>
-                <div class="publication-venue">ACM Multimedia (Dataset Track) 2025.</div>
+            <div class="publication-item">
+                <div class="publication-status-text">Under Review, 2025</div>
+                <div class="publication-title-text">AmorisBench: A Comprehensive Multi-modal Dataset for Love-centric Question Answering</div>
+                <div class="publication-authors-text">Chu-Jun Peng, Hongxia Xie, <strong>Cheng Zhang</strong>, Wen-Huang Cheng.</div>
+                <div class="publication-venue-text">ACM Multimedia (Dataset Track) 2025.</div>
             </div>
-        </section>
+        </div>
         
-        <section>
-            <h2>Research Experience</h2>
+        <div class="card">
+            <h2><i class="fas fa-flask"></i>Research Experience</h2>
             
             <div class="research-experience">
                 <div class="research-experience-title">Affective Vision Computing (AVC) Lab, Jilin University</div>
-                <div class="research-experience-details">Research Assistant | 2024 – Present</div>
-                <div class="research-experience-details">Supervisor: Associate Professor Hongxia Xie</div>
+                <div class="research-experience-details">
+                    <div class="research-role">Research Assistant</div>
+                    <div class="research-date">2024 – Present</div>
+                </div>
+                <p>Supervisor: Associate Professor Hongxia Xie</p>
                 <p>As a core member of the Affective Vision Computing Lab, I contribute to cutting-edge projects in affective computing and multi-modal machine learning. My work involves developing innovative approaches to understand and model emotional responses in visual and textual data, collaborating with an interdisciplinary team of researchers to advance the field of emotion-aware artificial intelligence.</p>
             </div>
             
             <div class="research-experience">
                 <div class="research-experience-title">National Natural Science Foundation of China, Youth Project</div>
-                <div class="research-experience-details">Research on Emotion Hallucination Elimination Technology for Visual-Language Pre-training Models</div>
-                <div class="research-experience-details">Core Participant | January 2025 – Present</div>
+                <p>Research on Emotion Hallucination Elimination Technology for Visual-Language Pre-training Models</p>
+                <div class="research-experience-details">
+                    <div class="research-role">Core Participant</div>
+                    <div class="research-date">January 2025 – Present</div>
+                </div>
                 <p>I am actively involved in this foundational research project focused on addressing emotion hallucination issues in visual-language pre-training models. My contributions include developing methodologies to identify and mitigate instances where models incorrectly attribute emotional content that is not present in the source material, thereby improving the reliability and accuracy of emotion recognition in multimodal systems.</p>
             </div>
             
             <div class="research-experience">
                 <div class="research-experience-title">Jilin Provincial Department of Education, Excellent Youth Project</div>
-                <div class="research-experience-details">Research on Emotion Understanding Stability Technology for Multimodal Large Models</div>
-                <div class="research-experience-details">Core Participant | January 2025 – Present</div>
+                <p>Research on Emotion Understanding Stability Technology for Multimodal Large Models</p>
+                <div class="research-experience-details">
+                    <div class="research-role">Core Participant</div>
+                    <div class="research-date">January 2025 – Present</div>
+                </div>
                 <p>In this provincial-level research initiative, I work on enhancing the stability and consistency of emotion understanding capabilities in multimodal large models. The project aims to develop robust techniques that ensure reliable emotional interpretation across diverse contexts and input variations, contributing to more dependable affective computing applications.</p>
             </div>
-        </section>
+        </div>
         
-        <section>
-            <h2>Honors & Awards</h2>
+        <div class="card">
+            <h2><i class="fas fa-award"></i>Honors & Awards</h2>
             
-            <div class="award">
-                <p><strong>Undergraduate Scholarship</strong>, Jilin University, 2023-2024</p>
+            <div class="awards-grid">
+                <div class="award">
+                    <div class="award-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="award-info">
+                        <div class="award-title">Undergraduate Scholarship</div>
+                        <div class="award-details">Jilin University, 2023-2024</div>
+                    </div>
+                </div>
+                
+                <div class="award">
+                    <div class="award-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="award-info">
+                        <div class="award-title">Undergraduate Scholarship</div>
+                        <div class="award-details">Jilin University, 2022-2023</div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="award">
-                <p><strong>Undergraduate Scholarship</strong>, Jilin University, 2022-2023</p>
-            </div>
-        </section>
+        </div>
     </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Cheng Zhang - Academic Personal Homepage</p>
+        </div>
+    </footer>
 </body>
 </html>
