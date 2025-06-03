@@ -47,7 +47,9 @@
         }
         
         .profile-section {
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
             margin-bottom: 2rem;
         }
         
@@ -59,9 +61,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
             font-size: 48px;
             color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+        
+        .profile-info {
+            flex: 1;
         }
         
         h1 {
@@ -69,8 +75,39 @@
             font-size: 2.2rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: var(--primary-color);
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #5d6d7e 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease-in-out infinite alternate;
             letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(44, 62, 80, 0.1);
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            transition: width 0.8s ease;
+        }
+        
+        h1:hover::after {
+            width: 100%;
+        }
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
         }
         
         .contact {
@@ -101,11 +138,31 @@
             font-family: 'Crimson Text', serif;
             font-size: 1.4rem;
             font-weight: 600;
-            color: var(--primary-color);
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
             border-bottom: 1px solid var(--border-color);
             letter-spacing: -0.01em;
+            background: linear-gradient(120deg, #2c3e50 0%, #34495e 70%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            transition: width 0.4s ease;
+        }
+        
+        .section-title:hover::before {
+            width: 60px;
         }
         
         .section-content {
@@ -274,6 +331,12 @@
                 padding: 0 1.5rem;
             }
             
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            
             h1 {
                 font-size: 1.8rem;
             }
@@ -306,9 +369,11 @@
         <header class="header">
             <div class="profile-section">
                 <div class="profile-image">👨‍🎓</div>
-                <h1>Cheng Zhang (Rylan Zhang)</h1>
-                <div class="contact">
-                    <a href="mailto:zhangcheng2122@jlu.edu.cn">zhangcheng2122@jlu.edu.cn</a>
+                <div class="profile-info">
+                    <h1>Cheng Zhang (Rylan Zhang)</h1>
+                    <div class="contact">
+                        <a href="mailto:zhangcheng2122@jlu.edu.cn">zhangcheng2122@jlu.edu.cn</a>
+                    </div>
                 </div>
             </div>
         </header>
