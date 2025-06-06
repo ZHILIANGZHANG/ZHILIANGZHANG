@@ -136,6 +136,7 @@
         
         .section {
             margin-bottom: 3rem;
+            position: relative;
         }
         
         .section-title {
@@ -154,7 +155,6 @@
             transition: all 0.3s ease;
         }
         
-        /* 将原本 width: 30px 改为 60px（延长一倍），hover 时从 60px 变成 120px */
         .section-title::before {
             content: '';
             position: absolute;
@@ -166,7 +166,8 @@
             transition: width 0.4s ease;
         }
         
-        .section-title:hover::before {
+        /* 鼠标悬停在整个 .section 区域内时，标题下的横杠变长 */
+        .section:hover .section-title::before {
             width: 120px;
         }
         
