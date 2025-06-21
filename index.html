@@ -130,20 +130,22 @@
             flex: 1;
             padding: 3rem 3rem;
             overflow-y: auto;
+            /* Added for sticky nav positioning */
             position: relative; 
         }
 
         /* --- Sticky Navigation Bar --- */
         .main-nav {
             position: sticky;
-            top: 0; /* Changed: Sticks to the top of the container */
-            background-color: rgba(255, 255, 255, 0.95); /* Changed: Slightly more opaque */
+            top: -3rem; /* Compensate for main-content padding */
+            background-color: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             z-index: 10;
             padding: 0.75rem 0;
             margin-bottom: 2rem;
-            /* Removed negative margin */
+            margin-top: -3rem; /* Compensate for main-content padding */
+            padding-top: 0.75rem;
         }
 
         .main-nav ul {
@@ -161,23 +163,16 @@
             color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.2s ease;
-            padding: 0.25rem 0;
         }
 
-        .main-nav a:hover,
-        .main-nav a.active { /* Style for active link */
+        .main-nav a:hover {
             color: var(--accent-color);
             text-decoration: none;
         }
 
 
         .section {
-            padding-top: 1rem; /* Added padding to avoid content being hidden by nav */
-            margin-bottom: 2.5rem;
-        }
-
-        .section:first-of-type {
-            padding-top: 0; /* No extra padding for the first section */
+            margin-bottom: 3.5rem;
         }
         
         .section:last-child {
@@ -277,7 +272,6 @@
         .experience-date {
             color: var(--text-secondary);
             font-size: 0.9rem;
-            flex-shrink: 0;
         }
         
         .experience-supervisor {
@@ -311,12 +305,11 @@
         .item-meta {
             color: var(--text-secondary);
             font-size: 0.9rem;
-            flex-shrink: 0;
         }
         .item-subtitle {
              color: var(--text-secondary);
         }
-        
+
         /* --- Responsive Design --- */
         @media (max-width: 1024px) {
             .page-wrapper {
@@ -329,16 +322,13 @@
                 border-right: none;
                 border-bottom: 1px solid var(--border-color);
                 padding: 2rem;
-                overflow-y: visible;
             }
             .main-content {
                 padding: 2rem;
-                height: auto; 
-                overflow-y: visible;
             }
             .main-nav {
-                top: 0;
-                /* Removed negative margin */
+                top: -2rem;
+                margin-top: -2rem;
             }
         }
 
@@ -352,40 +342,6 @@
                 gap: 1rem;
                 flex-wrap: wrap;
             }
-            .profile-info {
-                text-align: left;
-            }
-            .profile-photo {
-                margin: 0 0 1.5rem 0;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                font-size: 15px;
-            }
-            .sidebar, .main-content {
-                padding: 1.5rem;
-            }
-            .main-nav {
-                top: 0;
-                 /* Removed negative margin */
-            }
-            .profile-name {
-                font-size: 1.5rem;
-            }
-            .section-title {
-                font-size: 1.3rem;
-            }
-            .section {
-                margin-bottom: 2.5rem;
-            }
-            .publication-title, .experience-title {
-                font-size: 1.05rem;
-            }
-             .main-nav ul {
-                gap: 0.5rem 1rem;
-            }
         }
 
     </style>
@@ -394,8 +350,7 @@
     <div class="page-wrapper">
         <aside class="sidebar">
             <div class="profile-photo">
-                <!-- Placeholder for photo, replace with your image file -->
-                <img src="photo (1).png" alt="Cheng Zhang Profile Photo" onerror="this.onerror=null;this.src='https://placehold.co/160x160/E2E8F0/2563EB?text=CZ';">
+                <img src="photo (1).png" alt="Cheng Zhang Profile Photo">
             </div>
             <div class="profile-info">
                 <h1 class="profile-name">Cheng Zhang (Rylan)</h1>
@@ -413,7 +368,6 @@
                 </li>
                 <li>
                     <a href="#" aria-label="Google Scholar">
-                         <!-- Changed: Reverted to the shield icon -->
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                         <span>Google Scholar</span>
                     </a>
@@ -555,38 +509,5 @@
 
         </main>
     </div>
-    <script>
-        // Script to highlight the current section in the navigation
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section');
-            const navLinks = document.querySelectorAll('.main-nav a');
-            // Select the main content area for scroll listening on larger screens
-            const scrollContainer = window.innerWidth > 1024 ? document.querySelector('.main-content') : window;
-
-            // Function to update active link
-            const updateActiveLink = () => {
-                let currentSectionId = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - (window.innerWidth > 1024 ? 100 : 80); // Offset for nav height
-                    if ( (scrollContainer.scrollTop || window.scrollY) >= sectionTop) {
-                        currentSectionId = section.id;
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentSectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            };
-            
-            // Listen for scroll events on the correct container
-            scrollContainer.addEventListener('scroll', updateActiveLink);
-            // Initial check
-            updateActiveLink(); 
-        });
-    </script>
 </body>
 </html>
