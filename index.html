@@ -136,14 +136,14 @@
         /* --- Sticky Navigation Bar --- */
         .main-nav {
             position: sticky;
-            top: -3rem; 
-            background-color: rgba(255, 255, 255, 0.85);
+            top: 0; /* Changed: Sticks to the top of the container */
+            background-color: rgba(255, 255, 255, 0.95); /* Changed: Slightly more opaque */
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             z-index: 10;
             padding: 0.75rem 0;
             margin-bottom: 2rem;
-            margin-top: -3rem;
+            /* Removed negative margin */
         }
 
         .main-nav ul {
@@ -172,7 +172,12 @@
 
 
         .section {
-            margin-bottom: 3.5rem;
+            padding-top: 1rem; /* Added padding to avoid content being hidden by nav */
+            margin-bottom: 2.5rem;
+        }
+
+        .section:first-of-type {
+            padding-top: 0; /* No extra padding for the first section */
         }
         
         .section:last-child {
@@ -332,8 +337,8 @@
                 overflow-y: visible;
             }
             .main-nav {
-                top: -2rem;
-                margin-top: -2rem;
+                top: 0;
+                /* Removed negative margin */
             }
         }
 
@@ -347,41 +352,39 @@
                 gap: 1rem;
                 flex-wrap: wrap;
             }
-            /* OPTIMIZATION: On mobile, left-align sidebar text for better readability */
             .profile-info {
                 text-align: left;
             }
             .profile-photo {
-                margin: 0 0 1.5rem 0; /* Align photo to the left */
+                margin: 0 0 1.5rem 0;
             }
         }
         
-        /* OPTIMIZATION: Added new breakpoint for smaller mobile phones */
         @media (max-width: 480px) {
             body {
-                font-size: 15px; /* Slightly smaller base font size */
+                font-size: 15px;
             }
             .sidebar, .main-content {
-                padding: 1.5rem; /* Reduce padding on smaller screens */
+                padding: 1.5rem;
             }
             .main-nav {
-                top: -1.5rem;
-                margin-top: -1.5rem;
+                top: 0;
+                 /* Removed negative margin */
             }
             .profile-name {
-                font-size: 1.5rem; /* Reduce name size */
+                font-size: 1.5rem;
             }
             .section-title {
-                font-size: 1.3rem; /* Reduce section title size */
+                font-size: 1.3rem;
             }
             .section {
-                margin-bottom: 2.5rem; /* Reduce space between sections */
+                margin-bottom: 2.5rem;
             }
             .publication-title, .experience-title {
                 font-size: 1.05rem;
             }
              .main-nav ul {
-                gap: 0.5rem 1rem; /* Tighter navigation links */
+                gap: 0.5rem 1rem;
             }
         }
 
@@ -392,7 +395,7 @@
         <aside class="sidebar">
             <div class="profile-photo">
                 <!-- Placeholder for photo, replace with your image file -->
-                <img src="photo (1).png" alt="Cheng Zhang Profile Photo" onerror="this.onerror=null;this.src='https://placehold.co/160x160/E2E8F0/2563EB?text=CZ';">
+                <img src="photo (1).png" onerror="this.onerror=null;this.src='https://placehold.co/160x160/E2E8F0/2563EB?text=CZ';">
             </div>
             <div class="profile-info">
                 <h1 class="profile-name">Cheng Zhang (Rylan)</h1>
@@ -410,8 +413,8 @@
                 </li>
                 <li>
                     <a href="#" aria-label="Google Scholar">
-                         <!-- OPTIMIZATION: Replaced shield icon with a more appropriate one for Google Scholar -->
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5l12-5.23L24 9.5l-5.242 4.269C17.548 11.249 14.978 9 12 9s-5.548 2.249-6.758 4.769zM12 10c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8z"/></svg>
+                         <!-- Changed: Reverted to the shield icon -->
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                         <span>Google Scholar</span>
                     </a>
                 </li>
@@ -557,23 +560,32 @@
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.section');
             const navLinks = document.querySelectorAll('.main-nav a');
+            // Select the main content area for scroll listening on larger screens
+            const scrollContainer = window.innerWidth > 1024 ? document.querySelector('.main-content') : window;
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href').substring(1) === entry.target.id) {
-                                link.classList.add('active');
-                            }
-                        });
+            // Function to update active link
+            const updateActiveLink = () => {
+                let currentSectionId = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - (window.innerWidth > 1024 ? 100 : 80); // Offset for nav height
+                    if ( (scrollContainer.scrollTop || window.scrollY) >= sectionTop) {
+                        currentSectionId = section.id;
                     }
                 });
-            }, { rootMargin: '-30% 0px -70% 0px' }); // Adjust rootMargin to highlight when section is roughly in the middle
 
-            sections.forEach(section => {
-                observer.observe(section);
-            });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+            
+            // Listen for scroll events on the correct container
+            scrollContainer.addEventListener('scroll', updateActiveLink);
+            // Initial check
+            updateActiveLink(); 
         });
     </script>
 </body>
