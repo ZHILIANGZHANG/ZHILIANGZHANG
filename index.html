@@ -1,592 +1,1025 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Cheng Zhang (Rylan Zhang) - Academic Homepage</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --font-sans: 'Inter', sans-serif;
-            --font-serif: 'Lora', serif;
-            --text-primary: #1a202c;
-            --text-secondary: #5A6472;
-            --accent-color: #2563EB;
-            --background-color: #F8F9FA;
-            --content-background: #FFFFFF;
-            --border-color: #E2E8F0;
-        }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    <meta charset="UTF-8" />
 
-        html {
-            scroll-behavior: smooth;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--background-color);
-            color: var(--text-primary);
-            line-height: 1.7;
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    <title>Cheng Zhang (Rylan Zhang) - Academic Homepage</title>
 
-        .page-wrapper {
-            display: flex;
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: var(--content-background);
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-        /* --- Sidebar --- */
-        .sidebar {
-            width: 320px;
-            padding: 3rem 2rem;
-            border-right: 1px solid var(--border-color);
-            background-color: #FDFDFD;
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-        }
-        
-        .profile-photo {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 0 0 4px var(--content-background), 0 0 0 5px var(--border-color);
-        }
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        .profile-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
-        .profile-info {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+    <style>
 
-        .profile-name {
-            font-family: var(--font-serif);
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
+        :root {
 
-        .profile-affiliation {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-links {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-        }
+            --font-sans: 'Inter', sans-serif;
 
-        .contact-links li a {
-            display: flex;
-            align-items: center;
-            padding: 0.6rem 0.75rem;
-            margin: 0.25rem 0;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            border-radius: 6px;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
+            --font-serif: 'Lora', serif;
 
-        .contact-links li a:hover {
-            background-color: #F1F5F9;
-            color: var(--text-primary);
-        }
+            --text-primary: #1a202c;
 
-        .contact-links svg {
-            width: 20px;
-            height: 20px;
-            margin-right: 1rem;
-            flex-shrink: 0;
-        }
+            --text-secondary: #5A6472;
 
-        /* --- Main Content --- */
-        .main-content {
-            flex: 1;
-            padding: 3rem 3rem;
-            overflow-y: auto;
-            position: relative; 
-        }
+            --accent-color: #2563EB;
 
-        /* --- Sticky Navigation Bar --- */
-        .main-nav {
-            position: sticky;
-            top: 0; /* Changed: Sticks to the top of the container */
-            background-color: rgba(255, 255, 255, 0.95); /* Changed: Slightly more opaque */
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 10;
-            padding: 0.75rem 0;
-            margin-bottom: 2rem;
-            /* Removed negative margin */
-        }
+            --background-color: #F8F9FA;
 
-        .main-nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: flex-start;
-            gap: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.75rem;
-        }
+            --content-background: #FFFFFF;
 
-        .main-nav a {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s ease;
-            padding: 0.25rem 0;
-        }
+            --border-color: #E2E8F0;
 
-        .main-nav a:hover,
-        .main-nav a.active { /* Style for active link */
-            color: var(--accent-color);
-            text-decoration: none;
-        }
+        }
 
 
-        .section {
-            padding-top: 1rem; /* Added padding to avoid content being hidden by nav */
-            margin-bottom: 2.5rem;
-        }
 
-        .section:first-of-type {
-            padding-top: 0; /* No extra padding for the first section */
-        }
-        
-        .section:last-child {
-            margin-bottom: 0;
-        }
+        *, *::before, *::after {
 
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--accent-color);
-        }
+            box-sizing: border-box;
 
-        .section-content p {
-            margin-bottom: 1rem;
-            text-align: justify;
-        }
+            margin: 0;
 
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
+            padding: 0;
 
-        a:hover {
-            text-decoration: underline;
-        }
+        }
 
-        /* Publications Section */
-        .publication-item {
-            margin-bottom: 2rem;
-        }
-        
-        .publication-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-        
-        .publication-authors {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.25rem;
-        }
 
-        .publication-authors strong {
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-        
-        .publication-venue {
-            font-style: italic;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-        
-        .publication-status {
-            display: inline-block;
-            background-color: #E0E7FF;
-            color: #4338CA;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.1rem 0.5rem;
-            border-radius: 10px;
-            margin-left: 0.5rem;
-        }
 
-        /* Experience Section */
-        .experience-item {
-            margin-bottom: 2rem;
-        }
-        
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-        
-        .experience-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        
-        .experience-date {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-        
-        .experience-supervisor {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            font-style: italic;
-        }
-        
-        /* Education & Awards */
-        .item-list {
-            display: grid;
-            gap: 1rem;
-        }
+        html {
 
-        .list-item {
-            padding-bottom: 1rem;
-            border-bottom: 1px dashed var(--border-color);
-        }
-        .list-item:last-child {
-            border-bottom: none;
-        }
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-        .item-title {
-            font-weight: 500;
-        }
-        .item-meta {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-        .item-subtitle {
-             color: var(--text-secondary);
-        }
-        
-        /* --- Responsive Design --- */
-        @media (max-width: 1024px) {
-            .page-wrapper {
-                flex-direction: column;
-            }
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: static;
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
-                padding: 2rem;
-                overflow-y: visible;
-            }
-            .main-content {
-                padding: 2rem;
-                height: auto; 
-                overflow-y: visible;
-            }
-            .main-nav {
-                top: 0;
-                /* Removed negative margin */
-            }
-        }
+            scroll-behavior: smooth;
 
-        @media (max-width: 768px) {
-            .experience-header, .item-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.2rem;
-            }
-            .main-nav ul {
-                gap: 1rem;
-                flex-wrap: wrap;
-            }
-            .profile-info {
-                text-align: left;
-            }
-            .profile-photo {
-                margin: 0 0 1.5rem 0;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                font-size: 15px;
-            }
-            .sidebar, .main-content {
-                padding: 1.5rem;
-            }
-            .main-nav {
-                top: 0;
-                 /* Removed negative margin */
-            }
-            .profile-name {
-                font-size: 1.5rem;
-            }
-            .section-title {
-                font-size: 1.3rem;
-            }
-            .section {
-                margin-bottom: 2.5rem;
-            }
-            .publication-title, .experience-title {
-                font-size: 1.05rem;
-            }
-             .main-nav ul {
-                gap: 0.5rem 1rem;
-            }
-        }
+        }
 
-    </style>
+
+
+        body {
+
+            font-family: var(--font-sans);
+
+            background-color: var(--background-color);
+
+            color: var(--text-primary);
+
+            line-height: 1.7;
+
+            font-size: 16px;
+
+            -webkit-font-smoothing: antialiased;
+
+            -moz-osx-font-smoothing: grayscale;
+
+        }
+
+
+
+        .page-wrapper {
+
+            display: flex;
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            background-color: var(--content-background);
+
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+
+        }
+
+
+
+        /* --- Sidebar --- */
+
+        .sidebar {
+
+            width: 320px;
+
+            padding: 3rem 2rem;
+
+            border-right: 1px solid var(--border-color);
+
+            background-color: #FDFDFD;
+
+            position: sticky;
+
+            top: 0;
+
+            height: 100vh;
+
+            overflow-y: auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            flex-shrink: 0;
+
+        }
+
+        
+
+        .profile-photo {
+
+            width: 160px;
+
+            height: 160px;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            margin: 0 auto 1.5rem;
+
+            box-shadow: 0 0 0 4px var(--content-background), 0 0 0 5px var(--border-color);
+
+        }
+
+
+
+        .profile-photo img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+
+        .profile-info {
+
+            text-align: center;
+
+            margin-bottom: 2rem;
+
+        }
+
+
+
+        .profile-name {
+
+            font-family: var(--font-serif);
+
+            font-size: 1.75rem;
+
+            font-weight: 600;
+
+            margin-bottom: 0.25rem;
+
+        }
+
+
+
+        .profile-affiliation {
+
+            color: var(--text-secondary);
+
+            font-size: 0.95rem;
+
+            margin-bottom: 1.5rem;
+
+        }
+
+        
+
+        .contact-links {
+
+            list-style: none;
+
+            padding: 0;
+
+            text-align: left;
+
+        }
+
+
+
+        .contact-links li a {
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0.6rem 0.75rem;
+
+            margin: 0.25rem 0;
+
+            color: var(--text-secondary);
+
+            text-decoration: none;
+
+            font-weight: 500;
+
+            border-radius: 6px;
+
+            transition: background-color 0.2s ease, color 0.2s ease;
+
+        }
+
+
+
+        .contact-links li a:hover {
+
+            background-color: #F1F5F9;
+
+            color: var(--text-primary);
+
+        }
+
+
+
+        .contact-links svg {
+
+            width: 20px;
+
+            height: 20px;
+
+            margin-right: 1rem;
+
+            flex-shrink: 0;
+
+        }
+
+
+
+        /* --- Main Content --- */
+
+        .main-content {
+
+            flex: 1;
+
+            padding: 3rem 3rem;
+
+            overflow-y: auto;
+
+            /* Added for sticky nav positioning */
+
+            position: relative; 
+
+        }
+
+
+
+        /* --- Sticky Navigation Bar --- */
+
+        .main-nav {
+
+            position: sticky;
+
+            top: -3rem; /* Compensate for main-content padding */
+
+            background-color: rgba(255, 255, 255, 0.85);
+
+            backdrop-filter: blur(8px);
+
+            -webkit-backdrop-filter: blur(8px);
+
+            z-index: 10;
+
+            padding: 0.75rem 0;
+
+            margin-bottom: 2rem;
+
+            margin-top: -3rem; /* Compensate for main-content padding */
+
+            padding-top: 0.75rem;
+
+        }
+
+
+
+        .main-nav ul {
+
+            list-style: none;
+
+            display: flex;
+
+            justify-content: flex-start;
+
+            gap: 1.5rem;
+
+            border-bottom: 1px solid var(--border-color);
+
+            padding-bottom: 0.75rem;
+
+        }
+
+
+
+        .main-nav a {
+
+            font-size: 0.9rem;
+
+            font-weight: 600;
+
+            color: var(--text-secondary);
+
+            text-decoration: none;
+
+            transition: color 0.2s ease;
+
+        }
+
+
+
+        .main-nav a:hover {
+
+            color: var(--accent-color);
+
+            text-decoration: none;
+
+        }
+
+
+
+
+
+        .section {
+
+            margin-bottom: 3.5rem;
+
+        }
+
+        
+
+        .section:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
+
+        .section-title {
+
+            font-family: var(--font-serif);
+
+            font-size: 1.5rem;
+
+            font-weight: 600;
+
+            margin-bottom: 1.5rem;
+
+            padding-bottom: 0.5rem;
+
+            border-bottom: 1px solid var(--border-color);
+
+            position: relative;
+
+        }
+
+        
+
+        .section-title::after {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: -1px;
+
+            left: 0;
+
+            width: 50px;
+
+            height: 2px;
+
+            background-color: var(--accent-color);
+
+        }
+
+
+
+        .section-content p {
+
+            margin-bottom: 1rem;
+
+            text-align: justify;
+
+        }
+
+
+
+        a {
+
+            color: var(--accent-color);
+
+            text-decoration: none;
+
+            font-weight: 500;
+
+        }
+
+
+
+        a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+
+        /* Publications Section */
+
+        .publication-item {
+
+            margin-bottom: 2rem;
+
+        }
+
+        
+
+        .publication-title {
+
+            font-weight: 600;
+
+            font-size: 1.1rem;
+
+            margin-bottom: 0.25rem;
+
+        }
+
+        
+
+        .publication-authors {
+
+            font-size: 0.95rem;
+
+            color: var(--text-secondary);
+
+            margin-bottom: 0.25rem;
+
+        }
+
+
+
+        .publication-authors strong {
+
+            color: var(--text-primary);
+
+            font-weight: 500;
+
+        }
+
+        
+
+        .publication-venue {
+
+            font-style: italic;
+
+            color: var(--text-secondary);
+
+            font-size: 0.95rem;
+
+        }
+
+        
+
+        .publication-status {
+
+            display: inline-block;
+
+            background-color: #E0E7FF;
+
+            color: #4338CA;
+
+            font-size: 0.75rem;
+
+            font-weight: 600;
+
+            padding: 0.1rem 0.5rem;
+
+            border-radius: 10px;
+
+            margin-left: 0.5rem;
+
+        }
+
+
+
+        /* Experience Section */
+
+        .experience-item {
+
+            margin-bottom: 2rem;
+
+        }
+
+        
+
+        .experience-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: baseline;
+
+        }
+
+        
+
+        .experience-title {
+
+            font-weight: 600;
+
+            font-size: 1.1rem;
+
+        }
+
+        
+
+        .experience-date {
+
+            color: var(--text-secondary);
+
+            font-size: 0.9rem;
+
+        }
+
+        
+
+        .experience-supervisor {
+
+            font-size: 0.95rem;
+
+            color: var(--text-secondary);
+
+            margin-bottom: 0.5rem;
+
+            font-style: italic;
+
+        }
+
+        
+
+        /* Education & Awards */
+
+        .item-list {
+
+            display: grid;
+
+            gap: 1rem;
+
+        }
+
+
+
+        .list-item {
+
+            padding-bottom: 1rem;
+
+            border-bottom: 1px dashed var(--border-color);
+
+        }
+
+        .list-item:last-child {
+
+            border-bottom: none;
+
+        }
+
+        .item-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: baseline;
+
+        }
+
+        .item-title {
+
+            font-weight: 500;
+
+        }
+
+        .item-meta {
+
+            color: var(--text-secondary);
+
+            font-size: 0.9rem;
+
+        }
+
+        .item-subtitle {
+
+             color: var(--text-secondary);
+
+        }
+
+
+
+        /* --- Responsive Design --- */
+
+        @media (max-width: 1024px) {
+
+            .page-wrapper {
+
+                flex-direction: column;
+
+            }
+
+            .sidebar {
+
+                width: 100%;
+
+                height: auto;
+
+                position: static;
+
+                border-right: none;
+
+                border-bottom: 1px solid var(--border-color);
+
+                padding: 2rem;
+
+            }
+
+            .main-content {
+
+                padding: 2rem;
+
+            }
+
+            .main-nav {
+
+                top: -2rem;
+
+                margin-top: -2rem;
+
+            }
+
+        }
+
+
+
+        @media (max-width: 768px) {
+
+            .experience-header, .item-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 0.2rem;
+
+            }
+
+            .main-nav ul {
+
+                gap: 1rem;
+
+                flex-wrap: wrap;
+
+            }
+
+        }
+
+
+
+    </style>
+
 </head>
+
 <body>
-    <div class="page-wrapper">
-        <aside class="sidebar">
-            <div class="profile-photo">
-                <!-- Placeholder for photo, replace with your image file -->
-                <img src="photo (1).png" onerror="this.onerror=null;this.src='https://placehold.co/160x160/E2E8F0/2563EB?text=CZ';">
-            </div>
-            <div class="profile-info">
-                <h1 class="profile-name">Cheng Zhang (Rylan)</h1>
-                <p class="profile-affiliation">
-                    Undergraduate Researcher<br>
-                    Jilin University
-                </p>
-            </div>
-            <ul class="contact-links">
-                <li>
-                    <a href="mailto:zhangcheng2122@mails.jlu.edu.cn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        <span>Email</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" aria-label="Google Scholar">
-                         <!-- Changed: Reverted to the shield icon -->
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                        <span>Google Scholar</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" aria-label="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        <span>GitHub</span>
-                    </a>
-                </li>
-                 <li>
-                    <a href="#" aria-label="LinkedIn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                        <span>LinkedIn</span>
-                    </a>
-                </li>
-            </ul>
-        </aside>
 
-        <main class="main-content">
-            
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#about">About Me</a></li>
-                    <li><a href="#publications">Publications</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#awards">Honors & Awards</a></li>
-                </ul>
-            </nav>
+    <div class="page-wrapper">
 
-            <section id="about" class="section">
-                <h2 class="section-title">About Me</h2>
-                <div class="section-content">
-                    <p>I am an undergraduate researcher at Jilin University, passionate about advancing artificial intelligence. My research centers on the intersection of Multi-Modal Large Language Models, Computer Vision, and Affective Computing.</p>
-                    <p>I am driven by the challenge of building systems that can holistically perceive, reason, and interact with the world. My work involves creating models that seamlessly integrate diverse data modalities, exploring how machines can achieve a deeper understanding of visual information, and ultimately bridging the gap between computational and emotional intelligence.</p>
-                </div>
-            </section>
+        <aside class="sidebar">
 
-            <section id="publications" class="section">
-                <h2 class="section-title">Publications</h2>
-                <div class="section-content">
-                    <article class="publication-item">
-                        <div class="publication-title">EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation</div>
-                        <div class="publication-authors"><strong>Cheng Zhang</strong>, HongXia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng</div>
-                        <div class="publication-venue">
-                            <span>ACM Multimedia (Dataset Track) 2025</span>
-                            <span class="publication-status">Under Review</span>
-                        </div>
-                    </article>
-                    <article class="publication-item">
-                        <div class="publication-title">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal Large Language Model</div>
-                        <div class="publication-authors">Hung-Jen Chen, Hongxia Xie, <strong>Cheng Zhang</strong>, Songhan Zuo, Chu-Jun Peng, Hong-Han Shuai, Yong Man Ro, Wen-Huang Cheng</div>
-                        <div class="publication-venue">
-                           <span>International Conference on Computer Vision (ICCV) 2025</span>
-                           <span class="publication-status">Under Review</span>
-                        </div>
-                    </article>
-                    <article class="publication-item">
-                        <div class="publication-title">Single Document Image Highlight Removal via A Large-Scale Real-World Dataset and A Location-Aware Network</div>
-                        <div class="publication-authors">Lu Pan, Yu-Hsuan Huang, Hongxia Xie, <strong>Cheng Zhang</strong>, Hongwei Zhao, Hong-Han Shuai, Wen-Huang Cheng</div>
-                        <div class="publication-venue">
-                            <span>ACM Multimedia (ACM MM) 2025</span>
-                            <span class="publication-status">Under Review</span>
-                        </div>
-                    </article>
-                    <article class="publication-item">
-                        <div class="publication-title">AmorisBench: A Comprehensive Multi-modal Dataset for Love-centric Question Answering</div>
-                        <div class="publication-authors">Chu-Jun Peng, Hongxia Xie, <strong>Cheng Zhang</strong>, Wen-Huang Cheng</div>
-                        <div class="publication-venue">
-                            <span>ACM Multimedia (Dataset Track) 2025</span>
-                            <span class="publication-status">Under Review</span>
-                        </div>
-                    </article>
-                </div>
-            </section>
-            
-            <section id="experience" class="section">
-                <h2 class="section-title">Research Experience</h2>
-                <div class="section-content">
-                     <article class="experience-item">
-                        <div class="experience-header">
-                            <div class="experience-title">Affective Vision Computing (AVC) Lab, Jilin University</div>
-                            <div class="experience-date">2024 – Present</div>
-                        </div>
-                        <div class="experience-supervisor">Role: Research Assistant | Supervisor: A/Prof. Hongxia Xie</div>
-                        <p>Contributing to projects in affective computing and multi-modal machine learning. Developing novel methods to understand and model emotional responses from visual and textual data.</p>
-                    </article>
-                    <article class="experience-item">
-                        <div class="experience-header">
-                             <div class="experience-title">National & Provincial Research Projects</div>
-                             <div class="experience-date">Jan 2025 – Present</div>
-                        </div>
-                         <div class="experience-supervisor">Role: Participant</div>
-                        <p>Participating in two key projects: (1) A National Natural Science Foundation Youth Project on eliminating emotion hallucination in V-L models, and (2) A Jilin Provincial Excellent Youth Project on enhancing emotion understanding stability in multimodal large models.</p>
-                    </article>
-                </div>
-            </section>
-            
-            <section id="education" class="section">
-                <h2 class="section-title">Education</h2>
-                <div class="section-content item-list">
-                    <div class="list-item">
-                        <div class="item-header">
-                            <div class="item-title">Jilin University</div>
-                            <div class="item-meta">2022 – 2026 (Expected)</div>
-                        </div>
-                        <div class="item-subtitle">B.Sc. in Computer Science & Technology</div>
-                        <div class="item-subtitle" style="font-size: 0.9rem;">GPA: 3.54/4.0 | Rank: 7/102</div>
-                    </div>
-                </div>
-            </section>
+            <div class="profile-photo">
 
-            <section id="awards" class="section">
-                <h2 class="section-title">Honors & Awards</h2>
-                 <div class="section-content item-list">
-                    <div class="list-item">
-                        <div class="item-header">
-                            <div class="item-title">Undergraduate Scholarship</div>
-                            <div class="item-meta">2023 – 2024</div>
-                        </div>
-                        <div class="item-subtitle">Jilin University</div>
-                    </div>
-                     <div class="list-item">
-                        <div class="item-header">
-                            <div class="item-title">Undergraduate Scholarship</div>
-                            <div class="item-meta">2022 – 2023</div>
-                        </div>
-                        <div class="item-subtitle">Jilin University</div>
-                    </div>
-                </div>
-            </section>
-            
-            <footer>
-                <p style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
-                    Last updated: June 2025
-                </p>
-            </footer>
+                <img src="photo (1).png" alt="Cheng Zhang Profile Photo">
 
-        </main>
-    </div>
-    <script>
-        // Script to highlight the current section in the navigation
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section');
-            const navLinks = document.querySelectorAll('.main-nav a');
-            // Select the main content area for scroll listening on larger screens
-            const scrollContainer = window.innerWidth > 1024 ? document.querySelector('.main-content') : window;
+            </div>
 
-            // Function to update active link
-            const updateActiveLink = () => {
-                let currentSectionId = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - (window.innerWidth > 1024 ? 100 : 80); // Offset for nav height
-                    if ( (scrollContainer.scrollTop || window.scrollY) >= sectionTop) {
-                        currentSectionId = section.id;
-                    }
-                });
+            <div class="profile-info">
 
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentSectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            };
-            
-            // Listen for scroll events on the correct container
-            scrollContainer.addEventListener('scroll', updateActiveLink);
-            // Initial check
-            updateActiveLink(); 
-        });
-    </script>
+                <h1 class="profile-name">Cheng Zhang (Rylan)</h1>
+
+                <p class="profile-affiliation">
+
+                    Undergraduate Researcher<br>
+
+                    Jilin University
+
+                </p>
+
+            </div>
+
+            <ul class="contact-links">
+
+                <li>
+
+                    <a href="mailto:zhangcheng2122@mails.jlu.edu.cn">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+
+                        <span>Email</span>
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#" aria-label="Google Scholar">
+
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+
+                        <span>Google Scholar</span>
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#" aria-label="GitHub">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+
+                        <span>GitHub</span>
+
+                    </a>
+
+                </li>
+
+                 <li>
+
+                    <a href="#" aria-label="LinkedIn">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+
+                        <span>LinkedIn</span>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </aside>
+
+
+
+        <main class="main-content">
+
+            
+
+            <nav class="main-nav">
+
+                <ul>
+
+                    <li><a href="#about">About Me</a></li>
+
+                    <li><a href="#publications">Publications</a></li>
+
+                    <li><a href="#experience">Experience</a></li>
+
+                    <li><a href="#education">Education</a></li>
+
+                    <li><a href="#awards">Honors & Awards</a></li>
+
+                </ul>
+
+            </nav>
+
+
+
+            <section id="about" class="section">
+
+                <h2 class="section-title">About Me</h2>
+
+                <div class="section-content">
+
+                    <p>I am an undergraduate researcher at Jilin University, passionate about advancing artificial intelligence. My research centers on the intersection of Multi-Modal Large Language Models, Computer Vision, and Affective Computing.</p>
+
+                    <p>I am driven by the challenge of building systems that can holistically perceive, reason, and interact with the world. My work involves creating models that seamlessly integrate diverse data modalities, exploring how machines can achieve a deeper understanding of visual information, and ultimately bridging the gap between computational and emotional intelligence.</p>
+
+                </div>
+
+            </section>
+
+
+
+            <section id="publications" class="section">
+
+                <h2 class="section-title">Publications</h2>
+
+                <div class="section-content">
+
+                    <article class="publication-item">
+
+                        <div class="publication-title">EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation</div>
+
+                        <div class="publication-authors"><strong>Cheng Zhang</strong>, HongXia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng</div>
+
+                        <div class="publication-venue">
+
+                            <span>ACM Multimedia (Dataset Track) 2025</span>
+
+                            <span class="publication-status">Under Review</span>
+
+                        </div>
+
+                    </article>
+
+                    <article class="publication-item">
+
+                        <div class="publication-title">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal Large Language Model</div>
+
+                        <div class="publication-authors">Hung-Jen Chen, Hongxia Xie, <strong>Cheng Zhang</strong>, Songhan Zuo, Chu-Jun Peng, Hong-Han Shuai, Yong Man Ro, Wen-Huang Cheng</div>
+
+                        <div class="publication-venue">
+
+                           <span>International Conference on Computer Vision (ICCV) 2025</span>
+
+                           <span class="publication-status">Under Review</span>
+
+                        </div>
+
+                    </article>
+
+                    <article class="publication-item">
+
+                        <div class="publication-title">Single Document Image Highlight Removal via A Large-Scale Real-World Dataset and A Location-Aware Network</div>
+
+                        <div class="publication-authors">Lu Pan, Yu-Hsuan Huang, Hongxia Xie, <strong>Cheng Zhang</strong>, Hongwei Zhao, Hong-Han Shuai, Wen-Huang Cheng</div>
+
+                        <div class="publication-venue">
+
+                            <span>ACM Multimedia (ACM MM) 2025</span>
+
+                            <span class="publication-status">Under Review</span>
+
+                        </div>
+
+                    </article>
+
+                    <article class="publication-item">
+
+                        <div class="publication-title">AmorisBench: A Comprehensive Multi-modal Dataset for Love-centric Question Answering</div>
+
+                        <div class="publication-authors">Chu-Jun Peng, Hongxia Xie, <strong>Cheng Zhang</strong>, Wen-Huang Cheng</div>
+
+                        <div class="publication-venue">
+
+                            <span>ACM Multimedia (Dataset Track) 2025</span>
+
+                            <span class="publication-status">Under Review</span>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+            
+
+            <section id="experience" class="section">
+
+                <h2 class="section-title">Research Experience</h2>
+
+                <div class="section-content">
+
+                     <article class="experience-item">
+
+                        <div class="experience-header">
+
+                            <div class="experience-title">Affective Vision Computing (AVC) Lab, Jilin University</div>
+
+                            <div class="experience-date">2024 – Present</div>
+
+                        </div>
+
+                        <div class="experience-supervisor">Role: Research Assistant | Supervisor: A/Prof. Hongxia Xie</div>
+
+                        <p>Contributing to projects in affective computing and multi-modal machine learning. Developing novel methods to understand and model emotional responses from visual and textual data.</p>
+
+                    </article>
+
+                    <article class="experience-item">
+
+                        <div class="experience-header">
+
+                             <div class="experience-title">National & Provincial Research Projects</div>
+
+                             <div class="experience-date">Jan 2025 – Present</div>
+
+                        </div>
+
+                         <div class="experience-supervisor">Role: Participant</div>
+
+                        <p>Participating in two key projects: (1) A National Natural Science Foundation Youth Project on eliminating emotion hallucination in V-L models, and (2) A Jilin Provincial Excellent Youth Project on enhancing emotion understanding stability in multimodal large models.</p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+            
+
+            <section id="education" class="section">
+
+                <h2 class="section-title">Education</h2>
+
+                <div class="section-content item-list">
+
+                    <div class="list-item">
+
+                        <div class="item-header">
+
+                            <div class="item-title">Jilin University</div>
+
+                            <div class="item-meta">2022 – 2026 (Expected)</div>
+
+                        </div>
+
+                        <div class="item-subtitle">B.Sc. in Computer Science & Technology</div>
+
+                        <div class="item-subtitle" style="font-size: 0.9rem;">GPA: 3.54/4.0 | Rank: 7/102</div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <section id="awards" class="section">
+
+                <h2 class="section-title">Honors & Awards</h2>
+
+                 <div class="section-content item-list">
+
+                    <div class="list-item">
+
+                        <div class="item-header">
+
+                            <div class="item-title">Undergraduate Scholarship</div>
+
+                            <div class="item-meta">2023 – 2024</div>
+
+                        </div>
+
+                        <div class="item-subtitle">Jilin University</div>
+
+                    </div>
+
+                     <div class="list-item">
+
+                        <div class="item-header">
+
+                            <div class="item-title">Undergraduate Scholarship</div>
+
+                            <div class="item-meta">2022 – 2023</div>
+
+                        </div>
+
+                        <div class="item-subtitle">Jilin University</div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            
+
+            <footer>
+
+                <p style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+
+                    Last updated: June 2025
+
+                </p>
+
+            </footer>
+
+
+
+        </main>
+
+    </div>
+
 </body>
+
 </html>
