@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Cheng Zhang (Rylan Zhang) - Academic Homepage</title>
+    <title>Cheng Zhang (Rylan) - Academic Homepage</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --font-sans: 'Inter', sans-serif;
-            --font-serif: 'Lora', serif;
-            --text-primary: #1a202c;
-            --text-secondary: #5A6472;
-            --accent-color: #2563EB;
-            --background-color: #F8F9FA;
+            --font-title: 'Poppins', sans-serif;
+            --text-primary: #334155;
+            --text-secondary: #64748b;
+            --accent-color: #3b82f6;
+            --accent-gradient: linear-gradient(45deg, #3b82f6, #818cf8);
+            --background-color: #f1f5f9;
             --content-background: #FFFFFF;
-            --border-color: #E2E8F0;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --card-hover-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
         }
 
         *, *::before, *::after {
@@ -41,84 +44,88 @@
 
         .page-wrapper {
             display: flex;
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1280px;
+            margin: 2rem auto;
             background-color: var(--content-background);
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            border-radius: 12px;
+            overflow: hidden;
         }
 
         /* --- Sidebar --- */
         .sidebar {
-            width: 320px;
-            padding: 3rem 2rem;
+            width: 340px;
+            padding: 2.5rem;
             border-right: 1px solid var(--border-color);
-            background-color: #FDFDFD;
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            overflow-y: auto;
+            background-color: #f8fafc;
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
+            align-items: center;
+            text-align: center;
         }
         
         .profile-photo {
-            width: 160px;
-            height: 200px;
-            overflow: hidden;
-            margin: 0 auto 1.5rem;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
         .profile-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
         .profile-info {
-            text-align: center;
             margin-bottom: 2rem;
         }
 
         .profile-name {
-            font-family: var(--font-serif);
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
+            font-family: var(--font-title);
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
         }
 
         .profile-affiliation {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.5;
         }
         
         .contact-links {
             list-style: none;
-            padding: 0;
+            width: 100%;
             text-align: left;
         }
 
         .contact-links li a {
             display: flex;
             align-items: center;
-            padding: 0.6rem 0.75rem;
-            margin: 0.25rem 0;
+            padding: 0.75rem 1rem;
+            margin: 0.35rem 0;
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
-            border-radius: 6px;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            border-radius: 8px;
+            transition: all 0.2s ease;
         }
 
         .contact-links li a:hover {
-            background-color: #F1F5F9;
-            color: var(--text-primary);
+            background-color: #eef2ff;
+            color: var(--accent-color);
+            transform: translateY(-2px);
         }
 
         .contact-links svg {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             margin-right: 1rem;
             flex-shrink: 0;
         }
@@ -126,33 +133,29 @@
         /* --- Main Content --- */
         .main-content {
             flex: 1;
-            padding: 3rem 3rem;
+            padding: 3rem 4rem;
             overflow-y: auto;
-            /* Added for sticky nav positioning */
-            position: relative; 
         }
 
         /* --- Sticky Navigation Bar --- */
         .main-nav {
             position: sticky;
-            top: -3rem; /* Compensate for main-content padding */
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 10;
-            padding: 0.75rem 0;
-            margin-bottom: 2rem;
-            margin-top: -3rem; /* Compensate for main-content padding */
-            padding-top: 0.75rem;
+            padding: 1rem 0;
+            margin-bottom: 2.5rem;
         }
 
         .main-nav ul {
             list-style: none;
             display: flex;
             justify-content: flex-start;
-            gap: 1.5rem;
+            gap: 0.5rem;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.75rem;
+            padding-bottom: 1rem;
         }
 
         .main-nav a {
@@ -160,17 +163,23 @@
             font-weight: 600;
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.2s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            transition: all 0.3s ease;
         }
 
         .main-nav a:hover {
-            color: var(--accent-color);
-            text-decoration: none;
+            color: var(--content-background);
+            background-color: var(--accent-color);
+        }
+        
+        .main-nav a.active { /* For JS scroll spying */
+             color: var(--content-background);
+             background: var(--accent-gradient);
         }
 
-
         .section {
-            margin-bottom: 3.5rem;
+            margin-bottom: 4rem;
         }
         
         .section:last-child {
@@ -178,23 +187,24 @@
         }
 
         .section-title {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
+            font-family: var(--font-title);
+            font-size: 1.75rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
             position: relative;
+            padding-left: 1.5rem;
         }
         
-        .section-title::after {
+        .section-title::before {
             content: '';
             position: absolute;
-            bottom: -1px;
             left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--accent-color);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 28px;
+            background: var(--accent-gradient);
+            border-radius: 3px;
         }
 
         .section-content p {
@@ -206,27 +216,38 @@
             color: var(--accent-color);
             text-decoration: none;
             font-weight: 500;
+            transition: color 0.2s;
         }
 
         a:hover {
+            color: #1d4ed8;
             text-decoration: underline;
         }
 
-        /* Publications Section */
-        .publication-item {
-            margin-bottom: 2rem;
+        /* Card-based item styling */
+        .card {
+            background: var(--content-background);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
-        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
         .publication-title {
             font-weight: 600;
             font-size: 1.1rem;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.35rem;
         }
         
         .publication-authors {
             font-size: 0.95rem;
             color: var(--text-secondary);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.35rem;
         }
 
         .publication-authors strong {
@@ -242,76 +263,58 @@
         
         .publication-status {
             display: inline-block;
-            background-color: #E0E7FF;
-            color: #4338CA;
+            background-color: #e0e7ff;
+            color: #4338ca;
             font-size: 0.75rem;
             font-weight: 600;
-            padding: 0.1rem 0.5rem;
-            border-radius: 10px;
-            margin-left: 0.5rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            margin-left: 0.75rem;
         }
 
-        /* Experience Section */
-        .experience-item {
-            margin-bottom: 2rem;
-        }
-        
-        .experience-header {
+        .experience-header, .item-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
+            margin-bottom: 0.25rem;
         }
         
-        .experience-title {
+        .experience-title, .item-title {
             font-weight: 600;
             font-size: 1.1rem;
+            color: var(--text-primary);
         }
         
-        .experience-date {
+        .experience-date, .item-meta {
             color: var(--text-secondary);
             font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-left: 1rem;
         }
         
-        .experience-supervisor {
+        .experience-supervisor, .item-subtitle {
             font-size: 0.95rem;
             color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            font-style: italic;
+            margin-bottom: 0.75rem;
         }
         
-        /* Education & Awards */
-        .item-list {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .list-item {
-            padding-bottom: 1rem;
-            border-bottom: 1px dashed var(--border-color);
-        }
-        .list-item:last-child {
-            border-bottom: none;
-        }
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-        .item-title {
-            font-weight: 500;
-        }
-        .item-meta {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
         .item-subtitle {
-             color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .item-subtitle svg {
+            width: 16px;
+            height: 16px;
         }
 
         /* --- Responsive Design --- */
-        @media (max-width: 1024px) {
+        @media (max-width: 1200px) {
             .page-wrapper {
                 flex-direction: column;
+                margin: 0;
+                border-radius: 0;
             }
             .sidebar {
                 width: 100%;
@@ -322,26 +325,36 @@
                 padding: 2rem;
             }
             .main-content {
-                padding: 2rem;
+                padding: 2.5rem;
             }
             .main-nav {
-                top: -2rem;
-                margin-top: -2rem;
+                top: 0;
+                margin-bottom: 2rem;
             }
         }
 
         @media (max-width: 768px) {
+            .main-content {
+                padding: 2rem 1.5rem;
+            }
             .experience-header, .item-header {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0.2rem;
+                margin-bottom: 0.75rem;
+            }
+            .experience-date, .item-meta {
+                margin-left: 0;
             }
             .main-nav ul {
-                gap: 1rem;
+                gap: 0.5rem;
                 flex-wrap: wrap;
+                justify-content: center;
+            }
+             .main-nav a {
+                padding: 0.4rem 0.8rem;
             }
         }
-
     </style>
 </head>
 <body>
@@ -360,25 +373,25 @@
             <ul class="contact-links">
                 <li>
                     <a href="mailto:zhangcheng2122@mails.jlu.edu.cn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                         <span>Email</span>
                     </a>
                 </li>
                 <li>
                     <a href="#" aria-label="Google Scholar">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"><path d="M12 24c5.523 0 10-4.477 10-10S17.523 4 12 4 2 8.477 2 14s4.477 10 10 10zm-3.8-14.6L12 12.5l3.8-3.1-6.1-3.2-1.5 3.5zM12 15.3l-5.4-2.4L4 14.3c1.7 3.4 5.2 5.7 9.3 5.7 0.7 0 1.4-0.1 2.1-0.2L12 15.3z"></path></svg>
                         <span>Google Scholar</span>
                     </a>
                 </li>
                 <li>
                     <a href="#" aria-label="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                         <span>GitHub</span>
                     </a>
                 </li>
                  <li>
                     <a href="#" aria-label="LinkedIn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                         <span>LinkedIn</span>
                     </a>
                 </li>
@@ -389,11 +402,11 @@
             
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#about" class="active">About Me</a></li>
                     <li><a href="#publications">Publications</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#education">Education</a></li>
-                    <li><a href="#awards">Honors & Awards</a></li>
+                    <li><a href="#awards">Honors</a></li>
                 </ul>
             </nav>
 
@@ -408,7 +421,7 @@
             <section id="publications" class="section">
                 <h2 class="section-title">Publications</h2>
                 <div class="section-content">
-                    <article class="publication-item">
+                    <article class="card publication-item">
                         <div class="publication-title">EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation</div>
                         <div class="publication-authors"><strong>Cheng Zhang</strong>, HongXia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng</div>
                         <div class="publication-venue">
@@ -416,7 +429,7 @@
                             <span class="publication-status">Under Review</span>
                         </div>
                     </article>
-                    <article class="publication-item">
+                    <article class="card publication-item">
                         <div class="publication-title">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal Large Language Model</div>
                         <div class="publication-authors">Hung-Jen Chen, Hongxia Xie, <strong>Cheng Zhang</strong>, Songhan Zuo, Chu-Jun Peng, Hong-Han Shuai, Yong Man Ro, Wen-Huang Cheng</div>
                         <div class="publication-venue">
@@ -424,7 +437,7 @@
                            <span class="publication-status">Under Review</span>
                         </div>
                     </article>
-                    <article class="publication-item">
+                    <article class="card publication-item">
                         <div class="publication-title">Single Document Image Highlight Removal via A Large-Scale Real-World Dataset and A Location-Aware Network</div>
                         <div class="publication-authors">Lu Pan, Yu-Hsuan Huang, Hongxia Xie, <strong>Cheng Zhang</strong>, Hongwei Zhao, Hong-Han Shuai, Wen-Huang Cheng</div>
                         <div class="publication-venue">
@@ -432,7 +445,7 @@
                             <span class="publication-status">Under Review</span>
                         </div>
                     </article>
-                    <article class="publication-item">
+                    <article class="card publication-item">
                         <div class="publication-title">AmorisBench: A Comprehensive Multi-modal Dataset for Love-centric Question Answering</div>
                         <div class="publication-authors">Chu-Jun Peng, Hongxia Xie, <strong>Cheng Zhang</strong>, Wen-Huang Cheng</div>
                         <div class="publication-venue">
@@ -446,66 +459,59 @@
             <section id="experience" class="section">
                 <h2 class="section-title">Research Experience</h2>
                 <div class="section-content">
-                     <article class="experience-item">
+                     <article class="card experience-item">
                         <div class="experience-header">
                             <div class="experience-title">Affective Vision Computing (AVC) Lab, Jilin University</div>
                             <div class="experience-date">2024 – Present</div>
                         </div>
                         <div class="experience-supervisor">Role: Research Assistant | Supervisor: A/Prof. Hongxia Xie</div>
                         <p>Contributing to projects in affective computing and multi-modal machine learning. Developing novel methods to understand and model emotional responses from visual and textual data.</p>
-                    </article>
-                    <article class="experience-item">
+                     </article>
+                     <article class="card experience-item">
                         <div class="experience-header">
                              <div class="experience-title">National & Provincial Research Projects</div>
                              <div class="experience-date">Jan 2025 – Present</div>
                         </div>
                          <div class="experience-supervisor">Role: Participant</div>
                         <p>Participating in two key projects: (1) A National Natural Science Foundation Youth Project on eliminating emotion hallucination in V-L models, and (2) A Jilin Provincial Excellent Youth Project on enhancing emotion understanding stability in multimodal large models.</p>
-                    </article>
+                     </article>
                 </div>
             </section>
             
             <section id="education" class="section">
                 <h2 class="section-title">Education</h2>
-                <div class="section-content item-list">
-                    <div class="list-item">
+                <div class="section-content">
+                    <div class="card">
                         <div class="item-header">
                             <div class="item-title">Jilin University</div>
                             <div class="item-meta">2022 – 2026 (Expected)</div>
                         </div>
-                        <div class="item-subtitle">B.Sc. in Computer Science & Technology</div>
-                        <div class="item-subtitle" style="font-size: 0.9rem;">GPA: 3.54/4.0 | Rank: 7/102</div>
+                        <div class="item-subtitle">
+                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M10.5 21a1.5 1.5 0 0 1-1.5-1.5V13.845a1.5 1.5 0 0 1 .836-1.37l6-3.75a1.5 1.5 0 0 1 1.328 0l6 3.75a1.5 1.5 0 0 1 .836 1.37V19.5a1.5 1.5 0 0 1-1.5 1.5h-9zm-3.836-9.37a1.5 1.5 0 0 1 0-2.74l6-3.75a1.5 1.5 0 0 1 1.328 0l6 3.75a1.5 1.5 0 0 1 0 2.74l-6 3.75a1.5 1.5 0 0 1-1.328 0l-6-3.75z" clip-rule="evenodd" /><path d="M3 19.5a1.5 1.5 0 0 1-1.5-1.5V6.845a1.5 1.5 0 0 1 .836-1.37l6-3.75a1.5 1.5 0 0 1 1.328 0l2.336 1.46a.75.75 0 0 1-.655 1.282L6.836 6.26l-3 1.875v8.865a.75.75 0 0 0 .75.75h.75a.75.75 0 0 1 0 1.5H3z" /></svg>
+                            <span>B.Sc. in Computer Science & Technology</span>
+                        </div>
+                         <div class="item-subtitle" style="font-size: 0.9rem;">GPA: 3.54/4.0 | Rank: 7/102</div>
                     </div>
                 </div>
             </section>
 
             <section id="awards" class="section">
                 <h2 class="section-title">Honors & Awards</h2>
-                 <div class="section-content item-list">
-                    <div class="list-item">
+                 <div class="section-content">
+                    <div class="card">
                         <div class="item-header">
                             <div class="item-title">Undergraduate Scholarship</div>
                             <div class="item-meta">2023 – 2024</div>
                         </div>
-                        <div class="item-subtitle">Jilin University</div>
+                        <div class="item-subtitle">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 0 0-1.071 1.072L12.72 4.183l-1.31 1.048a.75.75 0 0 0 .927 1.168l1.31-1.048 1.048 1.31a.75.75 0 0 0 1.168-.927l-1.048-1.31 1.827-1.455a.75.75 0 0 0-1.072-1.071l-1.827 1.455-1.048-1.31Z" clip-rule="evenodd" /><path fill-rule="evenodd" d="M10.832 8.037a.75.75 0 0 0-1.168.927l1.048 1.31-1.455 1.827a.75.75 0 0 0 1.071 1.072l1.455-1.827 1.31 1.048a.75.75 0 0 0 .927-1.168l-1.31-1.048 1.827-1.455a.75.75 0 1 0-1.072-1.071l-1.827 1.455-1.31-1.048Z" clip-rule="evenodd" /><path fill-rule="evenodd" d="M9 2.25a.75.75 0 0 0-1.5 0v3.085a.75.75 0 0 0 1.5 0V2.25Zm5.25 1.5a.75.75 0 0 0-1.06-.02l-1.63 1.3a.75.75 0 0 0 .94 1.18l1.63-1.3a.75.75 0 0 0-.02-1.06Zm-3.17 3.32a.75.75 0 0 0-1.18.94l1.3 1.63a.75.75 0 0 0 1.18-.94l-1.3-1.63Zm-2.26 3.19a.75.75 0 0 0-.94-1.18l-1.63 1.3a.75.75 0 0 0 .94 1.18l1.63-1.3Zm3.34 1.18a.75.75 0 0 0-1.18-.94l-1.3 1.63a.75.75 0 1 0 1.18.94l1.3-1.63ZM15 15.75a.75.75 0 0 0 1.5 0v-3.085a.75.75 0 0 0-1.5 0v3.085Zm-5.25-1.5a.75.75 0 0 0 1.06.02l1.63-1.3a.75.75 0 1 0-.94-1.18l-1.63 1.3a.75.75 0 0 0-.02 1.06Zm3.17-3.32a.75.75 0 0 0 1.18-.94l-1.3-1.63a.75.75 0 0 0-1.18.94l1.3 1.63Zm2.26-3.19a.75.75 0 0 0 .94 1.18l1.63-1.3a.75.75 0 1 0-.94-1.18l-1.63 1.3Zm-3.34-1.18a.75.75 0 0 0 1.18.94l1.3-1.63a.75.75 0 1 0-1.18-.94l-1.3 1.63Z" clip-rule="evenodd" /><path d="M10.742 16.97a.75.75 0 1 0-1.484.26 3 3 0 0 0 2.992 2.766.75.75 0 0 0 .5-.837 3 3 0 0 0-2.008-2.19Z" /></svg>
+                            <span>Jilin University</span>
+                        </div>
                     </div>
-                     <div class="list-item">
+                     <div class="card">
                         <div class="item-header">
                             <div class="item-title">Undergraduate Scholarship</div>
                             <div class="item-meta">2022 – 2023</div>
                         </div>
-                        <div class="item-subtitle">Jilin University</div>
-                    </div>
-                </div>
-            </section>
-            
-            <footer>
-                <p style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
-                    Last updated: June 2025
-                </p>
-            </footer>
-
-        </main>
-    </div>
-</body>
-</html>
+                         <div class="item-subtitle">
+                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 0 0-1.071 1.072L12.72 4.183l-1.31 1.048a.75.75 0 0 0 .927 1.168l1.31-1.048 1.048 1.31a.75.75 0 0 0 1.168-.927l-1.048-1.31 1.827-1.455a.75.75 0 0 0-1.072-1.071l-1.827 1.455-1.048-1.31Z" clip-rule="evenodd" /><path fill-rule="evenodd" d="M10.832 8.037a.75.75 0 0 0-1.168.927l1.048 1.31-1.455 1.827a.75.75 0 0 0 1.071 1.072l1.455-1.827 1.31 1.048a.75.75 0 0 0 .927-1.168l-1.31-1.048 1.827-1.455a.75.75 0 1 0-1.072-1.071l-1.827 1.455-1.31-1.048Z" clip-rule="evenodd" /><path fill-rule="evenodd" d="M9 2.25a.75.75 0 0 0-1.5 0v3.085a.75.75 0 0 0 1.5 0V2.25Zm5.25 1.5a.75.75 0 0 0-1.06-.02l-1.63 1.3a.75.
