@@ -9,7 +9,7 @@
             --text-color: #212529; 
             --secondary-text-color: #6c757d; 
             --accent-color: #005ea2; 
-            --background-color: #f8f9fa; /* 统一的页面背景色 */
+            --background-color: #f8f9fa;
             --divider-color: #e9ecef;
             --tag-background-color: #e9ecef;
         }
@@ -18,14 +18,61 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.8;
             color: var(--text-color);
-            background-color: var(--background-color); /* 1. 背景与页面统一，移除卡片感 */
+            background-color: var(--background-color);
             max-width: 750px;
-            margin: 4rem auto; /* 保持较大的外边距，让页面呼吸感更好 */
-            padding: 0 2rem;    /* 调整内边距，以适应无卡片的设计 */
-            /* 2. 移除了 box-shadow 和 border-radius */
+            margin: 2rem auto;
+            padding: 0 2rem;
+            /* MODIFIED: Adjusted top padding to create a perfect "one-line" gap below the nav bar */
+            padding-top: 5rem; 
         }
 
-        /* 布局和照片样式保持不变 */
+        /* 悬浮导航栏样式 */
+        .floating-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(248, 249, 250, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--divider-color);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--secondary-text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+            background-color: var(--tag-background-color);
+            text-decoration: none;
+        }
+
+        .nav-links a.active {
+            color: var(--accent-color);
+            background-color: var(--tag-background-color);
+        }
+
         header {
             display: flex;
             align-items: center;
@@ -37,7 +84,7 @@
         .profile-photo {
             width: 140px;
             height: 140px;
-            border-radius: 12px; /* 保留照片的柔和圆角 */
+            border-radius: 12px;
             object-fit: cover;
             flex-shrink: 0;
         }
@@ -111,7 +158,6 @@
             padding-left: 0;
         }
 
-        /* 列表分隔线样式保持不变 */
         ul li:not(:last-child) {
             border-bottom: 1px dashed var(--divider-color);
             padding-bottom: 1.5rem;
@@ -162,22 +208,69 @@
              margin-left: 0.5rem;
         }
         
+        /* MODIFIED: Restyled the education tags to be more prominent and visually appealing */
         .edu-tag {
             display: inline-block;
-            background-color: var(--tag-background-color);
-            color: var(--secondary-text-color);
-            font-size: 0.7rem;
-            font-weight: 500;
+            background-color: var(--accent-color);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
             text-transform: uppercase;
-            padding: 0.2rem 0.6rem;
+            padding: 0.3rem 0.7rem;
             border-radius: 12px;
-            margin-left: 0.5rem;
+            margin-left: 0.6rem;
             vertical-align: middle;
+            line-height: 1; /* Ensure consistent height */
+        }
+
+        /* 版权信息样式 */
+        .copyright {
+            margin-top: 4rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--divider-color);
+            text-align: center;
+            color: var(--secondary-text-color);
+            font-size: 0.85rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 600px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+            
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
         }
 
     </style>
 </head>
 <body>
+
+    <!-- 悬浮导航栏 -->
+    <nav class="floating-nav">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#publications">Publications</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#honors">Honors</a>
+            </div>
+        </div>
+    </nav>
 
     <header>
         <img src="selfish.png" alt="Cheng Zhang Profile Photo" class="profile-photo">
@@ -285,6 +378,53 @@
         </section>
         
     </main>
+
+    <!-- 版权信息 -->
+    <footer class="copyright">
+        <p>© 2025 Cheng Zhang (Rylan). All rights reserved.</p>
+    </footer>
+
+    <script>
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 导航栏高亮当前部分
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                // 调整偏移量，使得导航栏在章节标题到达屏幕顶部稍靠下时高亮
+                if (pageYOffset >= sectionTop - 150) { 
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('load', updateActiveNav);
+    </script>
 
 </body>
 </html>
