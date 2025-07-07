@@ -9,34 +9,42 @@
             --text-color: #212529; 
             --secondary-text-color: #6c757d; 
             --accent-color: #005ea2; 
-            --background-color: #f8f9fa; 
+            --background-color: #f8f9fa; /* 统一的页面背景色 */
             --divider-color: #e9ecef;
-            --tag-background-color: #e9ecef; /* 背景色用于标签 */
+            --tag-background-color: #e9ecef;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.7;
+            line-height: 1.8;
             color: var(--text-color);
-            background-color: var(--background-color);
-            max-width: 720px;
-            margin: 3rem auto;
-            padding: 2rem;
+            background-color: var(--background-color); /* 1. 背景与页面统一，移除卡片感 */
+            max-width: 750px;
+            margin: 4rem auto; /* 保持较大的外边距，让页面呼吸感更好 */
+            padding: 0 2rem;    /* 调整内边距，以适应无卡片的设计 */
+            /* 2. 移除了 box-shadow 和 border-radius */
         }
 
+        /* 布局和照片样式保持不变 */
         header {
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
             margin-bottom: 4rem;
+            text-align: left;
         }
 
-        /* 新增：个人照片样式 */
         .profile-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
+            width: 140px;
+            height: 140px;
+            border-radius: 12px; /* 保留照片的柔和圆角 */
             object-fit: cover;
-            display: block;
+            flex-shrink: 0;
+        }
+        
+        .header-info {
+            display: flex;
+            flex-direction: column;
         }
 
         h1, h2 {
@@ -48,17 +56,21 @@
             font-size: 2.5rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-            margin-bottom: 0.25rem;
+            margin: 0;
         }
 
         header p {
-            margin: 0.5rem 0;
+            margin: 0.25rem 0 0.75rem;
             font-size: 1.1rem;
             color: var(--secondary-text-color);
         }
 
+        .contact-links {
+            margin: 0;
+        }
+
         .contact-links a {
-            margin: 0 0.6em;
+            margin-right: 1em;
             font-weight: 500;
             color: var(--secondary-text-color);
             transition: color 0.2s ease;
@@ -67,11 +79,14 @@
             color: var(--accent-color);
             text-decoration: none;
         }
+        .contact-links a:last-child {
+             margin-right: 0;
+        }
 
         h2 {
             font-size: 1.5rem;
             font-weight: 600;
-            margin-top: 3rem;
+            margin-top: 4rem;
             margin-bottom: 1.5rem;
             padding-left: 0.8rem;
             border-left: 3px solid var(--accent-color);
@@ -96,8 +111,9 @@
             padding-left: 0;
         }
 
+        /* 列表分隔线样式保持不变 */
         ul li:not(:last-child) {
-            border-bottom: 1px solid var(--divider-color);
+            border-bottom: 1px dashed var(--divider-color);
             padding-bottom: 1.5rem;
             margin-bottom: 1.5rem;
         }
@@ -146,7 +162,6 @@
              margin-left: 0.5rem;
         }
         
-        /* 新增：教育背景标签样式 */
         .edu-tag {
             display: inline-block;
             background-color: var(--tag-background-color);
@@ -165,17 +180,17 @@
 <body>
 
     <header>
-        <!-- 照片已添加至此处 -->
         <img src="selfish.png" alt="Cheng Zhang Profile Photo" class="profile-photo">
-        
-        <h1>Cheng Zhang (Rylan)</h1>
-        <p>Undergraduate Researcher, Jilin University</p>
-        <p class="contact-links">
-            <a href="mailto:zhangcheng2122@mails.jlu.edu.cn">Email</a> ·
-            <a href="#">Google Scholar</a> ·
-            <a href="#">GitHub</a> ·
-            <a href="#">LinkedIn</a>
-        </p>
+        <div class="header-info">
+            <h1>Cheng Zhang (Rylan)</h1>
+            <p>Undergraduate Researcher, Jilin University</p>
+            <p class="contact-links">
+                <a href="mailto:zhangcheng2122@mails.jlu.edu.cn">Email</a>
+                <a href="#">Google Scholar</a>
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+            </p>
+        </div>
     </header>
 
     <main>
@@ -238,7 +253,6 @@
             <ul>
                 <li>
                     <div class="item-header">
-                        <!-- 标签已添加至此处 -->
                         <p class="item-title">
                             Jilin University
                             <span class="edu-tag">985 & 211</span>
