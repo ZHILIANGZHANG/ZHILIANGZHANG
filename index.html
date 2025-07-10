@@ -6,23 +6,27 @@
     <title>Cheng Zhang - Academic Homepage</title>
     <style>
         :root {
-            --text-color: #212529; 
-            --secondary-text-color: #6c757d; 
-            --accent-color: #005ea2; 
-            --background-color: #f8f9fa;
-            --divider-color: #e9ecef;
-            --tag-background-color: #e9ecef;
+            --text-color: #1a1a1a; 
+            --secondary-text-color: #666666; 
+            --accent-color: #2563eb; 
+            --background-color: #fdfdfd;
+            --divider-color: #f0f0f0;
+            --tag-background-color: #f5f5f5;
+            --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+            line-height: 1.7;
             color: var(--text-color);
-            background-color: var(--background-color);
-            max-width: 750px;
-            margin: 2rem auto;
+            background: linear-gradient(135deg, #fdfdfd 0%, #f8fafc 100%);
+            max-width: 800px;
+            margin: 0 auto;
             padding: 0 2rem;
-            padding-top: 5rem; 
+            padding-top: 5rem;
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
         }
 
         /* 悬浮导航栏样式 */
@@ -31,11 +35,12 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(248, 249, 250, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--divider-color);
+            background: rgba(253, 253, 253, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(240, 240, 240, 0.8);
             z-index: 1000;
-            padding: 0.75rem 0;
+            padding: 1rem 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-container {
@@ -56,15 +61,18 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            transition: all 0.2s ease;
+            padding: 0.6rem 1.2rem;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
         .nav-links a:hover {
             color: var(--accent-color);
-            background-color: var(--tag-background-color);
+            background-color: rgba(37, 99, 235, 0.08);
             text-decoration: none;
+            transform: translateY(-1px);
         }
 
         .nav-links a.active {
@@ -74,29 +82,31 @@
         
         /* MODIFIED: Styles for the fixed CV download button */
         .cv-download-btn {
-            position: fixed; /* Fixed position relative to viewport */
-            top: 0.75rem;    /* Vertically align with nav bar content */
-            right: 2rem;     /* Pushed to the right corner */
-            z-index: 1001;   /* Ensure it's on top of other content */
+            position: fixed;
+            top: 1rem;
+            right: 2rem;
+            z-index: 1001;
             
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            background-color: var(--accent-color);
+            gap: 0.6rem;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #1d4ed8 100%);
             color: white;
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 600;
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            transition: all 0.2s ease;
+            padding: 0.7rem 1.4rem;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
+            box-shadow: var(--card-shadow);
         }
         .cv-download-btn:hover {
-            background-color: #004a8b;
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
             text-decoration: none;
             color: white;
-            transform: translateY(-1px); /* Subtle lift effect */
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
         }
         .cv-download-btn svg {
             width: 16px;
@@ -107,17 +117,25 @@
         header {
             display: flex;
             align-items: center;
-            gap: 2rem;
-            margin-bottom: 4rem;
+            gap: 2.5rem;
+            margin-bottom: 5rem;
             text-align: left;
+            padding: 2rem 0;
         }
 
         .profile-photo {
-            width: 140px;
-            height: 140px;
-            border-radius: 12px;
+            width: 160px;
+            height: 160px;
+            border-radius: 20px;
             object-fit: cover;
             flex-shrink: 0;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .profile-photo:hover {
+            transform: scale(1.02);
+            box-shadow: var(--hover-shadow);
         }
         
         .header-info {
@@ -131,10 +149,14 @@
         }
 
         h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.8px;
             margin: 0;
+            background: linear-gradient(135deg, var(--text-color) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         header p {
@@ -162,12 +184,24 @@
         }
 
         h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-top: 4rem;
-            margin-bottom: 1.5rem;
-            padding-left: 0.8rem;
-            border-left: 3px solid var(--accent-color);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-top: 5rem;
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color);
+            position: relative;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #1d4ed8 100%);
+            border-radius: 2px;
         }
 
         p {
@@ -189,20 +223,25 @@
             padding-left: 0;
         }
 
-        ul li:not(:last-child) {
-            border-bottom: 1px dashed var(--divider-color);
-            padding-bottom: 1.5rem;
+        ul li {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--divider-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
             margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
         }
         
-        ul li {
-            padding-left: 0.2rem;
+        ul li:last-child {
+            margin-bottom: 0;
         }
+        
         
         .publication-title, .item-title {
-            font-weight: 600;
-            font-size: 1.05rem;
-            color: #343a40;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.4;
         }
         
         .item-header {
@@ -241,25 +280,30 @@
         
         .edu-tag {
             display: inline-block;
-            background-color: var(--accent-color);
+            background: linear-gradient(135deg, var(--accent-color) 0%, #1d4ed8 100%);
             color: #fff;
-            font-size: 0.75rem;
-            font-weight: 600;
+            font-size: 0.7rem;
+            font-weight: 700;
             text-transform: uppercase;
-            padding: 0.3rem 0.7rem;
-            border-radius: 12px;
-            margin-left: 0.6rem;
+            letter-spacing: 0.5px;
+            padding: 0.4rem 0.8rem;
+            border-radius: 16px;
+            margin-left: 0.8rem;
             vertical-align: middle;
             line-height: 1;
+            box-shadow: var(--card-shadow);
         }
 
         .copyright {
-            margin-top: 4rem;
-            padding: 1.5rem 0;
+            margin-top: 6rem;
+            padding: 2rem 0;
             border-top: 1px solid var(--divider-color);
             text-align: center;
             color: var(--secondary-text-color);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
         }
 
         /* 响应式设计 */
