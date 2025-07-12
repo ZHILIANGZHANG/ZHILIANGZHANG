@@ -1,86 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cheng Zhang - Academic Homepage</title>
+    <title>Cheng Zhang - 学术主页</title>
+    <!-- 引入了更现代的 Inter 字体，提供更佳的阅读体验 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* -- [增强] 色彩方案: 调整了色彩，使其更现代和柔和 -- */
             --text-color: #1a1a1a; 
-            --secondary-text-color: #666666; 
+            --secondary-text-color: #555555; 
             --accent-color: #2563eb; 
-            --background-color: #fdfdfd;
-            --divider-color: #f0f0f0;
-            --tag-background-color: #f5f5f5;
-            --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            --hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --border-radius: 8px;
+            --accent-color-dark: #1d4ed8;
+            --background-color: #f8fafc; /* 使用一个非常浅的灰色背景 */
+            --divider-color: #e2e8f0; /* 调整分隔线颜色使其更柔和 */
+            --card-background: rgba(255, 255, 255, 0.7);
+            --tag-background-color: rgba(37, 99, 235, 0.08);
+
+            /* -- [新增] 阴影与圆角变量，保持风格统一 -- */
+            --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            --hover-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.7;
             color: var(--text-color);
-            background: linear-gradient(135deg, #fdfdfd 0%, #f8fafc 100%);
+            background-color: var(--background-color);
             max-width: 800px;
             margin: 0 auto;
             padding: 0 2rem;
-            padding-top: 5rem;
+            /* 顶部留出更多空间给悬浮导航栏 */
+            padding-top: 6rem;
+            /* 开启连字和字体特性，提升排版质量 */
             font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* 悬浮导航栏样式 */
+        /* -- [美化] 悬浮导航栏：增加毛玻璃效果 -- */
         .floating-nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(253, 253, 253, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(240, 240, 240, 0.8);
+            background: rgba(255, 255, 255, 0.5); /* 半透明背景 */
+            backdrop-filter: blur(16px) saturate(180%); /* 关键的毛玻璃效果 */
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             z-index: 1000;
-            padding: 1rem 0;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* -- [新增] 页面滚动进度条 -- */
+        .progress-bar-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px; /* 进度条高度 */
+            background-color: transparent; /* 容器背景透明 */
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%; /* 初始宽度为0 */
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-dark));
         }
 
         .nav-container {
             max-width: 750px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0.8rem 2rem;
         }
 
         .nav-links {
             display: flex;
-            justify-content: center; /* Centered links again */
-            gap: 2rem;
+            justify-content: center;
+            gap: 1.5rem; /* 调整间距 */
             flex-wrap: wrap;
         }
 
         .nav-links a {
             color: var(--secondary-text-color);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600; /* 加粗 */
             font-size: 0.9rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 24px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-sm);
+            transition: all 0.25s ease;
         }
 
         .nav-links a:hover {
             color: var(--accent-color);
-            background-color: rgba(37, 99, 235, 0.08);
-            text-decoration: none;
-            transform: translateY(-1px);
+            background-color: var(--tag-background-color);
+            transform: translateY(-2px); /* 轻微上浮效果 */
         }
 
         .nav-links a.active {
             color: var(--accent-color);
-            background-color: var(--tag-background-color);
+            font-weight: 700;
         }
         
-        /* MODIFIED: Styles for the fixed CV download button */
+        /* -- [美化] 固定的简历下载按钮 -- */
         .cv-download-btn {
             position: fixed;
             top: 1rem;
@@ -89,52 +117,51 @@
             
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            background: linear-gradient(135deg, var(--accent-color) 0%, #1d4ed8 100%);
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-color-dark)); /* 渐变背景 */
             color: white;
             font-size: 0.9rem;
             font-weight: 600;
             text-decoration: none;
             padding: 0.7rem 1.4rem;
-            border-radius: 24px;
+            border-radius: 50px; /* 胶囊形状 */
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
-            box-shadow: var(--card-shadow);
         }
+
         .cv-download-btn:hover {
-            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
-            text-decoration: none;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: var(--hover-shadow);
+            color: white; /* 确保悬停时颜色不变 */
+            transform: translateY(-3px) scale(1.03); /* 更强的悬停效果 */
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
         }
+
         .cv-download-btn svg {
             width: 16px;
             height: 16px;
         }
-        /* END of modified styles */
 
         header {
             display: flex;
             align-items: center;
             gap: 2.5rem;
             margin-bottom: 5rem;
-            text-align: left;
             padding: 2rem 0;
         }
 
         .profile-photo {
             width: 160px;
             height: 160px;
-            border-radius: 20px;
+            border-radius: var(--border-radius-lg); /* 更柔和的圆角 */
             object-fit: cover;
             flex-shrink: 0;
             box-shadow: var(--card-shadow);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
+        /* -- [增强] 头像交互效果 -- */
         .profile-photo:hover {
-            transform: scale(1.02);
+            transform: scale(1.05); /* 放大效果 */
             box-shadow: var(--hover-shadow);
         }
         
@@ -145,101 +172,96 @@
 
         h1, h2 {
             line-height: 1.3;
-            color: #111;
+            color: var(--text-color);
         }
 
         h1 {
             font-size: 2.8rem;
             font-weight: 800;
-            letter-spacing: -0.8px;
+            letter-spacing: -1.2px; /* 略微收紧字间距 */
             margin: 0;
-            background: linear-gradient(135deg, var(--text-color) 0%, var(--accent-color) 100%);
+            /* -- [美化] 标题使用更强烈的渐变文本效果 -- */
+            background: linear-gradient(135deg, var(--text-color) 30%, var(--accent-color) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         header p {
-            margin: 0.25rem 0 0.75rem;
+            margin: 0.25rem 0 1rem;
             font-size: 1.1rem;
             color: var(--secondary-text-color);
         }
 
         .contact-links {
-            margin: 0;
+            margin-top: 0.5rem;
+            display: flex;
+            gap: 1.2rem;
         }
 
         .contact-links a {
-            margin-right: 1em;
-            font-weight: 500;
             color: var(--secondary-text-color);
             transition: color 0.2s ease;
+            font-weight: 500;
         }
         .contact-links a:hover {
             color: var(--accent-color);
             text-decoration: none;
         }
-        .contact-links a:last-child {
-             margin-right: 0;
-        }
-
+        
+        /* -- [美化] 章节标题样式，使用伪元素创建渐变边框 -- */
         h2 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
             margin-top: 5rem;
             margin-bottom: 2rem;
-            padding-left: 1rem;
-            border-left: 4px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--divider-color);
             position: relative;
         }
         
-        h2::before {
+        h2::after {
             content: '';
             position: absolute;
-            left: -4px;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, var(--accent-color) 0%, #1d4ed8 100%);
-            border-radius: 2px;
+            left: 0;
+            bottom: -1px;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-dark));
+            border-radius: 3px;
         }
 
-        p {
-            margin-bottom: 1em;
-        }
-        
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
 
         ul {
             list-style: none;
             padding-left: 0;
+            margin: 0;
         }
 
-        ul li {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid var(--divider-color);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(10px);
+        /* -- [修改] 列表项不再采用卡片式设计，改用简洁的分隔线 -- */
+        ul > li {
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+            padding-bottom: 2rem; /* 内容与下方分隔线的间距 */
+            margin-bottom: 2rem;  /* 分隔线与下一个项目顶部的间距 */
+            box-shadow: none;
+            transition: none;
+            border-bottom: 1px solid var(--divider-color);
         }
         
-        ul li:last-child {
+        /* -- [新增] 清理列表中最后一个元素的样式 -- */
+        ul > li:last-child {
+            border-bottom: none;
             margin-bottom: 0;
+            padding-bottom: 0;
         }
-        
         
         .publication-title, .item-title {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.15rem; /* 稍微增大标题字号 */
             color: var(--text-color);
             line-height: 1.4;
         }
@@ -250,6 +272,7 @@
             align-items: baseline;
             flex-wrap: wrap;
             gap: 0.5rem;
+            margin-bottom: 0.25rem;
         }
         
         .item-meta {
@@ -261,77 +284,108 @@
         .authors, .subtitle {
             font-size: 0.95rem;
             color: var(--secondary-text-color);
-            margin-top: 0.3em;
+            margin-top: 0.4em;
         }
         
         .authors strong {
             color: var(--text-color);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .venue {
             font-style: italic;
         }
+        
+        /* -- [新增] 为 "Under Review" 添加特定样式 -- */
         .venue em {
-             color: var(--secondary-text-color);
+             color: #c2410c; /* 橙色，表示状态 */
              font-size: 0.9rem;
+             font-weight: 500;
              margin-left: 0.5rem;
+             font-style: normal;
         }
         
+        /* -- [美化] 教育背景标签样式，使其更像现代徽章 -- */
         .edu-tag {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent-color) 0%, #1d4ed8 100%);
-            color: #fff;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 0.4rem 0.8rem;
-            border-radius: 16px;
+            background-color: var(--tag-background-color);
+            color: var(--accent-color);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
             margin-left: 0.8rem;
             vertical-align: middle;
             line-height: 1;
-            box-shadow: var(--card-shadow);
         }
 
         .copyright {
             margin-top: 6rem;
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             border-top: 1px solid var(--divider-color);
             text-align: center;
             color: var(--secondary-text-color);
             font-size: 0.9rem;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
         }
 
-        /* 响应式设计 */
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: var(--accent-color-dark);
+        }
+        
+        main a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* -- [优化] 响应式设计 -- */
         @media (max-width: 768px) {
-            /* On smaller tablets, hide the button text to save space */
+            body {
+                padding-top: 5rem;
+            }
+            h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.6rem; }
+
+            /* -- [增强] 在平板电脑尺寸隐藏CV按钮的文字 -- */
             .cv-btn-text {
                 display: none;
+            }
+             .cv-download-btn {
+                padding: 0.7rem; /* 变成圆形按钮 */
+                gap: 0;
             }
         }
         
         @media (max-width: 600px) {
-            .nav-links {
-                gap: 1rem;
+            body {
+                padding: 4rem 1.5rem 0 1.5rem;
             }
-            .nav-links a {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
-            }
-            .cv-download-btn {
-                right: 1rem; /* Move button slightly inward on mobile */
-            }
+            .floating-nav { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+            .nav-container { padding: 0.5rem 1rem; }
+            .nav-links { gap: 0.8rem; }
+            .nav-links a { font-size: 0.85rem; padding: 0.4rem 0.6rem; }
+            .cv-download-btn { right: 1.5rem; top: 0.8rem; }
+            
             header {
                 flex-direction: column;
                 text-align: center;
                 gap: 1.5rem;
             }
-            h1 {
-                font-size: 2rem;
+            .contact-links {
+                justify-content: center;
+            }
+            h1 { font-size: 2.2rem; }
+            
+            ul > li { /* 在小屏幕上减少间距 */
+                padding-bottom: 1.5rem;
+                margin-bottom: 1.5rem;
             }
         }
 
@@ -339,20 +393,20 @@
 </head>
 <body>
     
-    <!-- ADDED: CV Download Button (now outside the nav) -->
-    <!-- Remember to create an 'assets' folder and put your PDF inside it -->
     <a href="CV.pdf" class="cv-download-btn" download>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
             <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"></path>
             <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"></path>
         </svg>
         <span class="cv-btn-text">Download CV</span>
     </a>
 
-    <!-- 悬浮导航栏 -->
     <nav class="floating-nav">
+        <!-- [新增] 页面进度条容器 -->
+        <div class="progress-bar-container">
+            <div id="page-progress-bar" class="progress-bar"></div>
+        </div>
         <div class="nav-container">
-            <!-- Button has been removed from here -->
             <div class="nav-links">
                 <a href="#about" class="active">About</a>
                 <a href="#publications">Publications</a>
@@ -366,19 +420,18 @@
     <header>
         <img src="selfish.png" alt="Cheng Zhang Profile Photo" class="profile-photo">
         <div class="header-info">
-            <h1>Cheng Zhang </h1>
+            <h1>Cheng Zhang</h1>
             <p>Undergraduate Researcher, Jilin University</p>
-            <p class="contact-links">
+            <div class="contact-links">
                 <a href="mailto:zhangcheng2122@mails.jlu.edu.cn">Email</a>
                 <a href="#">Google Scholar</a>
                 <a href="#">GitHub</a>
                 <a href="#">LinkedIn</a>
-            </p>
+            </div>
         </div>
     </header>
 
     <main>
-        <!-- The rest of your main content remains unchanged -->
         <section id="about">
             <h2>About Me</h2>
             <p>I am an undergraduate researcher at Jilin University, passionate about advancing artificial intelligence. My research centers on the intersection of Multi-Modal Large Language Models, Computer Vision, and Affective Computing.</p>
@@ -390,7 +443,7 @@
             <ul>
                 <li>
                     <p class="publication-title">EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation</p>
-                    <p class="authors"><strong>Cheng Zhang</strong>, HongXia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng</p>
+                    <p class="authors"><strong>Cheng Zhang</strong>, Hongxia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng</p>
                     <p class="venue">ACM Multimedia (Dataset Track) 2025 <em>(Under Review)</em></p>
                 </li>
                 <li>
@@ -440,12 +493,13 @@
                     <div class="item-header">
                         <p class="item-title">
                             Jilin University
-                            <span class="edu-tag">985 & 211</span>
-                            <span class="edu-tag">Double First-Class (A)</span>
                         </p>
                         <p class="item-meta">2022 – 2026 (Expected)</p>
                     </div>
-                    <p class="subtitle">B.Sc. in Computer Science & Technology</p>
+                    <p class="subtitle">B.Sc. in Computer Science & Technology
+                        <span class="edu-tag">985 & 211</span>
+                        <span class="edu-tag">Double First-Class</span>
+                    </p>
                     <p>GPA: 3.54/4.0 | Rank: 7/102</p>
                 </li>
             </ul>
@@ -482,12 +536,13 @@
     </footer>
 
     <script>
+        // 平滑滚动到锚点
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offsetTop = target.offsetTop - 100;
+                    const offsetTop = target.offsetTop - 120; // 留出更多空间给导航栏
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
@@ -496,32 +551,60 @@
             });
         });
 
+        // 滚动时更新导航栏的 active 状态
         function updateActiveNav() {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-links a');
             
-            let current = '';
+            let currentSectionId = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) { 
-                    current = section.getAttribute('id');
+                if (pageYOffset >= sectionTop - 150) { // 调整触发高亮的阈值
+                    currentSectionId = section.getAttribute('id');
                 }
             });
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
+                // 确保链接的href与当前分区ID匹配
+                if (link.getAttribute('href') === '#' + currentSectionId) {
                     link.classList.add('active');
                 }
             });
-             if (!current) {
+
+            // 如果没有当前分区（例如在页面顶部），默认高亮"About"
+            if (!currentSectionId && navLinks.length > 0) {
                 const aboutLink = document.querySelector('.nav-links a[href="#about"]');
                 if(aboutLink) aboutLink.classList.add('active');
             }
         }
 
+        // -- [新增] 页面滚动进度条功能 --
+        function updateProgressBar() {
+            const scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            // 避免在无法滚动时除以零
+            if (scrollableHeight > 0) {
+                const scrolled = (window.scrollY / scrollableHeight) * 100;
+                const progressBar = document.getElementById('page-progress-bar');
+                if (progressBar) {
+                    progressBar.style.width = scrolled + '%';
+                }
+            } else {
+                 const progressBar = document.getElementById('page-progress-bar');
+                 if (progressBar) {
+                    progressBar.style.width = '0%';
+                 }
+            }
+        }
+
+        // 监听滚动和加载事件
         window.addEventListener('scroll', updateActiveNav);
-        window.addEventListener('load', updateActiveNav);
+        window.addEventListener('scroll', updateProgressBar);
+        window.addEventListener('load', () => {
+            updateActiveNav();
+            updateProgressBar();
+        });
+        window.addEventListener('resize', updateProgressBar); // 在窗口大小改变时也更新
     </script>
 
 </body>
