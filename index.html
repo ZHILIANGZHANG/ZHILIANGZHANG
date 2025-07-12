@@ -7,7 +7,7 @@
     <!-- 引入了更现代的 Inter 字体，提供更佳的阅读体验 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             /* -- [增强] 色彩方案: 调整了色彩，使其更现代和柔和 -- */
@@ -50,7 +50,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.5); /* 半透明背景 */
+            background: rgba(255, 255, 255, 0.3); /* 半透明背景 */
             backdrop-filter: blur(16px) saturate(180%); /* 关键的毛玻璃效果 */
             -webkit-backdrop-filter: blur(16px) saturate(180%);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -58,7 +58,7 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        /* -- [新增] 页面滚动进度条 -- */
+        /* -- [修改] 页面滚动进度条 - 添加渐变效果 -- */
         .progress-bar-container {
             position: absolute;
             top: 0;
@@ -71,7 +71,8 @@
         .progress-bar {
             height: 100%;
             width: 0%; /* 初始宽度为0 */
-            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-dark));
+            background: linear-gradient(90deg, #87ceeb, #1e40af); /* 从天蓝到深蓝的渐变 */
+            transition: width 0.3s ease;
         }
 
         .nav-container {
@@ -90,7 +91,7 @@
         .nav-links a {
             color: var(--secondary-text-color);
             text-decoration: none;
-            font-weight: 600; /* 加粗 */
+            font-weight: 700; /* 加粗字体 */
             font-size: 0.9rem;
             padding: 0.5rem 1rem;
             border-radius: var(--border-radius-sm);
@@ -105,7 +106,7 @@
 
         .nav-links a.active {
             color: var(--accent-color);
-            font-weight: 700;
+            font-weight: 800; /* 更粗的字体 */
         }
         
         /* -- [美化] 固定的简历下载按钮 -- */
@@ -177,7 +178,7 @@
 
         h1 {
             font-size: 2.8rem;
-            font-weight: 800;
+            font-weight: 900; /* 更粗的字体 */
             letter-spacing: -1.2px; /* 略微收紧字间距 */
             margin: 0;
             /* -- [美化] 标题使用更强烈的渐变文本效果 -- */
@@ -209,10 +210,10 @@
             text-decoration: none;
         }
         
-        /* -- [美化] 章节标题样式，使用伪元素创建渐变边框 -- */
+        /* -- [修改] 章节标题样式，使用更粗的字体 -- */
         h2 {
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: 900; /* 更粗的字体 */
             margin-top: 5rem;
             margin-bottom: 2rem;
             padding-bottom: 0.5rem;
@@ -259,8 +260,9 @@
             padding-bottom: 0;
         }
         
+        /* -- [修改] 论文标题使用更粗的字体 -- */
         .publication-title, .item-title {
-            font-weight: 700;
+            font-weight: 800; /* 更粗的字体 */
             font-size: 1.15rem; /* 稍微增大标题字号 */
             color: var(--text-color);
             line-height: 1.4;
@@ -289,7 +291,7 @@
         
         .authors strong {
             color: var(--text-color);
-            font-weight: 600;
+            font-weight: 700; /* 更粗的字体 */
         }
 
         .venue {
@@ -317,6 +319,14 @@
             margin-left: 0.8rem;
             vertical-align: middle;
             line-height: 1;
+        }
+        
+        /* -- [新增] 为学术成绩添加特定样式 -- */
+        .academic-metrics {
+            color: #475569; /* 使用一种柔和但清晰的石板灰色 */
+            font-size: 0.95rem;
+            font-weight: 600; /* 加粗以示重要 */
+            margin-top: 0.6rem; /* 调整与上方内容的间距 */
         }
 
         .copyright {
@@ -500,7 +510,7 @@
                         <span class="edu-tag">985 & 211</span>
                         <span class="edu-tag">Double First-Class</span>
                     </p>
-                    <p>GPA: 3.54/4.0 | Rank: 7/102</p>
+                    <p class="academic-metrics">GPA: 3.54/4.0 | Rank: 7/102 | Average Score: 88/100</p>
                 </li>
             </ul>
         </section>
