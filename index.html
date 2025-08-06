@@ -438,6 +438,19 @@
         main a:hover {
             text-decoration: underline;
         }
+        
+        /* News Section Specific Styles */
+        #news ul {
+            list-style-type: '🎉';
+            padding-left: 1.5rem;
+        }
+        #news li {
+            padding-left: 1rem;
+            border-bottom: none;
+            padding-bottom: 1rem;
+            margin-bottom: 0;
+        }
+
 
         /* 响应式设计 */
         @media (max-width: 768px) {
@@ -551,10 +564,19 @@
             <p>I am driven by the challenge of building systems that can holistically perceive, reason, and interact with the world. My work involves creating models that seamlessly integrate diverse data modalities, exploring how machines can achieve a deeper understanding of visual information, and ultimately bridging the gap between computational and emotional intelligence.</p>
         </section>
 
+        <section id="news">
+            <h2>News</h2>
+            <ul>
+                <li>
+                    <p>Our paper, "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation", has been accepted to the main conference of ACM Multimedia 2025. I am excited to attend the conference and present our work!</p>
+                </li>
+            </ul>
+        </section>
+
         <section id="skills">
             <h2>Skills</h2>
             <div class="skills-container">
-              <div class="skill-card">Hugging Face</div>
+              <div class="skill-card">Vibe coding</div>
               <div class="skill-card">PyTorch</div>
               <div class="skill-card">Prompt Engineering</div>
               <div class="skill-card">Transformer</div>
@@ -569,7 +591,7 @@
                 <li>
                     <p class="publication-title">EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation</p>
                     <p class="authors"><strong>Cheng Zhang</strong>, Hongxia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng</p>
-                    <p class="venue">ACM Multimedia (Dataset Track) 2025 <em>(Under Review)</em></p>
+                    <p class="venue"><span style="color: red; font-weight: bold;">Accepted</span>, and will be published in the proceedings of the main conference of ACM MM 2025.</p>
                 </li>
                 <li>
                     <p class="publication-title">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal Large Language Model</p>
@@ -661,8 +683,42 @@
     </footer>
 
     <script>
+        // A simple script for active nav link highlighting
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const allSections = document.querySelectorAll('main section');
+        
+        // Filter out the 'news' section for nav highlighting logic
+        const navSections = Array.from(allSections).filter(section => section.id !== 'news');
+        const navHrefs = Array.from(navLinks).map(link => link.getAttribute('href'));
 
+        function changeActiveLink() {
+            let currentSectionId = '';
+            
+            navSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 100) {
+                    currentSectionId = '#' + section.id;
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentSectionId) {
+                    link.classList.add('active');
+                }
+            });
+
+            // If no section is active (e.g., at the top), activate the first nav link
+            const anyActive = document.querySelector('.nav-links a.active');
+            if (!anyActive && navLinks.length > 0) {
+                navLinks[0].classList.add('active');
+            }
+        }
+        
+        // Initial call and on scroll
+        changeActiveLink();
+        window.addEventListener('scroll', changeActiveLink);
     </script>
 
 </body>
-</html>    
+</html>
