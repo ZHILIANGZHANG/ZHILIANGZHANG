@@ -568,7 +568,7 @@
             <h2>News</h2>
             <ul>
                 <li>
-                    <p>Our paper, "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation", has been accepted to the main conference of ACM Multimedia 2025. I am excited to attend the conference and present our work!</p>
+                    <p>"EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation" has been accepted to ACM Multimedia 2025(Dataset Track).</p>
                 </li>
             </ul>
         </section>
@@ -589,9 +589,9 @@
             <h2>Publications</h2>
             <ul>
                 <li>
-                    <p class="publication-title">EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation</p>
+                    <p class="publication-title"><a href="https://zhiliangzhang.github.io/EmoArt-130k/" target="_blank">EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation</a></p>
                     <p class="authors"><strong>Cheng Zhang</strong>, Hongxia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng</p>
-                    <p class="venue"><span style="color: red; font-weight: bold;">Accepted</span>, and will be published in the proceedings of the main conference of ACM MM 2025.</p>
+                    <p class="venue"><span style="color: red; font-weight: bold;">Accepted</span>, and will be published in the <strong>proceedings of the main conference</strong> of ACM MM 2025.</p>
                 </li>
                 <li>
                     <p class="publication-title">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal Large Language Model</p>
@@ -652,6 +652,22 @@
             </ul>
         </section>
         
+        <section id="tutorials">
+            <h2>Tutorials</h2>
+            <ul>
+                <li>
+                    <p class="item-title">
+                        <a href="https://www.notion.so/Reinforce-Learning-A-brief-guide-248506aa2ce58090a2d6c9b6af614bd0?source=copy_link" target="_blank">Reinforcement Learning: A Brief Guide</a>
+                    </p>
+                </li>
+                <li>
+                    <p class="item-title">
+                        <a href="https://www.bilibili.com/video/BV1tWtqzzEsJ/?vd_source=9f8acab05832d0a549e420787b0b97a4" target="_blank">A brief introduction to vibe coding (Chinese)</a>
+                    </p>
+                </li>
+            </ul>
+        </section>
+
         <section id="honors">
             <h2>Honors & Awards</h2>
             <ul>
@@ -687,8 +703,10 @@
         const navLinks = document.querySelectorAll('.nav-links a');
         const allSections = document.querySelectorAll('main section');
         
-        // Filter out the 'news' section for nav highlighting logic
-        const navSections = Array.from(allSections).filter(section => section.id !== 'news');
+        // Filter out the 'news' and 'tutorials' sections for nav highlighting logic
+        const navSections = Array.from(allSections).filter(section => 
+            section.id !== 'news' && section.id !== 'tutorials'
+        );
         const navHrefs = Array.from(navLinks).map(link => link.getAttribute('href'));
 
         function changeActiveLink() {
@@ -696,7 +714,8 @@
             
             navSections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (window.scrollY >= sectionTop - 100) {
+                // Adjust sensitivity as needed
+                if (window.scrollY >= sectionTop - 100) { 
                     currentSectionId = '#' + section.id;
                 }
             });
@@ -711,13 +730,46 @@
             // If no section is active (e.g., at the top), activate the first nav link
             const anyActive = document.querySelector('.nav-links a.active');
             if (!anyActive && navLinks.length > 0) {
-                navLinks[0].classList.add('active');
+                // Ensure the first visible nav link is active, which should be 'About'
+                navLinks[0].classList.add('active'); 
             }
         }
         
         // Initial call and on scroll
         changeActiveLink();
         window.addEventListener('scroll', changeActiveLink);
+
+        // Optional: Add scroll to top functionality if needed
+        // window.addEventListener('load', () => {
+        //     const initialHash = window.location.hash;
+        //     if (initialHash) {
+        //         const targetSection = document.querySelector(initialHash);
+        //         if (targetSection) {
+        //             setTimeout(() => { // Small delay to ensure layout is stable
+        //                 window.scrollTo({
+        //                     top: targetSection.offsetTop - document.querySelector('.floating-nav').offsetHeight,
+        //                     behavior: 'smooth'
+        //                 });
+        //             }, 100);
+        //         }
+        //     }
+        // });
+
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("page-progress-bar").style.width = scrolled + "%";
+
+            // Toggle nav background on scroll
+            const floatingNav = document.querySelector('.floating-nav');
+            if (winScroll > 50) { // Adjust scroll threshold as needed
+                floatingNav.classList.add('scrolled');
+            } else {
+                floatingNav.classList.remove('scrolled');
+            }
+        });
     </script>
 
 </body>
