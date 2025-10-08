@@ -5,102 +5,345 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Cheng Zhang — Academic Homepage</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <meta name="color-scheme" content="light dark">
 
   <style>
-    /* ===== 原有桌面端样式（完全未改动） ===== */
-    :root{
-      --bg: #ffffff;
+    /* ===== Modern Style Rework ===== */
+    :root {
+      --bg: #f8f9fa;
       --paper: #ffffff;
-      --text: #111111;
-      --muted: #6b6b6b;
-      --line: #e6e6e6;
-      --inverse: #000000;
-      --radius: 12px;
-      --maxw: 920px;
-      --gap: 1.25rem;
+      --text: #1a1a1a;
+      --muted: #6c757d;
+      --line: #dee2e6;
+      --primary: #007bff;
+      --primary-glow: rgba(0, 123, 255, 0.1);
+      
+      --radius: 16px;
+      --maxw: 960px;
+      --gap: 1.5rem;
+      --font-sans: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg: #0b0b0b;
-        --paper: #0b0b0b;
-        --text: #f6f6f6;
-        --muted: #bdbdbd;
-        --line: rgba(255,255,255,0.06);
-        --inverse: #ffffff;
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0a0a0a;
+        --paper: #161616;
+        --text: #f1f1f1;
+        --muted: #a0a0a0;
+        --line: #2a2a2a;
+        --primary: #3b82f6;
+        --primary-glow: rgba(59, 130, 246, 0.15);
       }
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-      background:var(--bg);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      padding:2.25rem 1rem;
-      display:flex;
-      justify-content:center;
-    }
-    .container{width:100%;max-width:var(--maxw)}
-    header{display:flex;gap:var(--gap);align-items:center;margin-bottom:1.5rem}
-    .avatar{max-width:104px;height:auto;flex-shrink:0;display:block}
-    .me{display:flex;flex-direction:column;gap:0.25rem}
-    h1{font-size:1.6rem;margin:0;font-weight:800;letter-spacing:-0.4px}
-    p.lead{margin:0;color:var(--muted);font-weight:500}
-    .actions{margin-left:auto;display:flex;gap:0.5rem;align-items:center}
-    .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 0.8rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);text-decoration:none;font-weight:600;font-size:0.9rem}
-    nav{display:flex;gap:0.5rem;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;padding:0.35rem 0.6rem;border-radius:8px;font-weight:600;font-size:0.85rem}
-    nav a.active{color:var(--text);border:1px solid var(--line)}
-    main{margin-top:0}
-    section{background:var(--paper);padding:1.1rem;border-radius:var(--radius);box-shadow:none;border:1px solid var(--line);margin-bottom:1rem}
-    h2{font-size:1.05rem;margin:0 0 0.6rem 0;font-weight:800}
-    .muted{color:var(--muted);font-size:0.95rem}
-    ul{margin:0;padding:0;list-style:none}
-    li{padding:0.6rem 0;border-bottom:1px solid var(--line)}
-    li:last-child{border-bottom:0}
-    .meta{color:var(--muted);font-size:0.9rem}
-    .grid{display:grid;grid-template-columns:1fr 300px;gap:1rem}
-    .side{position:sticky;top:1.25rem;align-self:start}
-    .card{padding:0.9rem;border-radius:10px;border:1px solid var(--line)}
-    .tags{display:flex;flex-wrap:wrap;gap:0.5rem}
-    .tag{padding:0.35rem 0.6rem;border-radius:999px;font-weight:700;font-size:0.82rem;border:1px solid var(--line);color:var(--muted);background:transparent}
-    .pub-title{font-weight:700;font-size:0.98rem;margin:0 0 0.25rem 0}
-    .authors{color:var(--muted);font-size:0.92rem;margin:0}
-    .status{font-weight:700;color:var(--muted);font-size:0.85rem}
-    footer{margin-top:1.2rem;text-align:center;color:var(--muted);font-size:0.9rem}
 
-    @media (max-width:880px){
-      .grid{grid-template-columns:1fr}
-      .side{position:static}
-      header{align-items:flex-start}
-      .actions{margin-left:0}
-    }
-    @media (max-width:420px){
-      body{padding:1rem}
-      h1{font-size:1.2rem}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    /* ===== 移动端补丁：不改动桌面端，仅 ≤880 px 生效 ===== */
-    @media (max-width: 880px){
-      header{flex-wrap:nowrap;gap:1rem}
-      .avatar{width:72px}
-      .me{min-width:0}
-      .actions{width:100%;margin-top:.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
-      .actions .btn{white-space:nowrap}
-      nav a{font-size:.8rem;padding:.3rem .5rem}
-      section,.card{border-radius:10px}
-      .pub-title{word-break:break-word}
-      footer{padding:0 1rem 2rem}
+    html {
+      scroll-behavior: smooth;
     }
-    @media (max-width: 420px){
-      h1{font-size:1.15rem}
-      .lead,.muted,nav a{font-size:.75rem}
-      .btn{font-size:.8rem;padding:.45rem .7rem}
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+      padding: 3rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--maxw);
+    }
+
+    /* --- Header --- */
+    header {
+      display: flex;
+      gap: var(--gap);
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: var(--radius);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .me {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    p.lead {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    nav {
+      margin-top: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s ease-in-out;
+      border: 1px solid transparent;
+    }
+    
+    nav a:hover {
+      color: var(--text);
+      background: var(--primary-glow);
+    }
+    
+    nav a.active {
+      color: var(--primary);
+      background: var(--primary-glow);
+      border-color: var(--primary-glow);
+    }
+
+    .actions {
+      margin-left: auto;
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s ease-in-out;
+      white-space: nowrap;
+    }
+    .btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .btn.primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .btn.primary:hover {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+        filter: brightness(1.1);
+    }
+    .btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    /* --- Main Grid Layout --- */
+    main {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 1.5rem;
+    }
+
+    section, .card {
+      background: var(--paper);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      transition: all 0.2s ease-in-out;
+    }
+    
+    section:hover, .card:hover {
+        box-shadow: 0 4px 20px var(--primary-glow);
+        transform: translateY(-2px);
+    }
+
+    section {
+      margin-bottom: 0.5rem; /* Only vertical gap for sections */
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    li {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    li:first-child { padding-top: 0; }
+    li:last-child { border-bottom: 0; padding-bottom: 0; }
+
+    .pub-title {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    .pub-title a {
+        color: var(--text);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    .pub-title a:hover {
+        color: var(--primary);
+    }
+    
+    .authors {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .meta {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    
+    .status {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .side {
+      position: sticky;
+      top: 1.5rem;
+      align-self: start;
+    }
+    .side .card + .card {
+        margin-top: 1rem;
+    }
+
+    .card h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: var(--bg);
+      transition: all 0.2s;
+    }
+    .tag:hover {
+        color: var(--primary);
+        border-color: var(--primary);
+        background: var(--primary-glow);
+    }
+    
+    .contact-link {
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    .contact-link:hover {
+        color: var(--primary);
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 880px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+      .side {
+        position: static;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .actions {
+          margin-left: 0;
+          margin-top: 1rem;
+          width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          padding-bottom: 0.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+      .avatar {
+        width: 80px;
+        height: 80px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      p.lead {
+        font-size: 0.9rem;
+      }
+      nav a, .btn {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.8rem;
+      }
+      section, .card {
+          padding: 1.25rem;
+      }
     }
   </style>
 </head>
@@ -108,7 +351,7 @@
 <body>
   <div class="container" id="page">
     <header>
-      <img src="selfish.png" alt="Profile picture" class="avatar" onerror="this.style.display='none'">
+      <img src="selfish.png" alt="Profile picture" class="avatar" onerror="this.src='https://placehold.co/110x110/3b82f6/FFFFFF?text=CZ'">
       <div class="me">
         <h1>Cheng Zhang</h1>
         <p class="lead">Undergraduate Researcher — Jilin University</p>
@@ -119,10 +362,15 @@
           <a href="#education">Education</a>
         </nav>
       </div>
-
       <div class="actions">
-        <a class="btn" href="CV.pdf" download aria-label="Download CV">Download CV</a>
-        <a class="btn" href="mailto:zhangcheng2122@mails.jlu.edu.cn" aria-label="Email">Email</a>
+        <a class="btn primary" href="CV.pdf" download aria-label="Download CV">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download CV
+        </a>
+        <a class="btn" href="mailto:zhangcheng2122@mails.jlu.edu.cn" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Email
+        </a>
       </div>
     </header>
 
@@ -138,17 +386,17 @@
           <ul>
             <li>
               <p class="pub-title"><a href="https://zhiliangzhang.github.io/EmoArt-130k/" target="_blank" rel="noopener">EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation</a></p>
-              <p class="authors"><strong>Cheng Zhang</strong>, Hongxia Xie, Bin Wen, ...</p>
+              <p class="authors"><strong>Cheng Zhang</strong>, Hongxia Xie, Bin Wen, Zhiliang Zhang</p>
               <p class="meta"><span class="status">Accepted</span> — ACM MM 2025 (main proceedings)</p>
             </li>
             <li>
-              <p class="pub-title">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal LLM</p>
-              <p class="authors">Hung-Jen Chen, Hongxia Xie, <strong>Cheng Zhang</strong>, ...</p>
+              <p class="pub-title"><a href="#">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal LLM</a></p>
+              <p class="authors">Hung-Jen Chen, Hongxia Xie, <strong>Cheng Zhang</strong>, Jia-Xing Zhong</p>
               <p class="meta"><em>Under Review</em></p>
             </li>
             <li>
-              <p class="pub-title">Single Document Image Highlight Removal ...</p>
-              <p class="authors">Lu Pan, Yu-Hsuan Huang, Hongxia Xie, <strong>Cheng Zhang</strong>, ...</p>
+              <p class="pub-title"><a href="#">Single Document Image Highlight Removal via A Diffusion-based Method</a></p>
+              <p class="authors">Lu Pan, Yu-Hsuan Huang, Hongxia Xie, <strong>Cheng Zhang</strong>, Zhi-Hui Chen</p>
               <p class="meta"><em>Under Review</em></p>
             </li>
           </ul>
@@ -182,28 +430,30 @@
 
       <aside class="side" aria-label="Side column">
         <div class="card">
-          <h3 style="margin:0 0 0.6rem 0;font-size:0.95rem;font-weight:800">Skills</h3>
+          <h3>Skills</h3>
           <div class="tags">
             <span class="tag">PyTorch</span>
             <span class="tag">Transformer</span>
             <span class="tag">Diffusion</span>
             <span class="tag">LLM</span>
             <span class="tag">Prompting</span>
+            <span class="tag">Hugging Face</span>
+            <span class="tag">Computer Vision</span>
           </div>
         </div>
 
-        <div style="height:0.8rem"></div>
-
         <div class="card">
-          <h3 style="margin:0 0 0.6rem 0;font-size:0.95rem;font-weight:800">Contact</h3>
-          <p class="muted" style="margin:0 0 0.6rem 0">zhangcheng2122@mails.jlu.edu.cn</p>
-          <p class="muted" style="margin:0">GitHub · Google Scholar · LinkedIn</p>
+          <h3>Contact & Links</h3>
+          <p class="muted" style="margin-bottom:0.75rem;"><a href="mailto:zhangcheng2122@mails.jlu.edu.cn" class="contact-link">zhangcheng2122@mails.jlu.edu.cn</a></p>
+          <p class="muted" style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+            <a href="#" class="contact-link">GitHub</a> · 
+            <a href="#" class="contact-link">Google Scholar</a> · 
+            <a href="#" class="contact-link">LinkedIn</a>
+          </p>
         </div>
 
-        <div style="height:0.8rem"></div>
-
         <div class="card">
-          <h3 style="margin:0 0 0.6rem 0;font-size:0.95rem;font-weight:800">News</h3>
+          <h3>News</h3>
           <ul>
             <li><span class="muted">Visiting Yonsei University — collaboration planned</span></li>
             <li><span class="muted">EmoArt accepted at ACM MM 2025</span></li>
@@ -218,11 +468,40 @@
   </div>
 
   <script>
-    const links = document.querySelectorAll('nav a');
-    links.forEach(a=>a.addEventListener('click', e=>{
-      links.forEach(x=>x.classList.remove('active'));
+    // Intersection Observer to update nav link highlighting on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.4,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+    
+    // Also handle manual clicks
+    navLinks.forEach(a=>a.addEventListener('click', e=>{
+      navLinks.forEach(x=>x.classList.remove('active'));
       e.currentTarget.classList.add('active');
     }));
   </script>
 </body>
 </html>
+
