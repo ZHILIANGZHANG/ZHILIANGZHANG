@@ -9,7 +9,8 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <!-- Removed Playfair Display to clean up load time slightly, kept others -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -86,12 +87,13 @@
     }
 
     .profile-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif; /* Changed from Playfair Display */
       font-size: 2rem; /* 32px */
-      font-weight: 700;
+      font-weight: 700; /* Bold but clean */
       line-height: 1.1;
       margin-bottom: 8px;
       color: #000;
+      letter-spacing: -0.03em; /* Tighter spacing for modern look */
     }
 
     .profile-subname {
@@ -140,13 +142,14 @@
 
     /* Section Headings: Minimalist */
     .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-family: 'Inter', sans-serif; /* Changed from Playfair Display */
+      font-size: 1.4rem; /* Slightly adjusted for balance */
+      font-weight: 600;
       color: #000;
       margin-bottom: 1.5rem;
       position: relative;
       display: inline-block;
+      letter-spacing: -0.02em; /* Tighter spacing */
     }
     
     /* Subtle indicator for sections */
@@ -358,9 +361,6 @@
         </p>
         <p>
           My research interests lie at the intersection of <strong>Multi-Modal Large Language Models (MLLMs)</strong>, <strong>Human-Computer Interaction</strong>, <strong>Image Generation</strong>, and <strong>Affective Computing</strong>. I am driven by a passion for developing innovative solutions that effectively bridge diverse data modalities and am eager to contribute to groundbreaking research with tangible real-world applications.
-        </p>
-        <p>
-          <em>Objective:</em> I plan to pursue a Master's Program at <strong>KAIST</strong> starting in Fall 2026.
         </p>
 
         <div class="tag-cloud">
