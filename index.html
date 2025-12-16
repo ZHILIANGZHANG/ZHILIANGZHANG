@@ -9,102 +9,124 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <!-- 
-    FONTS UPDATE:
-    1. Outfit: Used for EVERYTHING now (Headings, Body, Meta). 
-       Loaded weights: 400 (Regular), 500 (Medium), 600 (SemiBold), 700 (Bold), 800 (ExtraBold).
-  -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* --- Color Palette: Deep & Elegant --- */
-      --bg-body: #f6f7f9;
-      
-      /* Text Colors */
+      /* --- Color Palette (original spirit, slightly refined) --- */
+      --bg-body: #f7f7f7;
+
       --text-primary: #0f172a;   /* Slate 900 */
       --text-secondary: #475569; /* Slate 600 */
       --text-tertiary: #94a3b8;  /* Slate 400 */
-      
-      /* Accent - Deep, Sophisticated Blue */
+
       --accent-primary: #1e3a8a; /* Blue 900 */
       --accent-hover: #1e40af;   /* Blue 800 */
-      
-      /* Special Highlight Color for Bold text in About section */
+
       --highlight-bold: #1669bb;
+      --border-light: #e2e8f0;
 
-      /* Borders - Very subtle */
-      --border-light: #e2e8f0;   /* Slate 200 */
-
-      /* --- Spacing & Layout --- */
-      --max-width: 1080px; 
+      /* --- Layout --- */
+      --max-width: 1080px;
       --sidebar-width: 280px;
       --gap-main: 90px;
-      
-      /* --- Transitions --- */
+
+      /* --- Motion --- */
       --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+      /* --- Type --- */
+      --font: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* Optional: subtle dark mode without changing layout */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-body: #0b1220;
+        --text-primary: #e5e7eb;
+        --text-secondary: #cbd5e1;
+        --text-tertiary: rgba(203, 213, 225, 0.55);
+
+        --border-light: rgba(203, 213, 225, 0.18);
+
+        --accent-primary: #7aa2ff;
+        --accent-hover: #9ab8ff;
+
+        --highlight-bold: #8cbcff;
+      }
     }
 
     /* --- Reset & Base --- */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
+    html { scroll-behavior: smooth; }
+
     body {
-      /* CHANGED: All fonts to Outfit */
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: var(--font);
       background-color: var(--bg-body);
       color: var(--text-primary);
-      line-height: 1.75; 
-      font-size: 16px; 
-      /* CHANGED: Body font weight to SemiBold (600) per request */
-      font-weight: 600; 
-      -webkit-font-smoothing: antialiased;
-    }
+      line-height: 1.75;
+      font-size: 16px;
 
-    /* Since body is 600, we might want regular text to look slightly softer in color to not be overwhelming, 
-       but keeping strictly to the requested weight. */
+      /* Keep the improved typography: body NOT 600 */
+      font-weight: 500;
+
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
 
     h1, h2, h3 {
-      font-family: 'Outfit', sans-serif; /* Unified font */
-      font-weight: 800; /* ExtraBold for contrast against the 600 body */
+      font-family: var(--font);
+      font-weight: 800;
       color: var(--text-primary);
       line-height: 1.1;
-      letter-spacing: -0.02em; 
+      letter-spacing: -0.02em;
     }
 
-    a { 
-      text-decoration: none; 
-      color: inherit; 
-      transition: color 0.2s var(--ease); 
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s var(--ease), transform 0.2s var(--ease);
+    }
+
+    /* Better keyboard focus (doesn't change layout) */
+    a:focus-visible {
+      outline: 3px solid rgba(30,58,138,0.18);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+    @media (prefers-color-scheme: dark) {
+      a:focus-visible { outline-color: rgba(122,162,255,0.22); }
     }
 
     /* Minimalist Link Styling */
     .link-hover {
       color: var(--text-primary);
-      border-bottom: 2px solid #cbd5e1; /* Thicker underline to match bold text */
+      border-bottom: 2px solid #cbd5e1;
       padding-bottom: 0px;
       transition: all 0.2s ease;
+    }
+    @media (prefers-color-scheme: dark) {
+      .link-hover { border-bottom-color: rgba(203,213,225,0.45); }
     }
     .link-hover:hover {
       color: var(--accent-primary);
       border-bottom-color: var(--accent-primary);
     }
 
-    /* --- Layout Wrapper --- */
+    /* --- Layout Wrapper (original layout) --- */
     .wrapper {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 100px 40px 0 40px; 
+      padding: 100px 40px 0 40px;
       display: grid;
       grid-template-columns: var(--sidebar-width) 1fr;
       gap: var(--gap-main);
       align-items: start;
     }
 
-    /* --- Sidebar Profile --- */
+    /* --- Sidebar Profile (original behavior, no card) --- */
     .profile-sidebar {
       position: sticky;
-      top: 100px; 
+      top: 100px;
       align-self: start;
       display: flex;
       flex-direction: column;
@@ -112,36 +134,47 @@
       z-index: 10;
       max-height: calc(100vh - 120px);
       overflow-y: auto;
-      scrollbar-width: none; 
+      scrollbar-width: none;
     }
     .profile-sidebar::-webkit-scrollbar { display: none; }
 
     .avatar-container {
       position: relative;
-      width: 180px; 
+      width: 180px;
       margin-bottom: 8px;
     }
 
     .profile-img {
       width: 100%;
       height: auto;
-      border-radius: 8px; 
+      border-radius: 8px;
       object-fit: cover;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+
+      /* keep original style */
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       filter: grayscale(10%);
+
+      /* subtle modern hover */
+      transition: transform 0.25s var(--ease), filter 0.25s var(--ease);
+    }
+    .profile-img:hover {
+      transform: translateY(-2px);
+      filter: grayscale(4%);
     }
 
     .profile-names h1 {
-      font-size: 2.5rem; /* Larger title for Outfit */
+      font-size: 2.5rem;
       margin-bottom: 4px;
       font-weight: 800;
       letter-spacing: -0.03em;
     }
 
     .profile-subname {
-      font-family: 'Outfit', sans-serif; 
+      font-family: var(--font);
       font-size: 1.2rem;
       color: var(--text-secondary);
+
+      /* improved: 600 for emphasis only */
       font-weight: 600;
     }
 
@@ -149,37 +182,41 @@
       font-size: 1rem;
       color: var(--text-secondary);
       line-height: 1.5;
-      font-weight: 600; /* Matching body weight */
-      border-left: 3px solid var(--border-light); /* Thicker border */
+
+      /* improved: not too bold */
+      font-weight: 500;
+
+      border-left: 3px solid var(--border-light);
       padding-left: 16px;
     }
-    .profile-meta span {
-      display: block;
-    }
+    .profile-meta span { display: block; }
 
-    /* Contact Icons */
+    /* Contact Icons (original layout) */
     .contact-links {
       display: flex;
       flex-direction: column;
       gap: 12px;
       margin-top: 12px;
     }
-    
+
     .contact-item {
       display: flex;
       align-items: center;
       gap: 14px;
-      font-size: 1rem; 
-      font-weight: 600; 
+      font-size: 1rem;
+
+      /* improved */
+      font-weight: 600;
+
       color: var(--text-secondary);
       padding: 4px 0;
-      transition: all 0.2s;
+      transition: all 0.2s var(--ease);
     }
     .contact-item:hover {
       color: var(--accent-primary);
-      transform: translateX(4px); 
+      transform: translateX(4px);
     }
-    
+
     .contact-icon {
       width: 20px;
       height: 20px;
@@ -189,10 +226,9 @@
 
     /* --- Main Content --- */
     .main-content { min-width: 0; }
-    
-    section { margin-bottom: 6rem; } 
+    section { margin-bottom: 6rem; }
 
-    /* Section Headers */
+    /* Section Headers (original style, just typographic polish) */
     .section-header {
       margin-bottom: 2.5rem;
       display: flex;
@@ -200,58 +236,63 @@
       gap: 16px;
     }
     .section-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.5rem; 
+      font-family: var(--font);
+      font-size: 1.5rem;
       font-weight: 800;
-      text-transform: uppercase; 
-      letter-spacing: 0.02em; 
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
       color: var(--text-primary);
     }
     .section-line {
-      height: 2px; /* Thicker line to match font weight */
+      height: 2px;
       background: var(--border-light);
       flex-grow: 1;
-      max-width: 60px; 
+      max-width: 60px;
     }
 
-    /* About Text */
+    /* About Text (keep font improvements) */
     .about-text p {
       margin-bottom: 1.5rem;
       color: var(--text-secondary);
-      max-width: 68ch; 
-      text-align: justify;
-      font-weight: 600; /* Explicitly requested SemiBold */
+      max-width: 68ch;
+
+      /* changed from justify to left for better spacing */
+      text-align: left;
+
+      /* improved body weight */
+      font-weight: 500;
     }
 
-    /* CHANGED: Specific color for bold text in About section */
     .about-text strong {
       color: var(--highlight-bold);
-      font-weight: 800; /* Make it extra bold to stand out from the 600 body */
+      font-weight: 800;
     }
 
-    /* Tag Cloud */
-    .tag-cloud { 
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: 12px; 
-      margin-top: 2rem; 
+    /* Tag Cloud (original behavior) */
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 2rem;
     }
     .tag {
-      /* Replaced Mono with Outfit per "All fonts to Outfit" */
-      font-family: 'Outfit', sans-serif; 
+      font-family: var(--font);
       font-size: 0.8rem;
       font-weight: 600;
       padding: 6px 16px;
       background: transparent;
-      color: var(--text-secondary); 
-      border: 2px solid var(--border-light); /* Thicker border */
+      color: var(--text-secondary);
+      border: 2px solid var(--border-light);
       border-radius: 6px;
       transition: all 0.2s ease;
     }
     .tag:hover {
       border-color: var(--accent-primary);
       color: var(--accent-primary);
-      background: #f8fafc;
+      background: rgba(148,163,184,0.12);
+    }
+    @media (prefers-color-scheme: dark) {
+      .tag:hover { background: rgba(203,213,225,0.08); }
     }
 
     /* Education */
@@ -262,20 +303,19 @@
       flex-wrap: wrap;
       gap: 8px;
     }
-    .edu-school { 
-      font-size: 1.25rem; 
-      font-weight: 800; 
-      color: var(--text-primary); 
+    .edu-school {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
     }
-    .edu-degree { 
-      font-size: 1.05rem; 
+    .edu-degree {
+      font-size: 1.05rem;
       font-weight: 600;
-      color: var(--text-secondary); 
+      color: var(--text-secondary);
     }
-    .edu-meta { 
-      /* Replaced Mono with Outfit */
-      font-family: 'Outfit', sans-serif; 
-      font-size: 0.9rem; 
+    .edu-meta {
+      font-family: var(--font);
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--text-tertiary);
       letter-spacing: 0.02em;
@@ -283,7 +323,7 @@
     .edu-details {
       margin-top: 8px;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--text-secondary);
     }
 
@@ -300,20 +340,22 @@
       align-items: baseline;
     }
     .news-date {
-      /* Replaced Mono with Outfit */
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font);
       font-size: 0.9rem;
       font-weight: 600;
-      color: var(--text-tertiary); 
+      color: var(--text-tertiary);
       text-align: right;
     }
     .news-content {
       font-size: 1rem;
-      font-weight: 600;
+
+      /* improved: readable */
+      font-weight: 500;
+
       color: var(--text-secondary);
     }
     .highlight {
-      color: var(--accent-primary); 
+      color: var(--accent-primary);
       font-weight: 800;
       background: transparent;
       padding: 0;
@@ -322,12 +364,12 @@
     /* Publications */
     .pub-list { display: flex; flex-direction: column; gap: 40px; }
     .pub-item { display: flex; flex-direction: column; gap: 8px; }
-    
+
     .pub-title {
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font);
       font-size: 1.2rem;
       letter-spacing: -0.01em;
-      font-weight: 800; /* Stronger title */
+      font-weight: 800;
       color: var(--text-primary);
       line-height: 1.35;
       transition: color 0.2s;
@@ -336,12 +378,12 @@
 
     .pub-authors {
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--text-secondary);
     }
-    .me { 
-      color: var(--text-primary); 
-      font-weight: 800; 
+    .me {
+      color: var(--text-primary);
+      font-weight: 800;
     }
 
     .pub-venue {
@@ -357,15 +399,15 @@
       font-style: normal;
     }
 
-    /* Action Buttons */
+    /* Action Buttons (original style) */
     .pub-links {
       margin-top: 10px;
       display: flex;
       gap: 16px;
+      flex-wrap: wrap;
     }
     .btn-small {
-      /* Replaced Mono with Outfit */
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font);
       font-size: 0.8rem;
       font-weight: 700;
       color: var(--text-secondary);
@@ -380,20 +422,17 @@
     }
 
     /* Experience */
-    .exp-list {
-      position: relative;
-    }
-    
+    .exp-list { position: relative; }
+
     .exp-item {
       margin-bottom: 2.5rem;
       display: grid;
-      grid-template-columns: 180px 1fr; 
+      grid-template-columns: 180px 1fr;
       gap: 24px;
     }
-    
+
     .exp-date-col {
-      /* Replaced Mono with Outfit */
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font);
       font-size: 0.9rem;
       font-weight: 600;
       color: var(--text-tertiary);
@@ -402,46 +441,47 @@
       white-space: nowrap;
     }
 
-    .exp-content-col {
-      display: flex;
-      flex-direction: column;
-    }
+    .exp-content-col { display: flex; flex-direction: column; }
 
-    .exp-role { 
-      font-weight: 800; 
-      color: var(--text-primary); 
-      font-size: 1.1rem; 
+    .exp-role {
+      font-weight: 800;
+      color: var(--text-primary);
+      font-size: 1.1rem;
       margin-bottom: 2px;
-      font-family: 'Outfit', sans-serif; 
+      font-family: var(--font);
     }
-    .exp-org { 
-      font-size: 1rem; 
+    .exp-org {
+      font-size: 1rem;
       font-weight: 600;
-      color: var(--text-secondary); 
-      margin-bottom: 12px; 
+      color: var(--text-secondary);
+      margin-bottom: 12px;
       font-style: italic;
     }
-    .exp-desc { 
-      font-size: 1rem; 
-      font-weight: 600;
-      color: var(--text-secondary); 
-      line-height: 1.6; 
+    .exp-desc {
+      font-size: 1rem;
+
+      /* improved */
+      font-weight: 500;
+
+      color: var(--text-secondary);
+      line-height: 1.6;
     }
 
-    /* Footer */
+    /* Footer (original) */
     footer {
       margin-top: 6rem;
       padding-top: 3rem;
       border-top: 2px solid var(--border-light);
-      padding-bottom: 100px; 
+      padding-bottom: 100px;
       font-size: 0.9rem;
       font-weight: 600;
       color: var(--text-tertiary);
       display: flex;
       justify-content: space-between;
+      gap: 16px;
     }
 
-    /* --- Responsive --- */
+    /* --- Responsive (original behavior) --- */
     @media (max-width: 900px) {
       .wrapper {
         grid-template-columns: 1fr;
@@ -460,11 +500,11 @@
       .avatar-container { width: 120px; margin: 0; }
       .contact-links { flex-direction: row; flex-wrap: wrap; gap: 20px; }
       .section-title { font-size: 1.35rem; }
-      
+
       .exp-item { grid-template-columns: 1fr; gap: 4px; }
       .exp-date-col { text-align: left; margin-bottom: 4px; }
     }
-    
+
     @media (max-width: 600px) {
       .profile-sidebar { flex-direction: column; align-items: flex-start; gap: 20px; }
       .news-item { grid-template-columns: 1fr; gap: 4px; }
@@ -474,46 +514,49 @@
 </head>
 
 <body>
-
   <div class="wrapper">
-    
+
     <!-- Sidebar -->
     <aside class="profile-sidebar">
       <div class="avatar-container">
-        <!-- Photo -->
-        <img src="self-photo.jpg" alt="Cheng Zhang" class="profile-img" onerror="this.src='https://placehold.co/400x500/f1f5f9/94a3b8?text=Photo'">
+        <img src="self-photo.jpg" alt="Cheng Zhang" class="profile-img"
+             onerror="this.src='https://placehold.co/400x500/f1f5f9/94a3b8?text=Photo'">
       </div>
-      
+
       <div class="profile-content">
         <div class="profile-names">
           <h1 class="profile-name">Cheng Zhang</h1>
           <div class="profile-subname">Rylan Zhang</div>
         </div>
-        
+
         <div class="profile-meta" style="margin-top: 20px;">
           <span>Undergraduate Researcher</span>
           <span>Jilin University (JLU)</span>
           <span style="color: var(--text-tertiary); font-size: 0.85rem; margin-top: 6px;">Changchun, China</span>
         </div>
-        
+
         <div class="contact-links" style="margin-top: 28px;">
           <a href="mailto:ChengZhang0525@gmail.com" class="contact-item" title="Primary Email">
             <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             <span>Gmail</span>
           </a>
+
           <a href="mailto:zhangcheng2122@mails.jlu.edu.cn" class="contact-item" title="Academic Email">
             <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
             <span>Email (JLU)</span>
           </a>
+
           <a href="CV_ChengZhang_KAIST.pdf" class="contact-item">
             <svg class="contact-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
             <span>Curriculum Vitae</span>
           </a>
-          <a href="https://github.com/" target="_blank" class="contact-item">
+
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="contact-item">
             <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
             <span>Github</span>
           </a>
-          <a href="https://scholar.google.com/" target="_blank" class="contact-item">
+
+          <a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer" class="contact-item">
             <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
             <span>Google Scholar</span>
           </a>
@@ -523,20 +566,26 @@
 
     <!-- Main Content -->
     <main class="main-content">
-      
-      <!-- Bio -->
+
+      <!-- About -->
       <section id="about">
         <div class="section-header">
           <h2 class="section-title">About Me</h2>
           <div class="section-line"></div>
         </div>
-        
+
         <div class="about-text">
           <p>
-            I am a senior undergraduate student majoring in Computer Science & Technology at <strong>Jilin University</strong> (Member of Project 985 & 211). Currently, I am fortunate to be a Research Assistant at the <strong>Affective Vision Computing (AVC) Lab</strong>, advised by Assoc. Prof. <a href="#" class="link-hover">Hongxia Xie</a>.
+            I am a senior undergraduate student majoring in Computer Science &amp; Technology at <strong>Jilin University</strong>
+            (Member of Project 985 &amp; 211). Currently, I am fortunate to be a Research Assistant at the
+            <strong>Affective Vision Computing (AVC) Lab</strong>, advised by Assoc. Prof.
+            <a href="#" class="link-hover">Hongxia Xie</a>.
           </p>
           <p>
-            My research interests lie at the intersection of <strong>Multi-Modal Large Language Models (MLLMs)</strong>, <strong>Human-Computer Interaction</strong>, <strong>Image Generation</strong>, and <strong>Affective Computing</strong>. I am driven by a passion for developing innovative solutions that effectively bridge diverse data modalities and am eager to contribute to groundbreaking research with tangible real-world applications.
+            My research interests lie at the intersection of <strong>Multi-Modal Large Language Models (MLLMs)</strong>,
+            <strong>Human-Computer Interaction</strong>, <strong>Image Generation</strong>, and <strong>Affective Computing</strong>.
+            I am driven by a passion for developing innovative solutions that effectively bridge diverse data modalities and
+            am eager to contribute to groundbreaking research with tangible real-world applications.
           </p>
         </div>
 
@@ -554,11 +603,11 @@
           <h2 class="section-title">Education</h2>
           <div class="section-line"></div>
         </div>
-        
+
         <div class="edu-card">
           <div>
             <div class="edu-school">Jilin University (JLU)</div>
-            <div class="edu-degree">B.Sc. in Computer Science & Technology</div>
+            <div class="edu-degree">B.Sc. in Computer Science &amp; Technology</div>
           </div>
           <div class="edu-meta">
             Sept 2022 - June 2026 (Expected)
@@ -575,7 +624,7 @@
           <h2 class="section-title">News</h2>
           <div class="section-line"></div>
         </div>
-        
+
         <div class="news-list">
           <div class="news-item">
             <div class="news-date">Oct 2025</div>
@@ -598,12 +647,12 @@
           <h2 class="section-title">Selected Publications</h2>
           <div class="section-line"></div>
         </div>
-        
+
         <div class="pub-list">
-          
-          <!-- Paper 1 -->
           <article class="pub-item">
-            <a href="https://arxiv.org/" class="pub-title">EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation</a>
+            <a href="https://arxiv.org/" class="pub-title" target="_blank" rel="noopener noreferrer">
+              EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation
+            </a>
             <div class="pub-authors">
               <span class="me">Cheng Zhang</span>, HongXia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng
             </div>
@@ -617,7 +666,6 @@
             </div>
           </article>
 
-          <!-- Paper 2 -->
           <article class="pub-item">
             <span class="pub-title">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal Large Language Model</span>
             <div class="pub-authors">
@@ -626,19 +674,19 @@
             <div class="pub-venue">Under Review</div>
           </article>
 
-          <!-- Paper 3 -->
           <article class="pub-item">
-            <a href="https://arxiv.org/abs/2504.14238" class="pub-title">Single Document Image Highlight Removal via A Large-Scale Real-World Dataset and A Location-Aware Network</a>
+            <a href="https://arxiv.org/abs/2504.14238" class="pub-title" target="_blank" rel="noopener noreferrer">
+              Single Document Image Highlight Removal via A Large-Scale Real-World Dataset and A Location-Aware Network
+            </a>
             <div class="pub-authors">
               Lu Pan, Yu-Hsuan Huang, Hongxia Xie, <span class="me">Cheng Zhang</span>, Hongwei Zhao, Hong-Han Shuai, Wen-Huang Cheng
             </div>
             <div class="pub-venue">Under Review</div>
             <div class="pub-links">
-              <a href="https://arxiv.org/abs/2504.14238" class="btn-small">arXiv</a>
+              <a href="https://arxiv.org/abs/2504.14238" class="btn-small" target="_blank" rel="noopener noreferrer">arXiv</a>
             </div>
           </article>
 
-          <!-- Paper 4 -->
           <article class="pub-item">
             <span class="pub-title">AmorisBench: A Comprehensive Multi-modal Dataset for Love-centric Question Answering</span>
             <div class="pub-authors">
@@ -646,7 +694,6 @@
             </div>
             <div class="pub-venue">Under Review</div>
           </article>
-
         </div>
       </section>
 
@@ -656,13 +703,10 @@
           <h2 class="section-title">Experience</h2>
           <div class="section-line"></div>
         </div>
-        
+
         <div class="exp-list">
-          
           <div class="exp-item">
-            <div class="exp-date-col">
-              May 2024 — Present
-            </div>
+            <div class="exp-date-col">May 2024 — Present</div>
             <div class="exp-content-col">
               <div class="exp-role">Research Assistant</div>
               <div class="exp-org">Affective Vision Computing (AVC) Lab, Jilin University</div>
@@ -673,9 +717,7 @@
           </div>
 
           <div class="exp-item">
-            <div class="exp-date-col">
-              Jan 2025 — Present
-            </div>
+            <div class="exp-date-col">Jan 2025 — Present</div>
             <div class="exp-content-col">
               <div class="exp-role">Participant, Youth Project</div>
               <div class="exp-org">National Natural Science Foundation of China</div>
@@ -686,18 +728,15 @@
           </div>
 
           <div class="exp-item">
-            <div class="exp-date-col">
-              Jan 2025 — Present
-            </div>
+            <div class="exp-date-col">Jan 2025 — Present</div>
             <div class="exp-content-col">
               <div class="exp-role">Participant, Excellent Youth Project</div>
               <div class="exp-org">Jilin Provincial Department of Education</div>
               <div class="exp-desc">
-                  Research on Emotion Understanding Stability Technology for Multimodal Large Models.
+                Research on Emotion Understanding Stability Technology for Multimodal Large Models.
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -707,7 +746,8 @@
           <h2 class="section-title">Honors</h2>
           <div class="section-line"></div>
         </div>
-        <ul class="news-list">
+
+        <ul class="news-list" style="list-style: none;">
           <li class="news-item">
             <span class="news-date">2024-2025</span>
             <span class="news-content">Undergraduate Scholarship, Jilin University</span>
@@ -731,10 +771,5 @@
 
     </main>
   </div>
-
 </body>
 </html>
-
-
-
-
