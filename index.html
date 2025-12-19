@@ -6,34 +6,33 @@
   <title>Cheng Zhang | Jilin University</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* --- 核心配色 --- */
-      --bg-main: #ffffff;
-      --bg-soft: #fbfcfe;
+      /* --- 学术专业色调 --- */
+      --bg-body: #ffffff;
+      --bg-sub: #f8fafc;
       --text-main: #0f172a;
-      --text-sub: #475569;
+      --text-muted: #475569;
       --text-light: #94a3b8;
-      
-      --accent: #1669bb;
-      --accent-muted: #e0f2fe;
-      --border-color: #e2e8f0;
-      
-      --font-body: 'Inter', -apple-system, sans-serif;
-      --font-heading: 'Outfit', sans-serif;
+      --accent: #2563eb; 
+      --accent-soft: rgba(37, 99, 235, 0.05);
+      --border: #e2e8f0;
+      --max-width: 1050px;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg-main: #0b1220;
-        --bg-soft: #0f172a;
-        --text-main: #f1f5f9;
-        --text-sub: #cbd5e1;
-        --text-light: #64748b;
-        --accent: #60a5fa;
-        --border-color: rgba(203, 213, 225, 0.1);
+        --bg-body: #0a0c10;
+        --bg-sub: #161b22;
+        --text-main: #f0f6fc;
+        --text-muted: #8b949e;
+        --text-light: #484f58;
+        --accent: #58a6ff;
+        --accent-soft: rgba(88, 166, 255, 0.1);
+        --border: #30363d;
       }
     }
 
@@ -41,304 +40,256 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      background-color: var(--bg-main);
+      background-color: var(--bg-body);
       color: var(--text-main);
-      font-family: var(--font-body);
-      line-height: 1.8;
+      font-family: var(--font-sans);
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: inherit; text-decoration: none; transition: all 0.2s ease; }
+    a { color: inherit; text-decoration: none; transition: 0.2s ease; }
+    p { margin-bottom: 1.25rem; }
+    strong { font-weight: 600; color: var(--text-main); }
 
     /* --- 布局容器 --- */
-    .wrapper {
-      max-width: 1120px;
+    .container {
+      max-width: var(--max-width);
       margin: 0 auto;
-      padding: 100px 40px;
+      padding: 80px 50px;
       display: grid;
       grid-template-columns: 280px 1fr;
-      gap: 100px;
+      gap: 80px;
     }
 
-    /* --- 侧边栏装饰 --- */
+    /* --- 侧边栏 --- */
     .sidebar {
       position: sticky;
-      top: 100px;
+      top: 80px;
       height: fit-content;
     }
 
-    .profile-img-container {
-      width: 190px;
-      position: relative;
-      margin-bottom: 35px;
-    }
-
-    /* 头像后的装饰小方块 */
-    .profile-img-container::before {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      right: -10px;
-      width: 60px;
-      height: 60px;
-      background: var(--accent-muted);
-      z-index: -1;
-      border-radius: 4px;
-    }
-
+    .profile-wrap { margin-bottom: 40px; }
     .profile-img {
       width: 100%;
-      border-radius: 4px;
-      filter: grayscale(10%);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-      display: block;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      background: var(--bg-sub);
     }
-    .profile-img:hover { filter: grayscale(0%); transform: translateY(-5px); }
 
-    .name-heading {
-      font-family: var(--font-heading);
-      font-size: 2.6rem;
+    .name-primary {
+      font-size: 2.2rem;
       font-weight: 800;
       letter-spacing: -0.04em;
       line-height: 1.1;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
-
-    .name-sub {
+    .name-secondary {
+      font-size: 1.2rem;
       color: var(--accent);
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 25px;
-      font-family: var(--font-heading);
+      font-weight: 600;
+      margin-bottom: 24px;
     }
 
-    .sidebar-meta {
-      font-size: 0.95rem;
-      color: var(--text-sub);
-      padding: 20px 0;
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-      margin-bottom: 30px;
+    .info-list {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
     }
-    .sidebar-meta p { margin-bottom: 4px; font-weight: 500; }
 
-    .contact-list { display: flex; flex-direction: column; gap: 12px; }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 30px;
+    }
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 0.85rem;
-      font-weight: 700;
+      gap: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--text-light);
     }
     .contact-item:hover { color: var(--accent); }
-    .contact-icon { width: 18px; height: 18px; fill: currentColor; }
+    .contact-icon { width: 16px; height: 16px; stroke-width: 2; flex-shrink: 0; }
 
     /* --- 主内容区 --- */
-    section { margin-bottom: 100px; }
+    section { margin-bottom: 80px; animation: fadeIn 0.8s ease backwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    .section-header {
-      margin-bottom: 45px;
+    .section-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-main);
+      font-weight: 800;
+      margin-bottom: 35px;
       display: flex;
       align-items: center;
       gap: 20px;
     }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-main);
-      white-space: nowrap;
-    }
-
-    /* 装饰横线 */
-    .section-line {
+    .section-title::after {
+      content: "";
       height: 1px;
-      background: var(--border-color);
       flex-grow: 1;
+      background: var(--border);
     }
 
-    .content-block {
-      font-size: 1.05rem;
-      color: var(--text-sub);
-      max-width: 72ch;
-      font-weight: 500;
-    }
-
-    .inline-highlight {
+    /* 关于我 */
+    .about-text { font-size: 1.05rem; color: var(--text-muted); }
+    .highlight {
       color: var(--text-main);
       font-weight: 700;
-      box-shadow: inset 0 -4px 0 var(--accent-muted);
+      box-shadow: inset 0 -4px 0 var(--accent-soft);
     }
 
-    /* --- 标签云 --- */
-    .tag-cloud {
+    .tag-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
+      gap: 8px;
+      margin-top: 24px;
     }
     .tag {
       font-size: 0.75rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 6px 14px;
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      transition: all 0.2s ease;
-      background: var(--bg-soft);
-    }
-    .tag:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
+      padding: 5px 12px;
+      background: var(--bg-sub);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-muted);
     }
 
-    /* --- 教育卡片 --- */
-    .edu-card {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding-bottom: 20px;
-      border-bottom: 1px dashed var(--border-color);
-    }
-    .edu-school { font-size: 1.3rem; font-weight: 800; color: var(--text-main); }
-    .edu-meta { font-size: 0.85rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; }
-
-    /* --- 列表与时间轴设计 --- */
-    .item-list { display: flex; flex-direction: column; gap: 24px; }
+    /* 卡片列表通用 */
+    .card-list { display: flex; flex-direction: column; gap: 24px; }
     
-    .timeline-item {
+    /* 动态/经历/教育 通用条目设计 */
+    .entry {
       display: grid;
       grid-template-columns: 100px 1fr;
       gap: 30px;
-      position: relative;
     }
-
-    .timeline-date {
-      font-size: 0.85rem;
+    .entry-date {
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--accent);
       text-align: right;
-      padding-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding-top: 4px;
     }
+    .entry-content h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .entry-content p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .entry-content .sub-info { font-size: 0.85rem; color: var(--text-light); }
 
-    .timeline-content {
-      padding-bottom: 15px;
-      border-bottom: 1px solid var(--bg-soft);
+    /* --- 论文板块：改为静态圆角矩形线框 --- */
+    .pub-card {
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-body); /* 保持背景干净简洁 */
+      transition: border-color 0.2s ease;
     }
-
-    /* --- 论文板块 --- */
-    .pub-item {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding: 20px;
-      border-radius: 8px;
-      background: var(--bg-soft);
-      border: 1px solid transparent;
-      transition: all 0.3s ease;
+    .pub-card:hover {
+      border-color: var(--accent); /* 仅在鼠标进入时提供极细微的颜色反馈 */
     }
-    .pub-item:hover {
-      border-color: var(--accent-muted);
-      background: var(--bg-main);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.03);
-    }
-
     .pub-title {
-      font-weight: 800;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
+      font-weight: 700;
       color: var(--text-main);
-      line-height: 1.4;
+      margin-bottom: 8px;
+      display: block;
     }
-    .pub-authors { font-size: 0.95rem; color: var(--text-sub); }
-    .me { font-weight: 800; color: var(--text-main); text-decoration: underline 2px var(--accent-muted); }
+    .pub-authors { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px; }
+    .author-me {
+      color: var(--text-main);
+      font-weight: 800;
+      text-decoration: underline 2px var(--accent-soft);
+    }
     .pub-venue {
       font-size: 0.85rem;
       font-weight: 700;
-      font-style: italic;
       color: var(--accent);
+      font-style: italic;
+      margin-bottom: 15px;
     }
-
-    .pub-links { display: flex; gap: 12px; margin-top: 5px; }
-    .pub-link-btn {
+    .pub-links { display: flex; gap: 12px; }
+    .pub-link {
       font-size: 0.7rem;
       font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 4px 10px;
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
       color: var(--text-light);
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 4px;
     }
-    .pub-link-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .pub-link:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* --- 页脚 --- */
+    /* 页脚 */
     footer {
-      margin-top: 80px;
+      margin-top: 100px;
       padding: 50px 0;
-      border-top: 1px solid var(--border-color);
+      border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
-      font-size: 0.85rem;
-      font-weight: 600;
       color: var(--text-light);
+      font-size: 0.8rem;
+      font-weight: 600;
     }
 
-    /* --- 移动端优化 --- */
+    /* --- 移动端支持 --- */
     @media (max-width: 900px) {
-      .wrapper { grid-template-columns: 1fr; padding: 60px 30px; gap: 60px; }
+      .container { grid-template-columns: 1fr; padding: 40px 24px; gap: 60px; }
       .sidebar { position: static; }
-      .timeline-item { grid-template-columns: 1fr; gap: 5px; }
-      .timeline-date { text-align: left; }
+      .profile-img { width: 140px; }
+      .entry { grid-template-columns: 1fr; gap: 4px; }
+      .entry-date { text-align: left; margin-bottom: 4px; }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="wrapper">
+  <div class="container">
     
     <!-- 侧边栏 -->
     <aside class="sidebar">
-      <div class="profile-img-container">
+      <div class="profile-wrap">
         <img src="self-photo.jpg" alt="Cheng Zhang" class="profile-img"
              onerror="this.src='https://placehold.co/400x500/f1f5f9/94a3b8?text=CZ'">
-      </div>
-
-      <div class="profile-info">
-        <h1 class="name-heading">Cheng Zhang</h1>
-        <p class="name-sub">Rylan Zhang</p>
+        <h1 class="name-primary">Cheng Zhang</h1>
+        <p class="name-secondary">Rylan Zhang</p>
         
-        <div class="sidebar-meta">
+        <div class="info-list">
           <p>Undergraduate Researcher</p>
-          <p>Jilin University (JLU)</p>
-          <p style="color: var(--text-light); font-size: 0.8rem; margin-top: 6px;">Changchun, China</p>
+          <p><strong>Jilin University (JLU)</strong></p>
+          <p style="color: var(--text-light); font-size: 0.8rem;">Changchun, China</p>
         </div>
-        
-        <div class="contact-list">
+
+        <div class="contact-links">
           <a href="mailto:ChengZhang0525@gmail.com" class="contact-item">
-            <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            <span>Gmail</span>
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Gmail
           </a>
           <a href="mailto:zhangcheng2122@mails.jlu.edu.cn" class="contact-item">
-            <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            <span>Email (JLU)</span>
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Email (JLU)
           </a>
           <a href="https://github.com" class="contact-item">
-            <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            <span>GitHub</span>
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            GitHub
           </a>
           <a href="CV_ChengZhang_KAIST.pdf" class="contact-item">
-            <svg class="contact-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-            <span>CV</span>
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            Curriculum Vitae
           </a>
         </div>
       </div>
@@ -349,25 +300,20 @@
       
       <!-- 关于我 -->
       <section id="about">
-        <div class="section-header">
-          <h2 class="section-title">About Me</h2>
-          <div class="section-line"></div>
-        </div>
-        <div class="content-block">
-          <p style="margin-bottom: 20px;">
-            I am a senior undergraduate student majoring in Computer Science & Technology at <span class="inline-highlight">Jilin University (JLU)</span> 
-            (Project 985 & 211). Currently, I am fortunate to be a Research Assistant at the 
-            <strong>Affective Vision Computing (AVC) Lab</strong>, advised by Assoc. Prof. 
-            <strong>Hongxia Xie</strong>.
+        <h2 class="section-title">About Me</h2>
+        <div class="about-text">
+          <p>
+            I am a senior undergraduate student majoring in Computer Science & Technology at <span class="highlight">Jilin University (JLU)</span>. 
+            Currently, I am fortunate to be a Research Assistant at the <strong>Affective Vision Computing (AVC) Lab</strong>, 
+            advised by <span class="highlight">Assoc. Prof. Hongxia Xie</span>.
           </p>
           <p>
-            My research interests lie at the intersection of <span class="inline-highlight">Multi-Modal Large Language Models (MLLMs)</span>, 
-            <span class="inline-highlight">HCI</span>, <strong>Image Generation</strong>, and <strong>Affective Computing</strong>. 
+            My research interests lie at the intersection of <strong>Multi-Modal Large Language Models (MLLMs)</strong>, 
+            <strong>HCI</strong>, <strong>Image Generation</strong>, and <strong>Affective Computing</strong>. 
             I am driven by a passion for developing innovative solutions that effectively bridge diverse data modalities.
           </p>
         </div>
-
-        <div class="tag-cloud">
+        <div class="tag-container">
           <span class="tag">Multi-Modal LLM</span>
           <span class="tag">Affective Computing</span>
           <span class="tag">HCI</span>
@@ -375,47 +321,41 @@
         </div>
       </section>
 
-      <!-- 教育经历 -->
+      <!-- 教育 -->
       <section id="education">
-        <div class="section-header">
-          <h2 class="section-title">Education</h2>
-          <div class="section-line"></div>
-        </div>
-        <div class="edu-card">
-          <div>
-            <div class="edu-school">Jilin University (JLU)</div>
-            <p style="color: var(--text-sub); font-weight: 600; margin: 4px 0;">B.Sc. in Computer Science & Technology</p>
-            <p style="font-size: 0.95rem; color: var(--text-light);">
-              Average Score: <strong style="color:var(--text-main)">88/100</strong> &nbsp;•&nbsp; Rank: <strong style="color:var(--text-main)">8/102</strong>
+        <h2 class="section-title">Education</h2>
+        <div class="entry">
+          <div class="entry-date">2022 — 2026</div>
+          <div class="entry-content">
+            <h4>Jilin University (JLU)</h4>
+            <p>B.Sc. in Computer Science & Technology</p>
+            <p class="sub-info">
+              Average Score: <strong>88/100</strong> &nbsp;•&nbsp; Rank: <strong>8/102</strong>
             </p>
           </div>
-          <div class="edu-meta">Sept 2022 — June 2026 (Exp)</div>
         </div>
       </section>
 
       <!-- 动态 -->
       <section id="news">
-        <div class="section-header">
-          <h2 class="section-title">News</h2>
-          <div class="section-line"></div>
-        </div>
-        <div class="item-list">
-          <div class="timeline-item">
-            <div class="timeline-date">OCT 2025</div>
-            <div class="timeline-content">
-              Paper <strong>"EmoArt"</strong> was accepted to <span class="inline-highlight">ACM Multimedia 2025</span>! 🎉
+        <h2 class="section-title">News</h2>
+        <div class="card-list">
+          <div class="entry">
+            <div class="entry-date">Oct 2025</div>
+            <div class="entry-content">
+              <p>Paper <strong>"EmoArt"</strong> was accepted to <span class="highlight">ACM Multimedia 2025</span>! 🎉</p>
             </div>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">JAN 2025</div>
-            <div class="timeline-content">
-              Participated in the National Natural Science Foundation of China Youth Project.
+          <div class="entry">
+            <div class="entry-date">Jan 2025</div>
+            <div class="entry-content">
+              <p>Participated in the National Natural Science Foundation of China Youth Project.</p>
             </div>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">SEPT 2024</div>
-            <div class="timeline-content">
-              Joined Affective Vision Computing (AVC) Lab as a Research Assistant.
+          <div class="entry">
+            <div class="entry-date">Sept 2024</div>
+            <div class="entry-content">
+              <p>Joined Affective Vision Computing (AVC) Lab as a Research Assistant.</p>
             </div>
           </div>
         </div>
@@ -423,76 +363,70 @@
 
       <!-- 论文 -->
       <section id="publications">
-        <div class="section-header">
-          <h2 class="section-title">Publications</h2>
-          <div class="section-line"></div>
-        </div>
-        
-        <div class="pub-list">
-          <div class="pub-item">
+        <h2 class="section-title">Publications</h2>
+        <div class="card-list">
+          
+          <div class="pub-card">
             <a href="https://arxiv.org/" class="pub-title">EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation</a>
-            <p class="pub-authors"><span class="me">Cheng Zhang</span>, HongXia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng</p>
-            <p class="pub-venue">ACM Multimedia 2025 (Dataset Track)</p>
+            <div class="pub-authors"><span class="author-me">Cheng Zhang</span>, HongXia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng</div>
+            <div class="pub-venue">ACM Multimedia (ACM MM), 2025 (Dataset Track)</div>
             <div class="pub-links">
-              <a href="#" class="pub-link-btn">Project</a>
-              <a href="#" class="pub-link-btn">PDF</a>
-              <a href="#" class="pub-link-btn">Code</a>
+              <a href="#" class="pub-link">Project</a>
+              <a href="#" class="pub-link">PDF</a>
+              <a href="#" class="pub-link">Code</a>
             </div>
           </div>
 
-          <div class="pub-item">
+          <div class="pub-card">
             <span class="pub-title">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal Large Language Model</span>
-            <p class="pub-authors">Hung-Jen Chen, Hongxia Xie, <span class="me">Cheng Zhang</span>, Songhan Zuo, Chu-Jun Peng, Hong-Han Shuai, Yong Man Ro, Wen-Huang Cheng</p>
-            <p class="pub-venue">Under Review</p>
+            <div class="pub-authors">Hung-Jen Chen, Hongxia Xie, <span class="author-me">Cheng Zhang</span>, Songhan Zuo, Chu-Jun Peng, Hong-Han Shuai, Yong Man Ro, Wen-Huang Cheng</div>
+            <div class="pub-venue">Under Review</div>
           </div>
 
-          <div class="pub-item">
+          <div class="pub-card">
             <a href="https://arxiv.org/abs/2504.14238" class="pub-title">Single Document Image Highlight Removal via A Large-Scale Real-World Dataset</a>
-            <p class="pub-authors">Lu Pan, Yu-Hsuan Huang, Hongxia Xie, <span class="me">Cheng Zhang</span>, Hong-Han Shuai, Wen-Huang Cheng</p>
-            <p class="pub-venue">Under Review</p>
+            <div class="pub-authors">Lu Pan, Yu-Hsuan Huang, Hongxia Xie, <span class="author-me">Cheng Zhang</span>, Hong-Han Shuai, Wen-Huang Cheng</div>
+            <div class="pub-venue">Under Review</div>
             <div class="pub-links">
-              <a href="https://arxiv.org/abs/2504.14238" class="pub-link-btn">arXiv</a>
+              <a href="https://arxiv.org/abs/2504.14238" class="pub-link">arXiv</a>
             </div>
           </div>
 
-          <div class="pub-item">
+          <div class="pub-card">
             <span class="pub-title">AmorisBench: A Comprehensive Multi-modal Dataset for Love-centric Question Answering</span>
-            <p class="pub-authors">Chu-Jun Peng, Hongxia Xie, <span class="me">Cheng Zhang</span>, Wen-Huang Cheng</p>
-            <p class="pub-venue">Under Review</p>
+            <div class="pub-authors">Chu-Jun Peng, Hongxia Xie, <span class="author-me">Cheng Zhang</span>, Wen-Huang Cheng</div>
+            <div class="pub-venue">Under Review</div>
           </div>
+
         </div>
       </section>
 
       <!-- 经历 -->
       <section id="experience">
-        <div class="section-header">
-          <h2 class="section-title">Experience</h2>
-          <div class="section-line"></div>
-        </div>
-        
-        <div class="item-list">
-          <div class="timeline-item">
-            <div class="timeline-date">MAY 2024 - NOW</div>
-            <div class="timeline-content">
-              <p class="exp-role">Research Assistant</p>
-              <p class="exp-org">Affective Vision Computing (AVC) Lab, Jilin University</p>
-              <p class="exp-desc">Focusing on affective computing and multi-modal machine learning. Supervisor: Assoc. Prof. Hongxia Xie.</p>
+        <h2 class="section-title">Experience</h2>
+        <div class="card-list">
+          <div class="entry">
+            <div class="entry-date">2024 — NOW</div>
+            <div class="entry-content">
+              <h4>Research Assistant</h4>
+              <p>Affective Vision Computing (AVC) Lab, Jilin University</p>
+              <p class="sub-info">Focusing on affective computing and multi-modal machine learning. Supervisor: Assoc. Prof. Hongxia Xie.</p>
             </div>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">JAN 2025 - NOW</div>
-            <div class="timeline-content">
-              <p class="exp-role">Youth Project Participant</p>
-              <p class="exp-org">National Natural Science Foundation of China</p>
-              <p class="exp-desc">Emotion Hallucination Elimination in Visual-Language Pre-training Models.</p>
+          <div class="entry">
+            <div class="entry-date">2025 — NOW</div>
+            <div class="entry-content">
+              <h4>Youth Project Participant</h4>
+              <p>National Natural Science Foundation of China</p>
+              <p class="sub-info">Research: Emotion Hallucination Elimination in Visual-Language Pre-training Models.</p>
             </div>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">JAN 2025 - NOW</div>
-            <div class="timeline-content">
-              <p class="exp-role">Excellent Youth Project Participant</p>
-              <p class="exp-org">Jilin Provincial Department of Education</p>
-              <p class="exp-desc">Research on Emotion Understanding Stability in Multimodal Large Models.</p>
+          <div class="entry">
+            <div class="entry-date">2025 — NOW</div>
+            <div class="entry-content">
+              <h4>Excellent Youth Project Participant</h4>
+              <p>Jilin Provincial Department of Education</p>
+              <p class="sub-info">Research: Emotion Understanding Stability in Multimodal Large Models.</p>
             </div>
           </div>
         </div>
@@ -500,29 +434,26 @@
 
       <!-- 荣誉 -->
       <section id="honors">
-        <div class="section-header">
-          <h2 class="section-title">Honors</h2>
-          <div class="section-line"></div>
-        </div>
-        <div class="item-list">
-          <div class="timeline-item">
-            <div class="timeline-date">2024-2025</div>
-            <div class="timeline-content">Undergraduate Scholarship, Jilin University</div>
+        <h2 class="section-title">Honors & Awards</h2>
+        <div class="card-list" style="gap: 12px;">
+          <div class="entry">
+            <div class="entry-date">2024-2025</div>
+            <div class="entry-content"><p>Undergraduate Scholarship, Jilin University</p></div>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2023-2024</div>
-            <div class="timeline-content">Undergraduate Scholarship, Jilin University</div>
+          <div class="entry">
+            <div class="entry-date">2023-2024</div>
+            <div class="entry-content"><p>Undergraduate Scholarship, Jilin University</p></div>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2022-2023</div>
-            <div class="timeline-content">Undergraduate Scholarship, Jilin University</div>
+          <div class="entry">
+            <div class="entry-date">2022-2023</div>
+            <div class="entry-content"><p>Undergraduate Scholarship, Jilin University</p></div>
           </div>
         </div>
       </section>
 
       <footer>
         <div>&copy; 2025 Cheng Zhang</div>
-        <div style="letter-spacing: 0.1em; text-transform: uppercase;">Simplicity &bull; Precision &bull; Research</div>
+        <div style="letter-spacing: 0.1em;">Simplicity &bull; Precision &bull; Research</div>
       </footer>
 
     </main>
