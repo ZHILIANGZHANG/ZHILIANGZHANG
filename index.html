@@ -3,389 +3,716 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Homepage - Cheng Zhang</title>
+    <title>Cheng Zhang</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Lato', sans-serif;
-            font-size: 1rem;
-            color: #333;
-            background-color: #f8f9fa !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background-color: #FAFAF8;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
         }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Raleway', sans-serif;
-            color: #2c3e50;
-        }
-        a {
-            color: #007bff;
-            transition: color 0.2s;
-        }
-        a:hover {
-            color: #0056b3;
-            text-decoration: none;
-        }
+
+        /* Navigation */
         .navbar {
-            background-color: #fff !important;
-            border-bottom: 1px solid #eaeaea;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            z-index: 1000;
         }
-        .navbar-brand {
-            font-family: 'Raleway', sans-serif;
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .nav-brand {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            transition: color 200ms ease;
+        }
+
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #1a1a1a;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            gap: 48px;
+            margin-bottom: 64px;
+            align-items: flex-start;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+        }
+
+        .hero-photo img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .hero-content h1 {
+            font-size: 36px;
             font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
         }
-        .card {
-            border-radius: 8px;
-            overflow: hidden;
+
+        .hero-content .subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666;
+            margin-bottom: 16px;
         }
-        .text-profile-position {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-        .text-profile-bio {
-            font-size: 0.95rem;
-            line-height: 1.6;
+
+        .hero-content .affiliation {
+            font-size: 15px;
             color: #444;
+            margin-bottom: 24px;
         }
-        .no-break {
-            white-space: nowrap;
+
+        .affiliation a {
+            color: #1a1a1a;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: color 200ms ease, border-color 200ms ease;
         }
-        .highlight-text {
-            color: #0056b3;
-            font-weight: 600;
+
+        .affiliation a:hover {
+            color: #2563EB;
+            border-bottom-color: #2563EB;
         }
-        .pub-title {
-            font-weight: 600;
-            color: #2c3e50;
-            display: block;
-            margin-bottom: 4px;
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 14px;
         }
-        .pub-authors {
-            color: #555;
-            font-size: 0.95rem;
-            margin-bottom: 4px;
+
+        .contact-links a {
+            color: #666;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 200ms ease, transform 200ms ease;
         }
-        .pub-venue {
-            font-style: italic;
-            color: #d35400;
-            font-size: 0.9rem;
+
+        .contact-links a:hover {
+            color: #2563EB;
+            transform: translateY(-2px);
         }
-        .author-me {
-            font-weight: 700;
-            color: #333;
-            text-decoration: underline;
+
+        /* Bio */
+        .bio {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 64px;
         }
-        .abstract-links a {
-            font-size: 0.85rem;
-            margin-right: 10px;
+
+        .bio p {
+            margin-bottom: 16px;
+        }
+
+        .bio a {
+            color: #1a1a1a;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: color 200ms ease, border-color 200ms ease;
+        }
+
+        .bio a:hover {
+            color: #2563EB;
+            border-bottom-color: #2563EB;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 72px;
+        }
+
+        .section-title {
+            font-size: 13px;
             font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #999;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            position: relative;
+            padding-left: 16px;
         }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 12px;
+            width: 3px;
+            background: #2563EB;
+            border-radius: 2px;
+        }
+
+        /* Research Interests */
+        .interests-text {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 13px;
+            padding: 6px 14px;
+            background: rgba(37, 99, 235, 0.08);
+            border-radius: 16px;
+            color: #1D4ED8;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        /* News */
+        .news-item {
+            display: flex;
+            gap: 24px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-year {
+            flex-shrink: 0;
+            width: 48px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #999;
+        }
+
+        .news-content {
+            flex: 1;
+        }
+
+        .news-date {
+            font-size: 13px;
+            color: #999;
+            margin-left: 8px;
+        }
+
+        .news-content p {
+            font-size: 15px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .news-content a {
+            color: #1a1a1a;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: color 200ms ease, border-color 200ms ease;
+        }
+
+        .news-content a:hover {
+            color: #2563EB;
+            border-bottom-color: #2563EB;
+        }
+
+        /* Publications */
+        .pub-item {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .pub-item:last-child {
+            border-bottom: none;
+        }
+
+        .pub-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            line-height: 1.4;
+            transition: color 200ms ease;
+        }
+
+        .pub-item:hover .pub-title {
+            color: #2563EB;
+        }
+
+        .pub-authors {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .pub-venue {
+            font-size: 14px;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .pub-links {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+        }
+
+        .pub-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 200ms ease;
+        }
+
+        .pub-links a:hover {
+            color: #2563EB;
+        }
+
+        .author-me {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        /* Experience & Education */
+        .exp-item {
+            display: flex;
+            gap: 24px;
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            align-items: flex-start;
+        }
+
+        .exp-item:last-child {
+            border-bottom: none;
+        }
+
+        .exp-logo {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 120px;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .exp-logo img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .exp-content {
+            flex: 1;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .exp-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .exp-date {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .exp-place {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .exp-detail {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .exp-detail a {
+            color: #1a1a1a;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: color 200ms ease, border-color 200ms ease;
+        }
+
+        .exp-detail a:hover {
+            color: #2563EB;
+            border-bottom-color: #2563EB;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 48px 24px;
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+                align-items: center;
+            }
+
+            .hero-content h1 {
+                font-size: 28px;
+            }
+
+            .contact-links {
+                justify-content: center;
+            }
+
+            .news-item {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .news-year {
+                width: auto;
+            }
+
+            .exp-item {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .exp-header {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+
         html {
             scroll-behavior: smooth;
         }
     </style>
 </head>
 
-<body class="bg-light">
-    
-    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="#"><strong>Cheng Zhang</strong></a>
-            <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i> Menu
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="#about">About me</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-                </ul>
-            </div>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a class="nav-brand" href="#">Cheng Zhang</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#experience">Experience</a></li>
+            </ul>
+            <button class="nav-toggle"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
-    <div class="container mt-5 pt-5" id="about">
-        <div class="row">
-            <div class="col">
-                <div class="card border-0 shadow-sm bg-white mb-4">
-                    <div class="card-body p-5">
-                        <div class="row">
-                            <div class="col">
-                                <div class="figure float-right ml-4 mb-4 d-none d-md-block">
-                                    <img src="picture4.png" 
-                                         class="figure-img img-fluid img-thumbnail" 
-                                         style="height: 250px; width: auto; object-fit: cover;"
-                                         alt="Cheng Zhang"
-                                         onerror="this.src='https://ui-avatars.com/api/?name=Cheng+Zhang&background=2563eb&color=fff&size=200'">
-                                </div>
-                                
-                                <div class="h1 font-weight-normal mb-3">
-                                    Cheng Zhang <small>(Rylan Zhang)</small>
-                                </div>
-                                
-                                <div class="text-profile-position">
-                                    <i class="fas fa-university mr-2"></i>Undergraduate Researcher<br/>
-                                    <i class="fas fa-map-marker-alt mr-2"></i>Jilin University (JLU), China
-                                </div>
-                                
-                                <div class="text-profile-bio mt-4">
-                                    <p>
-                                        I am an incoming MPhil student at 
-                                        <a href="https://hkust-gz.edu.cn/" target="_blank" class="highlight-text">The Hong Kong University of Science and Technology, Guangzhou </a>.
-                                    </p>
-                                    <p>
-                                        Currently, I am a senior undergraduate student majoring in Computer Science & Technology at 
-                                        <a href="https://www.jlu.edu.cn/" target="_blank" class="highlight-text">Jilin University (JLU)</a>.
-                                        I am fortunate to be a Research Assistant at the <strong>Affective Vision Computing (AVC) Lab</strong>, advised by 
-                                        <a href="#" class="highlight-text">Assoc. Prof. Hongxia Xie</a>. I am honored to closely collaborate with <a href="#" class="highlight-text">Prof. Wen-Huang Cheng</a> (IEEE Fellow) from National Taiwan University.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr />
-                        
-                        <div class="row">
-                            <div class="col">
-                                <a class="pr-3 no-break" href="mailto:ChengZhang0525@gmail.com"><i class="fas fa-envelope"></i> Gmail</a>
-                                <a class="pr-3 no-break" href="mailto:zhangcheng2122@mails.jlu.edu.cn"><i class="fas fa-university"></i> Email (JLU)</a>
-                                <a class="pr-3 no-break" target="_blank" href="https://github.com"><i class="fab fa-github"></i> GitHub</a>
-                                <a class="pr-3 no-break" target="_blank" href="CV_ChengZhang.pdf"><i class="ai ai-cv"></i> Curriculum Vitae</a>
-                            </div>
-                        </div>
-                    </div>
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="about" class="hero">
+            <div class="hero-photo">
+                <img src="picture4.png"
+                     alt="Cheng Zhang"
+                     onerror="this.src='https://ui-avatars.com/api/?name=Cheng+Zhang&background=1a1a1a&color=fff&size=200'">
+            </div>
+            <div class="hero-content">
+                <h1>Cheng Zhang</h1>
+                <div class="subtitle">Rylan Zhang</div>
+                <div class="affiliation">
+                    Undergraduate Researcher at <a href="https://www.jlu.edu.cn/" target="_blank">Jilin University</a>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:ChengZhang0525@gmail.com"><i class="fas fa-envelope"></i> Gmail</a>
+                    <a href="mailto:zhangcheng2122@mails.jlu.edu.cn"><i class="fas fa-university"></i> JLU Email</a>
+                    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="CV_ChengZhang.pdf" target="_blank"><i class="ai ai-cv"></i> CV</a>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="row mt-3">
-            <div class="col">
-                <div class="card border-0 shadow-sm bg-white">
-                    <div class="card-body p-4">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="mx-2 my-1">
-                                    <h6 class="mb-3"><i class="fas fa-lightbulb"></i> Research Interests</h6>
-                                    <div class="text-profile-bio mb-3">
-                                        <p>
-                                            My primary research focus lies in <strong>Human-Centric Artificial Intelligence</strong>, with a particular emphasis on bridging the gap between advanced generative models and human emotional intelligence. 
-                                            I am passionate about exploring the frontiers of <strong>Multi-modal Large Language Models (MLLMs)</strong> and <strong>Vision-Language Models (VLMs)</strong> to create more intuitive and empathetic AI systems.
-                                        </p>
-                                        <p>
-                                            Currently, I am investigating the integration of <strong>Diffusion Models</strong> with <strong>Affective Computing</strong> to enable emotion-aware content generation. 
-                                            I am driven by the potential of <strong>cross-modal fusion</strong> techniques to enhance how machines perceive, understand, and interact with human nuances in real-world scenarios.
-                                        </p>
-                                    </div>
-                                    <div class="d-flex flex-wrap">
-                                        <span class="badge badge-light border p-2 mr-2 mb-2" style="font-size: 0.9rem;">Human-Centric MLLM</span>
-                                        <span class="badge badge-light border p-2 mr-2 mb-2" style="font-size: 0.9rem;">Vision-Language Models</span>
-                                        <span class="badge badge-light border p-2 mr-2 mb-2" style="font-size: 0.9rem;">Diffusion Models</span>
-                                        <span class="badge badge-light border p-2 mr-2 mb-2" style="font-size: 0.9rem;">Affective Computing</span>
-                                        <span class="badge badge-light border p-2 mr-2 mb-2" style="font-size: 0.9rem;">Multi-modal Fusion</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Bio -->
+        <section class="bio">
+            <p>
+                I am an incoming MPhil student at
+                <a href="https://hkust-gz.edu.cn/" target="_blank">The Hong Kong University of Science and Technology, Guangzhou</a>.
+            </p>
+            <p>
+                Currently, I am a senior undergraduate student majoring in Computer Science & Technology at
+                <a href="https://www.jlu.edu.cn/" target="_blank">Jilin University</a>.
+                I am fortunate to be a Research Assistant at the <strong>Affective Vision Computing (AVC) Lab</strong>, advised by
+                <a href="#">Assoc. Prof. Hongxia Xie</a>. I am honored to closely collaborate with <a href="#">Prof. Wen-Huang Cheng</a> (IEEE Fellow) from National Taiwan University.
+            </p>
+        </section>
 
-        <div class="my-3 bg-white shadow-sm rounded-sm card border-0" id="news">
-            <h6 class="p-3 mb-0 border-bottom border-gray"><i class="fas fa-rss"></i> News</h6>
-            <div class="px-3 pb-3">
-                
-                <div class="media py-2">
-                    <div class="mr-3 text-muted my-1" style="min-width: 60px;"><strong>2026</strong></div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex flex-column flex-sm-row">
-                            <div>We are hosting the <a href="https://affectiveart-challenge.github.io" target="_blank" class="highlight-text">AffectiveArt Challenge</a> at <span class="highlight-text">ACM Multimedia 2026</span>! I serve as the <strong>leading organizer</strong>. 🎨🏆</div>
-                            <div class="ml-auto mt-auto text-muted no-break small"><i>Mar</i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="media py-2 border-top border-gray">
-                    <div class="mr-3 text-muted my-1" style="min-width: 60px;"><strong>2025</strong></div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex flex-column flex-sm-row">
-                            <div>I gave an <span class="highlight-text">Oral Presentation</span> at ACM Multimedia 2025. 🎤</div>
-                            <div class="ml-auto mt-auto text-muted no-break small"><i>Oct</i></div>
-                        </div>
-                        <div class="my-1 d-flex flex-column flex-sm-row">
-                            <div>Paper <strong>"EmoArt"</strong> was accepted to <span class="highlight-text">ACM Multimedia 2025</span>! 🎉</div>
-                            <div class="ml-auto mt-auto text-muted no-break small"><i>Aug</i></div>
-                        </div>
-                        <div class="my-1 d-flex flex-column flex-sm-row">
-                            <div>Participated in the National Natural Science Foundation of China Youth Project.</div>
-                            <div class="ml-auto mt-auto text-muted no-break small"><i>Jan</i></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="media py-2 border-top border-gray">
-                    <div class="mr-3 text-muted my-1" style="min-width: 60px;"><strong>2024</strong></div>
-                    <div class="media-body">
-                        <div class="my-1 d-flex flex-column flex-sm-row">
-                            <div>Joined Affective Vision Computing (AVC) Lab as a Research Assistant.</div>
-                            <div class="ml-auto mt-auto text-muted no-break small"><i>Sept</i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="my-3 bg-white shadow-sm rounded-sm card border-0" id="publications">
-            <h6 class="border-bottom border-gray p-3 mb-0"><i class="fas fa-book"></i> Publications</h6>
-            <div class="p-4 border-bottom">
-                <h5 class="pub-title">EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation</h5>
-                <div class="pub-authors"><span class="author-me">Cheng Zhang</span>, HongXia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng</div>
-                <div class="pub-venue">ACM Multimedia (ACM MM) 2025</div>
-                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links mt-2">
-                    <a href="#">[Project]</a><a href="#">[PDF]</a><a href="#">[Code]</a>
+        <!-- Research Interests -->
+        <section class="section">
+            <h2 class="section-title">Research Interests</h2>
+            <div class="interests-text">
+                <p>
+                    My primary research focus lies in <strong>Human-Centric Artificial Intelligence</strong>, with a particular emphasis on bridging the gap between advanced generative models and human emotional intelligence.
+                    I am passionate about exploring the frontiers of <strong>Multi-modal Large Language Models (MLLMs)</strong> and <strong>Vision-Language Models (VLMs)</strong> to create more intuitive and empathetic AI systems.
+                </p>
+                <p>
+                    Currently, I am investigating the integration of <strong>Diffusion Models</strong> with <strong>Affective Computing</strong> to enable emotion-aware content generation.
                 </p>
             </div>
-            
-            <div class="p-4 border-bottom">
-                <h5 class="pub-title">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal Large Language Model</h5>
+            <div class="tag-group">
+                <span class="tag">Human-Centric MLLM</span>
+                <span class="tag">Vision-Language Models</span>
+                <span class="tag">Diffusion Models</span>
+                <span class="tag">Affective Computing</span>
+                <span class="tag">Multi-modal Fusion</span>
+            </div>
+        </section>
+
+        <!-- News -->
+        <section id="news" class="section">
+            <h2 class="section-title">News</h2>
+
+            <div class="news-item">
+                <div class="news-year">2026</div>
+                <div class="news-content">
+                    <p>We are hosting the <a href="https://affectiveart-challenge.github.io" target="_blank" class="highlight">AffectiveArt Challenge</a> at <span class="highlight">ACM Multimedia 2026</span>! I serve as the <strong>leading organizer</strong>. <span class="news-date">Mar</span></p>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-year">2025</div>
+                <div class="news-content">
+                    <p>I gave an <span class="highlight">Oral Presentation</span> at ACM Multimedia 2025. <span class="news-date">Oct</span></p>
+                    <p>Paper <strong>"EmoArt"</strong> was accepted to <span class="highlight">ACM Multimedia 2025</span>! <span class="news-date">Aug</span></p>
+                    <p>Participated in the National Natural Science Foundation of China Youth Project. <span class="news-date">Jan</span></p>
+                </div>
+            </div>
+
+            <div class="news-item">
+                <div class="news-year">2024</div>
+                <div class="news-content">
+                    <p>Joined Affective Vision Computing (AVC) Lab as a Research Assistant. <span class="news-date">Sept</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications -->
+        <section id="publications" class="section">
+            <h2 class="section-title">Publications</h2>
+
+            <div class="pub-item">
+                <div class="pub-title">EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation</div>
+                <div class="pub-authors"><span class="author-me">Cheng Zhang</span>, HongXia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng</div>
+                <div class="pub-venue">ACM Multimedia (ACM MM) 2025</div>
+                <div class="pub-links">
+                    <a href="#">Project</a>
+                    <a href="#">PDF</a>
+                    <a href="#">Code</a>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">HeLa-Mem: Hebbian Learning and Associative Memory for LLM Agents</div>
+                <div class="pub-authors">Jinchang Zhu*, Jindong Li*, <span class="author-me">Cheng Zhang</span>*, Jiahong Liu, Menglin Yang</div>
+                <div class="pub-venue">Annual Meeting of the Association for Computational Linguistics (ACL) 2026 Main Conference</div>
+                <div class="exp-detail">* Equal contribution</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">EmoDiscover: Vocabulary-free Emotion Discovery via Multi-modal Large Language Model</div>
                 <div class="pub-authors">Hung-Jen Chen, Hongxia Xie, <span class="author-me">Cheng Zhang</span>, Songhan Zuo, Chu-Jun Peng, Hong-Han Shuai, Yong Man Ro, Wen-Huang Cheng</div>
                 <div class="pub-venue">IEEE Transactions on Affective Computing (Under Review)</div>
             </div>
-            
-            <div class="p-4 border-bottom">
-                <h5 class="pub-title">AmorisBench: A Comprehensive Multi-modal Dataset for Love-centric Question Answering</h5>
+
+            <div class="pub-item">
+                <div class="pub-title">AmorisBench: A Comprehensive Multi-modal Dataset for Love-centric Question Answering</div>
                 <div class="pub-authors">Chu-Jun Peng, Hongxia Xie, <span class="author-me">Cheng Zhang</span>, Wen-Huang Cheng</div>
                 <div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2026 (Under Review)</div>
             </div>
 
-            <div class="p-4 border-bottom">
-                <h5 class="pub-title">Single Document Image Highlight Removal via A Large-Scale Real-World Dataset and A Location-Aware Network</h5>
+            <div class="pub-item">
+                <div class="pub-title">Single Document Image Highlight Removal via A Large-Scale Real-World Dataset and A Location-Aware Network</div>
                 <div class="pub-authors">Lu Pan, Yu-Hsuan Huang, Hongxia Xie, <span class="author-me">Cheng Zhang</span>, Hongwei Zhao, Hong-Han Shuai, Wen-Huang Cheng</div>
                 <div class="pub-venue">IEEE Transactions on Multimedia (Under Review)</div>
             </div>
+        </section>
 
-            <div class="p-4">
-                <h5 class="pub-title">HeLa-Mem: Hebbian Learning and Associative Memory for LLM Agents</h5>
-                <div class="pub-authors">Jinchang Zhu*, Jindong Li*, <span class="author-me">Cheng Zhang</span>*, Jiahong Liu, Menglin Yang</div>
-                <div class="pub-venue">Annual Meeting of the Association for Computational Linguistics (ACL) (Under Review)</div>
-                <div class="small text-muted mt-1">* Equal contribution (Co-first Author)</div>
-            </div>
-        </div>
+        <!-- Education -->
+        <section id="experience" class="section">
+            <h2 class="section-title">Education</h2>
 
-        <div class="row mt-3" id="experience">
-            <div class="col-md-12 mb-3">
-                <div class="card border-0 shadow-sm bg-white">
-                    <div class="card-body p-4">
-                        <h6 class="mb-3"><i class="fas fa-graduation-cap"></i> Education</h6>
-                        <ul class="list-unstyled mb-1">
-                            <li class="media d-flex align-items-center mb-4">
-                                <div class="mr-3 d-flex align-items-center">
-                                    <img src="hkust_logo.png" 
-                                         style="height: 3.5rem; width: auto; object-fit: contain;" 
-                                         alt="HKUST(GZ) Logo"
-                                         onerror="this.src='https://ui-avatars.com/api/?name=HKUST+GZ&background=003366&color=fff&size=200'">
-                                </div>
-                                <div class="media-body d-flex flex-column justify-content-between">
-                                    <div class="d-flex justify-content-between align-items-baseline">
-                                        <div class="font-weight-bold" style="font-size: 1.15rem; color: #2c3e50;">The Hong Kong University of Science and Technology (Guangzhou)</div>
-                                        <div class="text-muted small">Sept. 2027 (Expected)</div>
-                                    </div>
-                                    <div style="font-size: 1rem; color: #444; margin-top: 2px;">MPhil in Artificial Intelligence</div>
-                                    <div class="text-muted mt-1" style="font-size: 0.95rem;">
-                                        Incoming Graduate Student
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="media d-flex align-items-center">
-                                <div class="mr-3 d-flex align-items-center">
-                                    <img src="jlu_logo.png" 
-                                         style="height: 4.0rem; width: auto; object-fit: contain;" 
-                                         alt="JLU Logo"
-                                         onerror="this.src='https://ui-avatars.com/api/?name=JLU&background=003d88&color=fff&size=200'">
-                                </div>
-                                <div class="media-body d-flex flex-column justify-content-between">
-                                    <div class="d-flex justify-content-between align-items-baseline">
-                                        <div class="font-weight-bold" style="font-size: 1.15rem; color: #2c3e50;">Jilin University (JLU)</div>
-                                        <div class="text-muted small">Sept. 2022 - Jun. 2026 (Expected)</div>
-                                    </div>
-                                    <div style="font-size: 1rem; color: #444; margin-top: 2px;">B.Sc. in Computer Science & Technology</div>
-                                    <div class="text-muted mt-1" style="font-size: 0.95rem;">
-                                        Average Score: <strong class="text-dark">88/100</strong> &bull; Rank: <strong class="text-dark">7/102</strong>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+            <div class="exp-item">
+                <div class="exp-logo">
+                    <img src="hkust_logo.png"
+                         alt="HKUST(GZ)"
+                         onerror="this.src='https://ui-avatars.com/api/?name=HKUST&background=1a1a1a&color=fff&size=96'">
+                </div>
+                <div class="exp-content">
+                    <div class="exp-header">
+                        <div class="exp-title">The Hong Kong University of Science and Technology (Guangzhou)</div>
+                        <div class="exp-date">Sept. 2027 (Expected)</div>
                     </div>
+                    <div class="exp-place">MPhil in Artificial Intelligence</div>
+                    <div class="exp-detail">Incoming Graduate Student</div>
                 </div>
             </div>
 
-            <div class="col-md-12 mb-3">
-                <div class="card border-0 shadow-sm bg-white">
-                    <div class="card-body p-4">
-                        <h6 class="mb-3"><i class="fas fa-briefcase"></i> Experience</h6>
-                        <ul class="list-unstyled mb-1">
-                            <li class="media mb-4">
-                                <div class="media-body">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="font-weight-bold">Research Assistant</div>
-                                        <div class="text-muted small">2024 - Present</div>
-                                    </div>
-                                    <div class="small text-muted">Affective Vision Computing (AVC) Lab, Jilin University</div>
-                                    <div class="small mt-1">Supervisor: <a href="#">Assoc. Prof. Hongxia Xie</a></div>
-                                </div>
-                            </li>
-                            <li class="media mb-4">
-                                <div class="media-body">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="font-weight-bold">Youth Project Participant</div>
-                                        <div class="text-muted small">2025 - Present</div>
-                                    </div>
-                                    <div class="small text-muted">National Natural Science Foundation of China</div>
-                                    <div class="small mt-1">Research: Emotion Hallucination Elimination in VLM Pre-training.</div>
-                                </div>
-                            </li>
-                        </ul>
+            <div class="exp-item">
+                <div class="exp-logo">
+                    <img src="jlu_logo.png"
+                         alt="JLU"
+                         onerror="this.src='https://ui-avatars.com/api/?name=JLU&background=1a1a1a&color=fff&size=96'">
+                </div>
+                <div class="exp-content">
+                    <div class="exp-header">
+                        <div class="exp-title">Jilin University</div>
+                        <div class="exp-date">Sept. 2022 - Jun. 2026 (Expected)</div>
                     </div>
+                    <div class="exp-place">B.Sc. in Computer Science & Technology</div>
+                    <div class="exp-detail">Average Score: 88/100 &bull; Rank: 7/102</div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="row mt-3 mb-5">
-            <div class="col">
-                <div class="card border-0 shadow-sm bg-white">
-                    <div class="card-body p-4">
-                        <h6 class="mb-3"><i class="fas fa-trophy"></i> Honors & Awards</h6>
-                        <ul class="list pl-3 mb-1">
-                            <li class="mb-2">
-                                <div class="d-flex">
-                                    <div>Undergraduate Scholarship, Jilin University</div>
-                                    <div class="ml-auto text-muted"><em>2022-2025</em></div>
-                                </div>
-                            </li>
-                        </ul>
+        <!-- Experience -->
+        <section class="section">
+            <h2 class="section-title">Experience</h2>
+
+            <div class="exp-item">
+                <div class="exp-content">
+                    <div class="exp-header">
+                        <div class="exp-title">Research Assistant</div>
+                        <div class="exp-date">2024 - Present</div>
                     </div>
+                    <div class="exp-place">Affective Vision Computing (AVC) Lab, Jilin University</div>
+                    <div class="exp-detail">Supervisor: <a href="#">Assoc. Prof. Hongxia Xie</a></div>
                 </div>
             </div>
-        </div>
 
-        <footer class="footer pb-5 text-muted text-center small">
-            &copy; 2025 Cheng Zhang. Simplicity &bull; Precision &bull; Research
+            <div class="exp-item">
+                <div class="exp-content">
+                    <div class="exp-header">
+                        <div class="exp-title">Youth Project Participant</div>
+                        <div class="exp-date">2025 - Present</div>
+                    </div>
+                    <div class="exp-place">National Natural Science Foundation of China</div>
+                    <div class="exp-detail">Research: Emotion Hallucination Elimination in VLM Pre-training</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Honors -->
+        <section class="section">
+            <h2 class="section-title">Honors & Awards</h2>
+
+            <div class="exp-item">
+                <div class="exp-content">
+                    <div class="exp-header">
+                        <div class="exp-title">Undergraduate Scholarship</div>
+                        <div class="exp-date">2022 - 2025</div>
+                    </div>
+                    <div class="exp-place">Jilin University</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 Cheng Zhang
         </footer>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </body>
-
 </html>
