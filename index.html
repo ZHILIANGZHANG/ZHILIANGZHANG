@@ -25,8 +25,10 @@
             color: #1a1a1a;
             background-color: #FAFAF8;
             -webkit-font-smoothing: antialiased;
-            background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-            background-size: 24px 24px;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+            background-size: 32px 32px;
         }
 
         /* Navigation */
@@ -297,9 +299,36 @@
         }
 
         /* Publications */
+        .pub-list {
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .pub-list::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 12px;
+            bottom: 12px;
+            width: 1px;
+            background: rgba(37, 99, 235, 0.15);
+        }
+
         .pub-item {
             padding: 24px 0;
             border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            position: relative;
+        }
+
+        .pub-item::before {
+            content: '';
+            position: absolute;
+            left: -22px;
+            top: 32px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.25);
         }
 
         .pub-item:last-child {
@@ -594,6 +623,7 @@
         <section id="publications" class="section">
             <h2 class="section-title">Publications</h2>
 
+            <div class="pub-list">
             <div class="pub-item">
                 <div class="pub-title">EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation</div>
                 <div class="pub-authors"><span class="author-me">Cheng Zhang</span>, HongXia Xie, Bin Wen, Songhan Zuo, Ruoxuan Zhang, Wen-Huang Cheng</div>
@@ -629,6 +659,7 @@
                 <div class="pub-authors">Lu Pan, Yu-Hsuan Huang, Hongxia Xie, <span class="author-me">Cheng Zhang</span>, Hongwei Zhao, Hong-Han Shuai, Wen-Huang Cheng</div>
                 <div class="pub-venue">IEEE Transactions on Multimedia (Under Review)</div>
             </div>
+            </div>
         </section>
 
         <!-- Education -->
@@ -663,7 +694,7 @@
                         <div class="exp-date">Sept. 2022 - Jun. 2026 (Expected)</div>
                     </div>
                     <div class="exp-place">B.Sc. in Computer Science & Technology</div>
-                    <div class="exp-detail">Average Score: 88/100 &bull; Rank: 7/102</div>
+                    <div class="exp-detail">Average Score: 89/100 &bull; Rank: 6/102</div>
                 </div>
             </div>
         </section>
@@ -698,6 +729,17 @@
         <!-- Honors -->
         <section class="section">
             <h2 class="section-title">Honors & Awards</h2>
+
+            <div class="exp-item">
+                <div class="exp-content">
+                    <div class="exp-header">
+                        <div class="exp-title">Postgraduate Scholarship (PGS)</div>
+                        <div class="exp-date">2026 - 2028</div>
+                    </div>
+                    <div class="exp-place">The Hong Kong University of Science and Technology (Guangzhou)</div>
+                    <div class="exp-detail">Full scholarship, 240,000 RMB for two years</div>
+                </div>
+            </div>
 
             <div class="exp-item">
                 <div class="exp-content">
