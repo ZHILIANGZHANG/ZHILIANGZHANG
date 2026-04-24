@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet">
 
     <style>
         * {
@@ -26,9 +27,10 @@
             background-color: #FAFAF8;
             -webkit-font-smoothing: antialiased;
             background-image:
-                linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
-            background-size: 32px 32px;
+                radial-gradient(ellipse 80% 60% at 50% -10%, rgba(37, 99, 235, 0.03) 0%, transparent 60%),
+                linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+            background-size: 100% 100%, 32px 32px, 32px 32px;
         }
 
         /* Navigation */
@@ -55,6 +57,7 @@
         }
 
         .nav-brand {
+            font-family: 'Product Sans', 'Google Sans', 'Inter', sans-serif;
             font-size: 17px;
             font-weight: 600;
             color: #1a1a1a;
@@ -118,6 +121,7 @@
         }
 
         .hero-content h1 {
+            font-family: 'Product Sans', 'Google Sans', 'Inter', sans-serif;
             font-size: 36px;
             font-weight: 700;
             letter-spacing: -0.03em;
@@ -125,6 +129,7 @@
         }
 
         .hero-content .subtitle {
+            font-family: 'Product Sans', 'Google Sans', 'Inter', sans-serif;
             font-size: 18px;
             font-weight: 400;
             color: #666;
@@ -141,13 +146,11 @@
             color: #1a1a1a;
             font-weight: 500;
             text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: color 200ms ease, border-color 200ms ease;
+            transition: color 200ms ease;
         }
 
         .affiliation a:hover {
             color: #2563EB;
-            border-bottom-color: #2563EB;
         }
 
         .contact-links {
@@ -163,12 +166,11 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            transition: color 200ms ease, transform 200ms ease;
+            transition: color 200ms ease;
         }
 
         .contact-links a:hover {
             color: #2563EB;
-            transform: translateY(-2px);
         }
 
         /* Bio */
@@ -187,13 +189,11 @@
             color: #1a1a1a;
             font-weight: 500;
             text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: color 200ms ease, border-color 200ms ease;
+            transition: color 200ms ease;
         }
 
         .bio a:hover {
             color: #2563EB;
-            border-bottom-color: #2563EB;
         }
 
         /* Explicit Link Underline Style */
@@ -220,6 +220,7 @@
         }
 
         .section-title {
+            font-family: 'Product Sans', 'Google Sans', 'Inter', sans-serif;
             font-size: 13px;
             font-weight: 600;
             text-transform: uppercase;
@@ -275,6 +276,11 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
+        .highlight {
+            color: #2563EB;
+            font-weight: 600;
+        }
+
         .news-item:last-child {
             border-bottom: none;
         }
@@ -307,13 +313,11 @@
             color: #1a1a1a;
             font-weight: 500;
             text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: color 200ms ease, border-color 200ms ease;
+            transition: color 200ms ease;
         }
 
         .news-content a:hover {
             color: #2563EB;
-            border-bottom-color: #2563EB;
         }
 
         /* Publications */
@@ -354,6 +358,7 @@
         }
 
         .pub-title {
+            font-family: 'Product Sans', 'Google Sans', 'Inter', sans-serif;
             font-size: 16px;
             font-weight: 600;
             color: #1a1a1a;
@@ -444,6 +449,7 @@
         }
 
         .exp-title {
+            font-family: 'Product Sans', 'Google Sans', 'Inter', sans-serif;
             font-size: 15px;
             font-weight: 600;
             color: #1a1a1a;
@@ -469,13 +475,11 @@
             color: #1a1a1a;
             font-weight: 500;
             text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: color 200ms ease, border-color 200ms ease;
+            transition: color 200ms ease;
         }
 
         .exp-detail a:hover {
             color: #2563EB;
-            border-bottom-color: #2563EB;
         }
 
         /* Footer */
@@ -484,6 +488,26 @@
             padding: 48px 24px;
             font-size: 13px;
             color: #999;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .back-to-top {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            color: #999;
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 16px;
+            transition: color 200ms ease;
+        }
+
+        .back-to-top:hover {
+            color: #1a1a1a;
         }
 
         /* Responsive */
@@ -771,7 +795,8 @@
         </section>
 
         <footer>
-            &copy; 2026 Cheng Zhang
+            <a href="#" class="back-to-top" aria-label="Back to top">&uarr;</a>
+            <p>&copy; 2026 Cheng Zhang</p>
         </footer>
     </div>
 </body>
